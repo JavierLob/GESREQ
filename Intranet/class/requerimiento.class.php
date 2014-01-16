@@ -5,78 +5,97 @@ class clsRequerimiento extends clsModel
 {
 	private $lnIdRequerimiento;
 	private $lcCodigo;
-	private $lcNombre;
+	private $lcTitulo;
 	private $lcTipo;
 	private $lcPrioridad;
 	private $lcDificultad;
-	private $lcObjetivo;
 	private $lcDescripcion;
 	private $ldFechaReg;
 	private $ldFechaAct;
 	private $ldFechaFin;
 
-	protected function set_IdRequerimiento($pnIdRequerimiento)
+	public function set_IdRequerimiento($pnIdRequerimiento)
 	{
-		$lnIdRequerimiento=$pnIdRequerimiento;
+		$this->lnIdRequerimiento=$pnIdRequerimiento;
 	}
 
-	protected function set_Codigo($pcCodigo)
+	public function set_Codigo($pcCodigo)
 	{
-		$lcCodigo=$pcCodigo;
+		$this->lcCodigo=$pcCodigo;
 	}
 
-	protected function set_Nombre($pcNombre)
+	public function set_Titulo($pcTitulo)
 	{
-		$lcNombre=$pcNombre;
+		$this->lcTitulo=$pcTitulo;
 	}
 
-	protected function set_Tipo($pcTipo)
+	public function set_Tipo($pcTipo)
 	{
-		$lcTipo=$pcTipo;
+		$this->lcTipo=$pcTipo;
 	}
 
-	protected function set_Prioridad($pcPrioridad)
+	public function set_Prioridad($pcPrioridad)
 	{
-		$lcPrioridad=$pcPrioridad;
+		$this->lcPrioridad=$pcPrioridad;
 	}
 
-	protected function set_Dificultad($pcDificultad)
+	public function set_Dificultad($pcDificultad)
 	{
-		$lcDificultad=$pcDificultad;
+		$this->lcDificultad=$pcDificultad;
 	}
 
-	protected function set_Objetivo($pcObjetivo)
+
+	public function set_Descripcion($pcDescripcion)
 	{
-		$lcObjetivo=$pcObjetivo;
+		$this->lcDescripcion=$pcDescripcion;
 	}
 
-	protected function set_Descripcion($pcDescripcion)
+	public function set_FechaReg($pdFechaReg)
 	{
-		$lcDescripcion=$pcDescripcion;
+		$this->ldFechaReg=$pdFechaReg;
 	}
 
-	protected function set_FechaReg($pdFechaReg)
+	public function set_FechaAct($pdFechaAct)
 	{
-		$ldFechaReg=$pdFechaReg;
+		$this->ldFechaAct=$pdFechaAct;
 	}
 
-	protected function set_FechaAct($pdFechaAct)
+	public function set_FechaFin($pdFechaFin)
 	{
-		$ldFechaAct=$pdFechaAct;
+		$this->ldFechaFin=$pdFechaFin;
 	}
 
-	protected function set_FechaFin($pdFechaFin)
-	{
-		$ldFechaFin=$pdFechaFin;
-	}
-
-	protected function registrar()
+	public function registrar()
 	{
 		$this->conectar();
-		$lcSql="INSERT INTO trequerimiento (codigo,nombre,tipo,prioridad,dificultad,objetivo,descripcion,fechareg)AS('$this->lcCodigo','$this->lcNombre','$this->lcTipo','$this->lcPrioridad','$this->lcDificultad','$this->lcObjetivo','$this->lcDescripcion','CURRENTE_DATE()')";
+		$lcSql="INSERT INTO trequerimiento (codigo,titulo,tipo,prioridad,dificultad,descripcion,fechareg)VALUES('$this->lcCodigo','$this->lcTitulo','$this->lcTipo','$this->lcPrioridad','$this->lcDificultad','$this->lcDescripcion',CURRENT_DATE())";
 		$llHecho=$this->ejecutar($lcSql);
 		$this->desconectar();
 		return $llHecho;
+	}
+	
+	public function listar_requerimientos()
+	{
+		$this->conectar();
+		$lcSql="SELECT * FROM trequerimiento;";
+		$lrTb=$this->filtro($lcSql);
+		$cont=0;
+		while($laRow=$this->proximo($lrTb))
+		{
+				$lafilas[$cont][0] = $laRow["idrequerimiento"];
+				$lafilas[$cont][1] = $laRow["codigo"];
+				$lafilas[$cont][2] = $laRow["titulo"];
+				$lafilas[$cont][3] = $laRow["tipo"];
+				$lafilas[$cont][4] = $laRow["prioridad"];
+				$lafilas[$cont][5] = $laRow["dificultad"];
+				$lafilas[$cont][6] = $laRow["descripcion"];
+				$lafilas[$cont][7] = $laRow["fechareg"];
+				$lafilas[$cont][8] = $laRow["estatus"];
+				$cont++;
+		}
+		$this->cierrafiltro($lrTb);
+		$this->desconectar();
+		return $lafilas;
 	}
 
 }

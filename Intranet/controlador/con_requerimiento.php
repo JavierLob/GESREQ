@@ -1,14 +1,14 @@
 <?php
+	session_start();
 	include('../class/requerimiento.class.php');
 	$lobjRequerimiento = new clsRequerimiento;
 
 	$lnIdRequerimiento= $_POST['idrequerimiento'];
 	$lcCodigo= $_POST['codigo'];
-	$lcNombre= $_POST['nombre'];
+	$lcTitulo= $_POST['titulo'];
 	$lcTipo= $_POST['tipo'];
 	$lcPrioridad= $_POST['prioridad'];
 	$lcDificultad = $_POST['dificultad'];
-	$lcObjetivo= $_POST['objetivo'];
 	$lcDescripcion= $_POST['descripcion'];
 	$ldFechaReg= $_POST['fechareg'];
 	$ldFechaAct= $_POST['fechaact'];
@@ -17,11 +17,10 @@
 
 	$lobjRequerimiento->set_IdRequerimiento($lnIdRequerimiento);
 	$lobjRequerimiento->set_Codigo($lcCodigo);
-	$lobjRequerimiento->set_Nombre($lcNombre);
+	$lobjRequerimiento->set_Titulo($lcTitulo);
 	$lobjRequerimiento->set_Tipo($lcTipo);
 	$lobjRequerimiento->set_Prioridad($lcPrioridad);
 	$lobjRequerimiento->set_Dificultad($lcDificultad);
-	$lobjRequerimiento->set_Objetivo($lcObjetivo);
 	$lobjRequerimiento->set_Descripcion($lcDescripcion);
 	$lobjRequerimiento->set_FechaReg($ldFechaReg);
 	$lobjRequerimiento->set_FechaAct($ldFechaAct);
@@ -35,10 +34,12 @@
 				if($llHecho)
 				{
 					$_SESSION['msj']='exito';
+					$_SESSION['operacion']='El requerimiento se registró con exito.';
 				}
 				else
 				{
 					$_SESSION['msj']='error';
+					$_SESSION['operacion']='El requerimiento no pudo ser registrado.';
 				}
 					header('location: ../requerimiento/?q=registro_requerimiento');
 			break;

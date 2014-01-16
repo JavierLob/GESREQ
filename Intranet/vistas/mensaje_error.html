@@ -1,10 +1,11 @@
-            <article class="box align_center span_10">
-                <h1>Error al realizar la operación</h1>
-                <div class="mensaje_icon"><i class="icon-remove-sign"></i></div>
-                <div class="mensaje_texto">
-                    <p class="texto">La operación: <b>{OPERACION}</b> no fue realizada exitosamente.</p>
-                </div>
-                <div class="mensaje_enlace">
-                    <a class="btn_rojo" href="{URL}"><i class="icon-repeat"></i> Volver a intentar</a>
-                </div>
-            </article>
+<div class="portlet ">
+	<div class="portlet-title">
+		<h4><i class="icon-bullhorn"></i>{TITULO}</h4>
+	</div>
+	<div class="portlet-body">
+		<div class="alert alert-error">
+			<button class="close" data-dismiss="alert"></button>
+			<strong>¡Hubo un error!</strong> The daily cronjob has failed.
+		</div>
+	</div>
+</div>

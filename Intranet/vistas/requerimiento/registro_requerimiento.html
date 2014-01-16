@@ -26,14 +26,15 @@
                               </div>
                               <div class="portlet-body form">
                                  <!-- BEGIN FORM-->
-                                 <form action="../controlador/con_requerimiento.php" id="form_registro_requerimiento" class="form-horizontal">
+                                 <form action="../controlador/con_requerimiento.php" id="form_registro_requerimiento" method="POST" class="form-horizontal">
+                                    <input type="hidden" name="operacion" value="registrar" />
                                     <h3 class="form-section">Datos del requerimiento</h3>
                                     <div class="row-fluid">
                                        <div class="span6 ">
                                           <div class="control-group">
                                              <label class="control-label">Codigo</label>
                                              <div class="controls">
-                                                <input type="text" class="m-wrap span12" placeholder="">
+                                                <input type="text" name="codigo" class="m-wrap span12" placeholder="">
                                                 <span class="help-block">Ingrese el codigo del requerimiento</span>
                                              </div>
                                           </div>
@@ -41,10 +42,10 @@
                                        <!--/span-->
                                        <div class="span6 ">
                                           <div class="control-group">
-                                             <label class="control-label">Nombre</label>
+                                             <label class="control-label">Titulo</label>
                                              <div class="controls">
-                                                <input type="text" class="m-wrap span12" placeholder="">
-                                                <span class="help-block">Ingrese el nombre del requerimiento</span>
+                                                <input type="text" name="titulo" class="m-wrap span12" placeholder="">
+                                                <span class="help-block">Ingrese el titulo del requerimiento</span>
                                              </div>
                                           </div>
                                        </div>
@@ -56,7 +57,7 @@
                                           <div class="control-group">
                                              <label class="control-label">Dificultad</label>
                                              <div class="controls">
-                                                <select class="m-wrap span12">
+                                                <select name="dificultad" class="m-wrap span12">
                                                    <option value="Baja">Baja</option>
                                                    <option value="Media">Media</option>
                                                    <option value="Alta">Alta</option>
@@ -90,7 +91,7 @@
                                           <div class="control-group">
                                              <label class="control-label">Prioridad</label>
                                              <div class="controls">
-                                                <select class="m-wrap span12">
+                                                <select name="prioridad" class="m-wrap span12">
                                                    <option value="Baja">Baja</option>
                                                    <option value="Media">Media</option>
                                                    <option value="Alta">Alta</option>
@@ -99,30 +100,16 @@
                                              </div>
                                           </div>
                                        </div>
-
-                                    </div>
-                                    <!--/row-->
-                                    <!--/row-->
-                                    <div class="row-fluid">
                                        <div class="span6 ">
                                           <div class="control-group">
-				                              <label class="control-label">Objetivo</label>
-				                              <div class="controls">
-				                                 <textarea class="span12 m-wrap" rows="3"></textarea>
-				                              </div>
-				                           </div>
+                                          <label class="control-label">Descripción</label>
+                                          <div class="controls">
+                                             <textarea name="descripcion" class="span12 m-wrap" rows="3"></textarea>
+                                          </div>
                                        </div>
-                                       <!--/span-->
-                                       <div class="span6 ">
-                                          <div class="control-group">
-				                              <label class="control-label">Descripción</label>
-				                              <div class="controls">
-				                                 <textarea class="span12 m-wrap" rows="3"></textarea>
-				                              </div>
-				                           </div>
                                        </div>
-                                       <!--/span-->
                                     </div>
+                                    <!--/row-->
                                     <!--/row-->       
                                     <div class="form-actions">
                                        <button type="submit" class="btn blue"><i class="icon-ok"></i> Enviar</button>

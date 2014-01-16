@@ -1,10 +1,11 @@
-            <article class="box align_center span_10">
-                <h1>{TITULO}</h1>
-                <div class="mensaje_icon"><i class="icon-ok-sign"></i></div>
-                <div class="mensaje_texto">
-                    <p class="texto">La operación: <b>{OPERACION}</b> fue realizada exitosamente.</p>
-                </div>
-                <div class="mensaje_enlace">
-                    <a class="btn_rojo" href="{URL}"><i class="icon-ok icon-white"></i> Aceptar</a>
-                </div>
-            </article>
+<div class="portlet ">
+	<div class="portlet-title">
+		<h4><i class="icon-bullhorn"></i>{TITULO}</h4>
+	</div>
+	<div class="portlet-body">
+		<div class="alert alert-success">
+			<button class="close" data-dismiss="alert"></button>
+			<strong>¡Operación Exitosa!</strong>{OPERACION}.
+		</div>
+	</div>
+</div>
