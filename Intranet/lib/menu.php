@@ -3,7 +3,7 @@
 $uri 			= $_SERVER['REQUEST_URI'];
 $URL			= explode("/", $uri);
 //COMIENZO DE ETIQUETA PHP PARA ARMAR EL MENU 
-	$MENU_LATERAL.= '<li>';
+	//$MENU_LATERAL.= '<li>';
 	/*if($URL[2]=='app')
 	{
 
