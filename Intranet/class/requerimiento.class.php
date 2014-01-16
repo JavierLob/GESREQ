@@ -70,5 +70,14 @@ class clsRequerimiento extends clsModel
 		$ldFechaFin=$pdFechaFin;
 	}
 
+	protected function registrar()
+	{
+		$this->conectar();
+		$lcSql="INSERT INTO trequerimiento (codigo,nombre,tipo,prioridad,dificultad,objetivo,descripcion,fechareg)AS('$this->lcCodigo','$this->lcNombre','$this->lcTipo','$this->lcPrioridad','$this->lcDificultad','$this->lcObjetivo','$this->lcDescripcion','CURRENTE_DATE()')";
+		$llHecho=$this->ejecutar($lcSql);
+		$this->desconectar();
+		return $llHecho;
+	}
+
 }
 ?>

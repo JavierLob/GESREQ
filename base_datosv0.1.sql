@@ -164,6 +164,7 @@ CREATE TABLE IF NOT EXISTS `db_ges_req`.`trequerimiento` (
   `titulo` VARCHAR(150) CHARACTER SET 'utf8' COLLATE 'utf8_spanish2_ci' NULL DEFAULT NULL,
   `descripcion` TEXT CHARACTER SET 'utf8' COLLATE 'utf8_spanish2_ci' NULL DEFAULT NULL,
   `codigo` VARCHAR(25) CHARACTER SET 'utf8' COLLATE 'utf8_spanish2_ci' NULL DEFAULT NULL,
+  `tipo` VARCHAR(20) CHARACTER SET 'utf8' COLLATE 'utf8_spanish2_ci' NULL DEFAULT NULL,
   `fechareg` DATE NULL DEFAULT NULL,
   `fechaact` DATE NULL DEFAULT NULL,
   `fechafin` DATE NULL DEFAULT NULL,

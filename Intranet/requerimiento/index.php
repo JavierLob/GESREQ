@@ -44,7 +44,7 @@
 		$lcVista = CapturarVista();
 		switch($lcVista){
 			case 'registro_requerimiento':
-				if(!$msj)
+				if($msj)
 				{
 					if($msj=='exito')
 					{
