@@ -1,7 +1,8 @@
 function aceptar()
 {
 	var f=document.form_acceso;
-	if(validar()){
+	if(validar())
+	{
 		return true;
 	}
 	else{

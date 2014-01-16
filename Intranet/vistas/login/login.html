@@ -30,7 +30,7 @@
   <!-- BEGIN LOGIN -->
   <div class="content">
     <!-- BEGIN LOGIN FORM -->
-    <form class="form-vertical login-form" name="form_acceso" id="acceso_intranet" method="post" action="../controlador/con_validar_acceso.php" onsubmit="return aceptar()">
+    <form class="form-vertical login-form" name="form_acceso" id="acceso_intranet" method="post" action="../controlador/con_validar_acceso.php" onsubmit="return aceptar();">
         <input type="hidden" name="tipo" value="login_web" >
       <h3 class="form-title">Login to your account</h3>
       <div class="alert alert-error hide">
@@ -173,7 +173,7 @@
   <script src="../assets/uniform/jquery.uniform.min.js"></script> 
   <script src="../assets/js/jquery.blockui.js"></script>
   <script type="text/javascript" src="../assets/jquery-validation/dist/jquery.validate.min.js"></script>
-  <script src="../assets/js/app.js"></script>
+
   <script>
     jQuery(document).ready(function() {     
       App.initLogin();
