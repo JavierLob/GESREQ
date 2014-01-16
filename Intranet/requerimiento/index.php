@@ -1,9 +1,9 @@
 <?php
 	ini_set('display_errors',1);
 
-	/*session_start();
+	session_start();
 	
-	if(!array_key_exists(session,$_SESSION))	//Validaciones para saber si tiene una sesion abierta
+	/*if(!array_key_exists(session,$_SESSION))	//Validaciones para saber si tiene una sesion abierta
    {
 	   header("location: ../index.php");
    }
@@ -33,13 +33,35 @@
 		}
 		return $lcVista;
 	}
+	$msj=$_SESSION['msj'];
+	$titulo=$_SESSION['titulo'];
+	unset($_SESSION['msj']);
+	unset($_SESSION['titulo']);
 
-	
 	function Inicio(){
 		/*global $lobjUtil,$lobjUsuario;*/
-		global $Vista_Template;
+		global $Vista_Template,$titulo,$msj;
 		$lcVista = CapturarVista();
 		switch($lcVista){
+			case 'registro_requerimiento':
+				if(!$msj)
+				{
+					if($msj=='exito')
+					{
+
+					}
+					elseif ($msj=='error') 
+					{
+						
+					}
+				}
+				else
+				{
+					$CONTENIDO		= 	file_get_contents(VISTA.'/requerimiento/registro_requerimiento.html');
+					$HTML		=	str_replace('{CONTENIDO}', $CONTENIDO, $Vista_Template);
+				}
+				print($HTML);
+			break;
 			default:			
 				$CONTENIDO		= 	file_get_contents(VISTA.'/app/escritorio.html');
 				$HTML		=	str_replace('{CONTENIDO}', $CONTENIDO, $Vista_Template);
