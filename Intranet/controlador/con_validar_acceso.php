@@ -11,7 +11,6 @@
 		require_once('../lib/utilidades.php');
 		require_once('../class/intento.class.php');
 		require_once('../lib/constantes.php');
-		require_once('../class/lapso.class.php');
 		
 		/*----------------------------------------------
 		* 	INSTANCIA DE LOS OBJETOS NECESARIOS 
@@ -32,10 +31,6 @@
 			$lobjIntento	= new clsIntento();
 			return $lobjIntento;
 		}
-		function setObjLapso(){
-			$lobjLapso	= new clsLapso();
-			return $lobjLapso;
-		}
 		
 		
 		
@@ -46,7 +41,6 @@
 				$lobjAcceso  = setObjAcceso();
 				$lobjUtil    = setObjUtil();
 				$lobjIntento = setObjIntento();
-				$lobjLapso	 = setObjLapso();
 
 				
 				$lcUsuario			= $_POST["username"];
@@ -108,7 +102,6 @@
 								$lobjIntento->Restaurar_Intento_Ip();
 								$lcUltima_Fecha=$lobjAcceso->get_Ultima_Fecha();
 								$lcUltima_Hora=$lobjAcceso->get_Ultima_Hora();
-								$lcLapso_Activo = $lobjLapso->Buscar_Lapso_Activo($laDatos_Usuario[12]);
 								
 												$_SESSION["session"]			='on';
 												$_SESSION["idusuario"]			=$lcUsuario;
@@ -279,7 +272,6 @@
 			$lcCampopassword="invalido";
 			$lobjIntento->set_Campo_Usuario($lcCampousuario);
 			$lobjIntento->set_Campo_Password($lcCampopassword);
-			$lobjIntento->Incluir_Ip();
 			$_SESSION['mensaje']=1;
 			header("location: ../login/");
 		}

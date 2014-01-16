@@ -11,13 +11,13 @@
 	   * ****************************************************************/
 	    
    	  private static $lcServidor="localhost";
-	  private static $lcUsuario="root";
+	  private static $lcUsuario="amilcar";
 	  private static $lcContrasena="amilcar"; 
 	  private $arCon;
 	  
 	  protected $lcSql;
 	  protected $lcRows = array();
-	  protected $lcBaseDatos="bd_aulafrontino";
+	  protected $lcBaseDatos="db_ges_req";
 	  
 	 
 	  //FUNCION PROTEGIDA CONECTAR

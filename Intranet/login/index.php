@@ -1,6 +1,6 @@
 <?php
 	//		LOGICA DE LA VISTA LOGIN
-	ini_set('display_errors', 0); //Desactiva los mensajes de error.
+	ini_set('display_errors', 1); //Desactiva los mensajes de error.
 	
 	session_start();		//Inicia Sesion
 	if(array_key_exists(session,$_SESSION))	//Validaciones para saber si tiene una sesion abierta
@@ -105,7 +105,7 @@
 	function Armar_Vista($pcVista)
 	{
 		global $laDiccionario;
-		$lcTemplate 	= file_get_contents(VISTA.'/login/login_invalido.html');
+		$lcTemplate 	= file_get_contents(VISTA.'/login/login.html');
 		if($pcVista	=='invalido1')
 		{
 			$lcTemplate = Actualizar_Datos_Html($lcTemplate, $laDiccionario['invalido_uno']);
@@ -160,10 +160,7 @@
 			default:
 				if($lcEstatus_Cliente==0)
 				{
-					$BASE_HTML	= file_get_contents(VISTA.'/login/cuerpo_base.html');
-					$CUERPO_HTML= file_get_contents(VISTA.'/login/login.html');
-					$HTML		= str_replace('{CUERPO_HTML}', $CUERPO_HTML, $BASE_HTML);
-					$HTML		= str_replace('{TITULO_HTML}', 'Intranet | Aul@Frontino', $HTML); 				
+					$HTML= file_get_contents(VISTA.'/login/login.html');				
 				}
 				else
 				{
