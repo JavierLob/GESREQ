@@ -7,15 +7,6 @@
 		   {
 			   header("location: ../app");
 		   }
-/*----------------------------------------------------------
- * 		PROYECTO: 	eProyectoCase
- * 		AUTORES:
- * 			-Amilcar Morales
- * 			-Angelica Rosendo
- * 			-Karelys Hernandez
- * 			-Maria Vargas
- * 			-Luis Bracho(Tutor)
- * 		INSTITUCION: UPTP-JJMONTILLA
- * --------------------------------------------------------*/
+
 	header("location: login/");		//Envia al Menu principal de la sesion de la administracion
 ?>
