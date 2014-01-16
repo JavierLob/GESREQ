@@ -1,0 +1,34 @@
+                <form name="form_configurar_evaluacion" action="../controlador/con_configurar_evaluacion" method="POST" >
+                    <div class="box span_12 align_center">
+                        <h1>Listado Requerimiento</h1>
+                        <fieldset class="ayudarecomendacion">
+                            <legend>Datos del Equipo</legend>
+                            <section class="dos_columnas">
+                                <article class="completo">
+                                    <label>Equipo Perteneciente: <b> {EQUIPO}</b></label>
+                                </article>
+                            </section>
+                        </fieldset>
+                        <fieldset>
+                            <legend>Listado Requerimientos</legend>
+                            <table class="tabla_zebra" id="filtro">
+                                <thead>    
+                                    <tr>
+                                        <th>Num</th>        
+                                        <th>Título</th>
+                                        <th>De</th>
+                                        <th>Para</th>
+                                        <th>Fecha</th>
+                                        <th>Estado</th>
+                                    </tr>
+                                </thead> 
+                                {LISTADO_REQUERIMIENTOS}
+                            </table>
+                        </fieldset>  
+                        <div class="cuadro_botones">
+                            <div class="span_4 align_left talign_center">
+                                <a class="btn_rojo" href="../gestion_proyecto/"><i class="icon-chevron-left"></i> Regresar</a>
+                            </div>
+                        </div> 
+                    </div>
+                </form>

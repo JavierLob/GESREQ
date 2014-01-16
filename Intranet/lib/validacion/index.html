@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Ejemplo de Validacion</title>
+
+<script type="text/javascript" src="js/lemez_validacion.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+<style>
+fieldset {
+	width:160px;
+	margin:0 auto;
+}
+fieldset #botonera {
+	text-align:center;
+}
+</style>
+</head>
+<body>
+<fieldset>
+  <legend>Solo se Acepta:</legend>
+  <form action="leo.php" method="post" >
+    Texto:
+    <input type="text" id="campo1" />
+    Numeros(*):
+    <input type="text" id="campo2" />
+    Correo(*):
+    <input type="text" id="campo3" />
+    Todo:
+    <input type="text" id="campo4" />
+    hora 10:05:01
+    <input type="text" id="campo5">
+    </p>
+    (*)Campos Obligatorios.
+    </p>
+    <div id="botonera">
+      <input type="submit" value="Submit"  />
+      <button>Button</button>
+    </div>
+  </form>
+</fieldset>
+</body>

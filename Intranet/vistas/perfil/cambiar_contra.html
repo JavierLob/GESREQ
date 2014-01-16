@@ -1,0 +1,52 @@
+<script src="../media/js/valida_cambio_password.js"></script>
+            <article class="box span_12 align_center">
+                <h1>Cambiar clave </h1>
+                <fieldset class="ayudarecomendacion">
+                    <i class="icon-exclamation-sign font-icon-ayuda"></i>
+                    <div class="nota">
+                        <p class="recomendacion"><b>Recomendaciones: </b></p>
+                        <ul class="lista_grupo">
+                            <li class="texto">
+                                La clave deberá tener al menos <b>10 caracteres</b> y <b>maximo 15 caracteres</b>.
+                            </li>
+                            <li class="texto">
+                                Utiliza una combinación de al menos <b>1 número</b>, al menos <b>1 minúscula</b>, al menos <b>1 mayúscula</b> y al menos <b>1 carácter no alfanuméricos</b>, por ejemplo un <b>punto "."</b>
+                            </li>
+                            <li class="texto">
+                                Ejemplo: <b>josePerez8%</b>
+                            </li>
+                        </ul>
+                    </div>    
+                </fieldset>
+                <fieldset>
+                    <legend>Cambiar clave</legend>
+                    <form method="post" action="../controlador/con_cambio_password.php" name="form_cambio_pass">
+                        <section class="dos_columnas">    
+                            <article class="izquierda">
+                                <label>Clave actual:</label>
+                                <input type="password" name="contrasena" id="contrasena" tabindex="1" />
+                                <a style="text-align: center;" href="#" title="Escribe tu clave actual." data-rel="tooltip" class="ayuda"></a>
+                            </article>                         
+                        </section>
+                        <section class="dos_columnas">    
+                            <article class="izquierda">
+                                <label>Nueva clave:</label>
+                                <input type="password" tabindex="2" name="contrasena_n" id="contrasena_n" />
+                                <a style="text-align: center;" href="#" title="Escribe tu nueva clave." data-rel="tooltip" class="ayuda"></a>
+                            </article>                            
+                            <article class="derecha">
+                                <label>Vuelva a escribir la nueva clave:</label>
+                                <input type="password" tabindex="3" name="contrasena_n2" id="contrasena_n2" />
+                            </article>                           
+                        </section>
+                    </form>
+                </fieldset>
+                    <div class="cuadro_botones">
+                        <div class="span_4 align_left talign_center">
+                            <a tabindex="5" class="btn_rojo" href="../perfil"><i class="icon-chevron-left icon-white"></i> Regresar</a>
+                        </div>
+                        <div class="span_4 divider talign_center margin">
+                            <input class="btn_aceptar" tabindex="4" type="button" onclick="aceptar();" name="Submit" value="Aceptar" />
+                        </div>
+                    </div> 
+            </article>

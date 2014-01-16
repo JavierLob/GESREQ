@@ -1,0 +1,78 @@
+<input type="hidden" name="idCurso" value="{idCurso}" />
+                    <input type="hidden" name="idSesion" value="{idSesion}" />
+                    <fieldset class="ayudarecomendacion">                      
+                        <i class="icon-exclamation-sign font-icon-ayuda"></i>
+                        <div class="nota">
+                            <p class="recomendacion"><b>Recomendaciones: </b></p><br>
+                            <ul class="lista_grupo">    
+                                <li class="texto">
+                                   Si desea descargar la asistencia solo debe hacer clic en el botón <b>“DESCARGAR”</b>.
+
+                                </li>
+                            </ul>
+                        </div>
+                    </fieldset>
+                    <article id="cuadro_grande">
+                        <h1>ASISTENCIA</h1>
+                        <fieldset>
+                            <legend>Datos del Curso</legend>
+                            <section class="dos_columnas_informacion">
+                                <article class="logo">
+                                    <img src="../media/img/imgmensaje/exito_curso.png" alt="" class="img">
+                                </article>
+                                <article class="division">
+                                    <label>Nombre: <b> {NOMBRE_CURSO}</b></label>
+                                    <label>Módulo: <b> {MODULO}</b></label>
+                                </article>
+                                
+                                <article class="division">
+                                    <label>Lapso académico: <b> {LAPSO}</b></label>
+                                    <label>Sección: <b> {SECCION}</b></label>
+                                </article>
+                            </section> 
+                         </fieldset>
+                          <fieldset>
+                            <legend>Datos de la Sesión</legend>
+                            <section class="dos_columnas">
+                                <article class="izquierda">
+                                    <label>Nombre: <b> {NOMBRE_SESION}</b></label>
+                                    <label>Semana: <b> {SEMANA}</b></label>
+                                    <label>Estratégia: <b> {ESTRATEGIA}</b></label>
+                                </article>
+                                
+                                <article class="derecha">
+                                    <label>Unidad: <b> {UNIDAD}</b></label>
+                                    <label>Obejetivo general: <b> {OBJETIVO_GENERAL}</b></label>
+                                    <label>Objetivo específico: <b> {OBJETIVO_ESPECIFICO}</b></label>
+                                </article>
+                            </section> 
+                         </fieldset>
+                        <fieldset>
+                            <legend>Listado de Estudiantes</legend>
+                            <table class="tabla_zebra" >
+                                <thead>
+                                    <tr>
+                                    <th>Foto</th>
+                                    <th>Cédula de identidad</th>
+                                    <th>Apellido y nombre</th>
+                                    <th>Asistió</th>
+                                    </tr>
+                                </thead>  
+                                {LISTADO_CLASE}
+                            </table>
+                            <a class="btn_verde"  name="btnaceptaar" id="btnaceptara"  href="#"><i class="icon-download-alt icon-white"></i> Descargar</a>
+
+                        </fieldset>
+                        <div class="cuadro_botones">
+                             <a style="margin: 0 0 0 10%;" class="myButton" href="{REGRESAR}"><i class="icon-chevron-left icon-white"></i> Regresar</a>
+                            <input style="margin: 0 0 0 28.2%;" class="btnaceptar" type="submit" name="btnenviar" id="btnenviar" value="Aceptar" tabindex="7" />
+                          
+                        </div>
+                        <div class="cuadro_botones">
+                            <div class="span_4 align_left talign_center">
+                               <a class="btn_rojo" href="{REGRESAR}"><i class="icon-chevron-left"></i> Regresar</a>
+                            </div>
+                            <div class="span_4 divider talign_center margin">
+                                <input class="btn_aceptar" type="submit" name="btnenviar" id="btnenviar" value="Aceptar" tabindex="7" />
+                            </div>
+                        </div>  

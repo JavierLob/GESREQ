@@ -1,0 +1,52 @@
+    	<script type="text/javascript" src="../media/js/notificacion/crear_notificacion.js"></script>
+    	<form name="form_notificacion" method="post" action="../controlador/con_notificacion.php">
+	    	<input type="hidden" name="usuario" value="{USUARIO}">
+	    	<input type="hidden" name="remitentenot" value="{ID_ESTUDIANTE}">
+	    	<input type="hidden" name="operacion" value="crear_notificacion_estudiante">
+	    	<article class="box span_12 align_center">
+	    		<h1>CREAR NOTIFICACION</h1>
+	    		<fieldset class="ayudarecomendacion">
+                            <i class="icon-asterisk font-icon"></i>
+                            <div class="nota">
+                                  <p class="texto"> Este servicio le permitirá a usted enviar notificaciones a un profesor del curso al cual está inscrito.</p>
+
+                            </div>    
+                 </fieldset>
+	    		<fieldset>
+	    			<legend>Datos de la notificación</legend>
+	    			<section class="dos_columnas">
+						<article class="completo">
+							<label>Asunto:</label>
+							<input name="asuntonot" id="asuntonot"  type="text" tabindex="1" value="{ASUNTO}"  />
+							<div class="ayuda ayuda_nombre_recurso" title=""></div>
+							
+						</article>
+						<article class="izquierda">
+							<label>Fecha: </label>
+							<input name="fechanot" id="fechanot" type="text" tabindex="2" value="{FECHA}" readonly/>
+							<div class="ayuda autor" title=""></div>
+						</article>
+						<article class="derecha">
+							<label>Profesor: </label>
+							<select name="idcurso" id="idcurso">
+								<option value="">Seleccione un profesor</option>
+								{PROFESOR}
+							</select>
+							<div class="ayuda autor" title=""></div>
+						</article>	
+						<article class="completo">
+							 <label>Mensaje: </label>
+							<textarea name="mensajenot" id="mensajenot"  style="height:200px" tabindex="4" ></textarea>	
+						</article>
+					</section>
+				</fieldset>		    
+	   	 	</article>
+	   		<div class="cuadro_botones">
+                <div class="span_4 align_left talign_center">
+                    <a class="btn_rojo" href="../notificacion/"><i class="icon-chevron-left icon-white"></i> Regresar</a>
+                </div>
+                <div class="span_4 divider talign_center margin">
+                    <input class="btn_aceptar" type="submit" name="btnenviar" id="btnenviar" value="Aceptar" tabindex="7" />
+                </div>
+            </div>
+   		 </form>

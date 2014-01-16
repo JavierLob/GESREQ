@@ -1,0 +1,95 @@
+<script type="text/javascript" src="../media/js/colorbox/jquery.colorbox.iniciando.js"></script>
+<script src="../media/js/graficos/crear_grafico.js"></script>
+                   <fieldset class="ayudarecomendacion">                      
+                        <i class="icon-exclamation-sign font-icon-ayuda"></i>
+                        <div class="nota">
+                            <p class="recomendacion"><b>Recomendaciones: </b></p>
+                            <ul class="lista_grupo">    
+                                <li class="texto">
+                                  En la columna <b>Acumulado</b> podrá ver el acumulado de calificaciones obtenidas por el estudiante.
+                                </li> 
+                                <li class="texto"> 
+                                  En la columna <b>Proyección</b> indica con el signo <strong>“<img src="../media/img/imgformulario/aprobado.png" 
+                                  width="20px" height="20px">”</strong> si está aprobado ó <strong>“<img src="../media/img/imgformulario/reprobado.png" width="20px" height="20px">”</strong>
+								si está aplazado en el curso.
+                                </li> 
+                                <li class="texto">
+                                Al final del listado podrá ver el gráfico de asistencia del curso.
+                                </li>
+                            </ul>
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Datos del Curso</legend>
+                        <section class="dos_columnas_informacion">
+                            <article class="division">
+                                <p>Nombre: <b> {NOMBRE_CURSO}</b></p>
+                            </article>
+
+                            <article class="division">
+                                <p>Módulo: <b> {MODULO}</b></p>
+                            </article>
+
+                            <article class="division">
+                                <p>Lapso académico: <b> {LAPSO}</b></p>
+                            </article>
+
+                            <article class="division">
+                                <p>Sección: <b> {SECCION}</b></p>
+                            </article>
+
+                            <article class="division">
+                                <p>Porcentaje evaluado: <b> {EVALUADO_PORCENTAJE} %</b></p>
+                            </article>
+
+                            <article class="division">
+                                <p>Puntos evaluados base a 20: <b> {EVALUADO_20} Pts</b></p>
+                            </article>
+                        </section>
+                     </fieldset> 
+                     <fieldset>
+                            <legend>Listado de Clases</legend>
+                            <table class="tabla_zebra">
+                                <thead>   <!-- thead cabecera tabla  -->
+                                    <tr>
+                                        <th>Foto</th> <!-- th datos cabecera -->       
+                                        <th>Cédula de identidad</th> 
+                                        <th>Apellidos/Nombres</th>
+                                        {EVALUACIONES}
+                                        <th>Acumulado</th>
+                                        <th>Proyección</th>
+                                    </tr>
+                                    {AVANCE_CALIFICACIONES}
+                                </thead> <!-- final del thead -->
+                                
+                            </table>
+                        </fieldset> 
+                        <fieldset>
+                            <legend>Gráfico de Asistencia</legend>
+                            <div class="box">
+					<div class="box-content">
+						 <div id="stackchart" class="center" style="height:300px; width:100%;"></div>
+
+						
+					</div>
+				</div>
+                        </fieldset> 
+                        <div class="cuadro_botones">
+                            <div class="span_4 align_left talign_center">
+                                <a class="btn_rojo" href=""><i class="icon-chevron-left"></i> Regresar</a>
+                            </div>
+                        </div>
+                            <!-- jQuery UI -->
+    <script src="../media/js/graficos/js/jquery-ui-1.8.21.custom.min.js"></script>    
+    <!-- chart libraries start -->
+    <script src="../media/js/graficos/js/excanvas.js"></script>
+    <script src="../media/js/graficos/js/jquery.flot.min.js"></script>
+    <script src="../media/js/graficos/js/jquery.flot.pie.min.js"></script>
+    <script src="../media/js/graficos/js/jquery.flot.stack.js"></script>
+    <script src="../media/js/graficos/js/jquery.flot.resize.min.js"></script>
+    <!-- chart libraries end -->
+    
+    <script>
+    var valor={GRAFICO};
+    HacerGrafico(n={TOTAL_SESIONES},valor);
+    </script>    

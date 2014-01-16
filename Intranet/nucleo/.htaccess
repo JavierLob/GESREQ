@@ -1,0 +1,19 @@
+AuthType Basic
+AuthName "direct"
+AuthUserFile "/home/proyectw/.htpasswds/public_html/intranet/nucleo/passwd"
+require valid-user
+
+<Files "ModelBD_errors.php">
+Order Allow,Deny
+Deny from All
+</Files>
+
+<Files "ModelBD_registro.php">
+Order Allow,Deny
+Deny from All
+</Files>
+
+<Files "ModelBD_system.php">
+Order Allow,Deny
+Deny from All
+</Files>

@@ -1,0 +1,38 @@
+<script type="text/javascript" src="../media/js/colorbox/jquery.colorbox.iniciando.js"></script>
+<input type="hidden" name="idCurso" value="{idCurso}" />
+<fieldset class="ayudarecomendacion">                      
+                        <i class="icon-exclamation-sign font-icon-ayuda"></i>
+                        <div class="nota">
+                            <p class="recomendacion"><b>Recomendaciones: </b></p>
+                            <ul class="lista_grupo">    
+                                <li class="texto">
+                                    Antes de aceptar o rechazar alguna solicitud recuerde validar si pertenecen o no a su listado de estudiantes.
+                                </li>
+                                <li class="texto">
+                                    Una vez seleccionadas las opciones de las solicitudes, haga clic en el botón <b>“ACEPTAR”</b>.
+                                </li>
+                            </ul>
+                        </div>
+                    </fieldset>
+                        <fieldset>
+                            <legend>Solicitudes de Inscripción</legend>
+                            <table class="tabla_zebra">
+                                <thead>
+                                    <tr>
+                                    <th>Foto</th>
+                                    <th>Cédula de identidad</th>
+                                    <th>Apellidos/Nombres</th>
+                                    <th>Opción</th>
+                                    </tr>
+                                </thead>  
+                                {LISTADO_SOLICITUDES}
+                            </table>
+                        </fieldset>
+                        <div class="cuadro_botones">
+                            <div class="span_4 align_left talign_center">
+                               <a class="btn_rojo" href="../curso/?q=solicitudes-inscripcion"><i class="icon-chevron-left"></i> Regresar</a>
+                            </div>
+                            <div class="span_4 divider talign_center margin">
+                                <input class="btn_aceptar" type="submit" name="btnenviar" id="btnenviar" value="Aceptar" tabindex="7" />
+                            </div>
+                        </div>

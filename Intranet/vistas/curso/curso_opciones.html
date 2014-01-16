@@ -1,0 +1,67 @@
+            <article id="cuadro_grande">
+                <h1>Mi Curso: {NOMBRE_CURSO}</h1>
+                <form name="" method="post" action="">
+                    <fieldset>
+                        <legend>Datos del Curso</legend>
+                        <section class="dos_columnas_informacion">
+                            <article class="logo">
+                               <img src="../media/img/imgmodulo/modulo_curso.png" alt="" class="img">
+                            </article>
+                            
+                            <article class="division">
+                                <label>Nombre: <b> {NOMBRE_CURSO}</b></label>
+                                <label>Módulo: <b> {MODULO}</b></label>
+                            </article>
+
+                            <article class="division">
+                                <label>Lapso académico: <b> {LAPSO}</b></label>
+                                <label>Sección: <b> {SECCION}</b></label>
+                            </article>
+                        </section>
+                     </fieldset> 
+                    <fieldset>
+                        <legend>Seleccione una opción</legend>
+                        
+                        <div class="icon">
+                            <a href="?q=listado_sesiones&id={idCurso}" id="configurar_evaluaciones" class="infoicono" title="Permite configurar, modificar y descargar las sesiones del curso.">
+                            <span>Configurar sesiones</span>
+                            </a>
+                        </div>
+                        
+                        <div class="icon">
+                            <a href="?q=configurar_evaluacion&id={idCurso}" id="configurar_evaluaciones" class="infoicono" title="Permite configurar las evaluaciones del curso y descargar su listado.">
+                            <span>Configurar evaluaciones</span>
+                            </a>
+                        </div>
+                        
+                         <div class="icon">
+                            <a href="?q=listado_asistencia&id={idCurso}" id="listado_clases" class="infoicono" title="Permite pasar la asistencia en una sesión.">
+                            <span>Asistencia</span>
+                            </a>
+                        </div>
+                        
+                       <div class="icon">
+                            <a href="?q=listado_evaluaciones&id={idCurso}" id="cargar_nota" class="infoicono" title="Permite ver y cargar, además de descargar el listado de las evaluaciones del curso.">
+                            <span>Cargar notas</span>
+                            </a>
+                        </div> 
+                        
+                        <div class="icon">
+                            <a href="?q=listado_clases&id={idCurso}" id="listado_clases" class="infoicono" title="Permite ver y descargar el listado de estudiantes actualmente matriculados en el curso.">
+                            <span>Listado de clases</span>
+                            </a>
+                        </div>
+
+                        <div class="icon">
+                            <a href="?q=avance_calificacion&id={idCurso}" id="avance_calificaciones" class="infoicono" title="Permite ver las notas obtenidas por los estudiantes en cada una de las evaluaciones del curso.">
+                            <span>Avance de calificaciones</span>
+                            </a>
+                        </div>                    
+                        
+                    </fieldset>                          
+                    <div class="cuadro_botones">
+                       <a style="margin: 0 0 0 10%;" class="myButton" href="{REGRESAR}"><i class="icon-chevron-left icon-white"></i> Regresar</a>
+                       <a style="margin: 0 0 0 23%;"  href="../ayuda/formulario/micurso" class="myButton_ayuda iframe"><i class="icon-question-sign"></i> Ayuda</a> 
+                    </div>  
+                </form>
+            </article>

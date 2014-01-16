@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>{TITULO_HTML}</title>
+	<link href="../media/css/body_outside.css" rel="stylesheet" type="text/css" />
+	<link rel="shortcut icon" href="../media/img/logo.png" />
+    <script src="../media/js/valida_acceso.js"></script>
+    <script type="text/javascript" src="../media/js/jquery-1.7.2.min.js"></script>
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="../media/js/bootstrap/bootstrap.css">
+        <script src="../media/js/bootstrap/bootstrap.min.js"></script>
+        <!-- iniciando librerias de bootstrap -->
+        <script type="text/javascript" src="../media/js/bootstrap/iniciando.js"></script>
+    <!-- colorbox -->
+        <script src="../media/js/colorbox/jquery.colorbox.js"></script>
+        <script type="text/javascript" src="../media/js/colorbox/jquery.colorbox.iniciando.js"></script>
+    <!-- Google Analytics -->
+        <script type="text/javascript">
+
+              var _gaq = _gaq || [];
+              _gaq.push(['_setAccount', 'UA-40170712-1']);
+              _gaq.push(['_trackPageview']);
+
+              (function() {
+                var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+              })();
+
+        </script>
+</head>
+<body>
+	<div id="encabezado"><img src="../media/img/cabeza.png" alt=""></div>
+	<div id="cuerpo">
+		<header>
+	    	<div id="banner"><div class="logo"><img width="100%" src="../media/img/welcome.png" alt=""></div></div>
+		</header>
+            <nav>
+                <ul class="navegacion">
+                    <li><a href="https://aulafrontino.org.ve/" >
+                        <i class="icon-home"></i> Inicio</a>
+                    </li>
+                </ul>
+            </nav>
+        {CUERPO_HTML} <!-- CUERPO HTML -->
+	</div>
+    <footer>
+        <div class="contfooter">
+           <p>Av. Circunvalación Sur, Apto. No. 108, frente a la Cruz Roja, Acarigua, Estado Portuguesa.<a target="_blank" href="https://aulafrontino.org.ve/condiciones-de-uso/"> Condiciones de uso</a> - <a target="_blank" href="https://aulafrontino.org.ve/contacto/">Contáctanos</a>
+            </p>
+        </div>
+    </footer>
+</body>
+</html>

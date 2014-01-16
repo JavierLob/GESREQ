@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Intranet | aul@Frontino</title>
+    <link href="../media/css/body.css" rel="stylesheet" type="text/css" />
+    <link rel="shortcut icon" href="../media/img/logo.png" />
+    <script type="text/javascript" src="../media/js/jquery-1.7.2.min.js"></script>
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="../media/js/bootstrap/bootstrap.css">
+        <script src="../media/js/bootstrap/bootstrap.min.js"></script>
+        <!-- iniciando librerias de bootstrap -->
+        <script type="text/javascript" src="../media/js/bootstrap/iniciando.js"></script>
+    <!-- datatable -->
+        <script type="text/javascript" src="../lib/validacion/js/validacion.js"></script>
+        <script type="text/javascript" language="javascript" src="../media/js/datatable/jquery.dataTables.js"></script>
+        <script type="text/javascript" charset="utf-8">
+                $(document).ready(function() {
+                    oTable = $('#filtro').dataTable({
+                        "bJQueryUI": true,
+                        "sPaginationType": "full_numbers",
+                        "iDisplayLength": 5                    
+                    });
+                } );
+        </script>
+    <!-- form style -->
+            <script type="text/javascript" src="../media/js/form/jquery.uniform.js"></script>
+            <script type="text/javascript" src="../media/js/form/jquery.uniform.iniciando.js"></script>
+    <!-- colorbox -->
+        <script src="../media/js/colorbox/jquery.colorbox.js"></script>
+        <script type="text/javascript" src="../media/js/colorbox/jquery.colorbox.iniciando.js"></script>
+    <!-- Google Analytics -->
+        <script type="text/javascript">
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-40170712-1']);
+          _gaq.push(['_trackPageview']);
+
+          (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();
+        </script>
+</head>
+<body>
+            <div id="observacion">
+                <a href="../observacion/?q=crear_observacion&url={URL}" target="_blank" class="myButton_ayuda iframe cboxElement"><i class="icon-observaciones"></i> Hacer observación</a>
+             </div>
+        
+    <section id="headertop">
+        <img src="../media/img/cabeza.png" alt="">
+    </section>
+    <header>
+        <div id="banner">
+          <div class="logo"><img src="../media/img/welcome.png" alt=""></div>
+            <div class="perfil">
+                <div class="btn-group right">
+                    <a href="#" class="btn_gris" data-toggle="dropdown">
+                        <div class="foto_perfilp">{FOTO}</div>
+                        <div class="cont_btn_gris">
+                            <span class="caret"></span>
+                        </div>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu_perfil triangulo_borde top">
+                        <div class="detalles">
+                            <div class="foto_perfil">
+                                {FOTO}
+                            </div>
+                            <div class="info_perfil">
+                                <h2>{NombreApellido}</h2>
+                                <p><span>Institución</span>: {Institucion}</p>
+                                <p><span>Campus</span>: {Campus}</p>
+                                <p><span>Lapso ademico</span>: {Lapso} / Semana-8</p>
+                                <p><span>Tipo de usuario</span>: {Nombre_rol}</p>
+                                <p><span>Último acceso</span>: {UltimaFecha}</p>
+                            </div>
+                        </div>
+                            <div class="btn_perfil">
+                                <a href="../perfil/?q=consulta_registro" class="btn_gris"><i class="icon-search"></i> Consultar registro</a>
+                                <a href="../logout/?q=logout" class="btn_gris"><i class="icon-off"></i> Cerrar sesión</a>
+                            </div>
+                    </div>
+                </div>
+                <div class="btn-group right">
+                    <a href="#" class="{BTN}" style="padding:0px 4px;
+        margin-top: 7px;" data-toggle="dropdown">
+                        <div class="cont_btn_gris">
+                            <span class="{NAV}">{CANTIDAD}</span>
+                            <span class="{CARET}"></span>
+                        </div>
+                    </a>
+                    <div class="dropdown-menu dropdown-notificaciones triangulo_borde top">
+                        <ul>
+                            <li class="sombreado">
+                                <p>Notificaciones</p>
+                            </li>
+                            {NOTIFICACION}                                      
+                        </ul>
+                    </div>
+                </div>
+                <div class="right conttexto"> 
+                    <span>{Nombre_rol} </span>
+                    <span style="color: #9c0000;">{NombreApellido}</span>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section id="cuerpo">
+    <!-- menu lateral -->
+        <ul id="nav">
+            {MENU_LATERAL}
+        </ul>
+        <div id="cont">
+            {CUERPO}
+        </div>
+            <footer>
+                    <p>Av. Circunvalación Sur, Apto. No. 108, frente a la Cruz Roja, Acarigua, Estado Portuguesa.<a target="_blank" href="https://aulafrontino.org.ve/condiciones-de-uso/"> Condiciones de uso</a> - <a target="_blank" href="https://aulafrontino.org.ve/contacto/">Contáctanos</a>
+                    </p>
+            </footer>
+    </section>
+</body>
+</html>

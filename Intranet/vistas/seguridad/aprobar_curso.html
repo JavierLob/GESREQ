@@ -1,0 +1,48 @@
+                <form name="form_configurar_evaluacion" action="../controlador/con_curso.php" method="POST" >
+					<input type="hidden" name="Operacion" value="aprobar" />
+                    <div class="box span_12 align_center">
+                        <h1>Aprobar cursos</h1>
+                        <fieldset class="ayudarecomendacion">
+                        <i class="icon-file-alt font-icon"></i>
+                        <div class="nota">
+                            <ul class="lista_grupo">
+                                <li class="texto">
+                                    A continuación se presenta el listado de cursos en espera de aprobación por los profesores, para ser inscritos en aula virtual frontino.
+                                </li>
+                                <li class="texto">
+                                    Usted deberá validar la información mostrada y realizar la aprobación o rechazo de dicha de solicitud.
+                                </li>
+                                <li class="texto">
+                                    Al validar esta información, el configurador deberá hacer clic en “APROBAR” para aprobar dicha solicitud, y así el curso pasará a estar disponible en Aula virtual Frontino o “RECHAZAR” para cancelar dicha solicitud.
+                                </li>
+                            </ul>
+                        </div>    
+                    </fieldset>
+                        <fieldset>
+                            <legend>Cursos Disponibles</legend>
+                            <table class="tabla_zebra">
+                                <thead>    
+                                    <tr>
+                                        <th>Nombre</th>        
+                                        <th>Profesor</th>
+                                        <th>Sección</th>
+                                        <th>Módulo</th>
+                                        <th>Opción</th>
+                                    </tr>
+                                </thead> 
+                                {LISTADO_CURSOS}
+                            </table>
+                        </fieldset> 
+                        <div class="cuadro_botones">
+                            <div class="span_4 align_left talign_center">
+                                <a class="btn_rojo" href="../configuracion"><i class="icon-chevron-left"></i> Regresar</a>
+                            </div>
+                            <div class="span_4 divider talign_center margin">
+                                <input class="btn_aceptar" type="submit" name="btnenviar" id="btnenviar" value="Aceptar" tabindex="7" />
+                            </div>
+                            <div class="span_4 align_right talign_center">
+                               <a href="tutorial" class="btn_amarillo iframe"><i class="icon-question-sign"></i> Ayuda</a>     
+                            </div>
+                        </div>  
+                    </div>
+                </form>

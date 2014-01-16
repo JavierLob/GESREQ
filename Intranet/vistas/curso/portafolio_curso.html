@@ -1,0 +1,44 @@
+                <form name="form_configurar_evaluacion" action="../controlador/con_configurar_evaluacion" method="POST" >
+                    <div class="box span_12 align_center">
+                        <h1>Portafolio de Cursos</h1>
+                        <fieldset class="ayudarecomendacion">
+                            <i class="icon-folder-open font-icon"></i>
+                             <div class="nota">
+                                <p class="texto">A continuación se muestra un listado de cursos que actualmente usted posee en <b>Aula virtual frontino</b>, el cual te ofrece las siguientes opciones:</p>
+                                <ul class="lista_grupo">
+                                    <p class="texto">
+                                        <b>Nombre del curso: </b> Al hacer clic en el nombre del curso podrás configurar o verificar los aspectos referentes al curso.
+                                    </p>
+                                    <p class="texto">
+                                        <b>Solicitudes de inscripción:</b> En la columna solicitudes se muestran las solicitudes pendientes de estudiantes en espera a ser inscritos en un curso.
+                                    </p>
+                                    <p class="texto">Si desea guardar en su equipo el listado de clases solo debe hacer clic 
+                            en el botón <b>“DESCARGAR”</b> y enseguida se descargará en un documento PDF.</p>
+                                    
+                                </ul>
+                            </div>  
+                        </fieldset>
+                        <fieldset>
+                            <legend>Cursos Creados</legend>
+                            <table class="tabla_zebra">
+                                <thead>    
+                                    <tr>
+                                        <th>Nombre</th>        
+                                        <th>Módulo</th>
+                                        <th>Sección</th>
+                                        <th>Clave</th>
+                                        <th>Estatus</th>
+                                        <th>Solicitudes</th>
+                                    </tr>
+                                </thead> 
+                                {LISTADO_CURSOS}
+                            </table>
+                            <a class="btn_verde"  name="btnaceptaar" id="btnaceptara"  href="#"><i class="icon-download-alt icon-white"></i> Descargar</a>
+                        </fieldset> 
+                        <div class="cuadro_botones">
+                            <div class="span_4 align_left talign_center">
+                               <a class="btn_rojo" href="../curso"><i class="icon-chevron-left"></i> Regresar</a>
+                            </div>
+                        </div> 
+                    </div>
+                </form>

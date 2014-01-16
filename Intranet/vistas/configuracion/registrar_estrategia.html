@@ -1,0 +1,101 @@
+<script language="JavaScript">
+function Agregar_Fila(tblId)
+{
+    var tblBody = document.getElementById(tblId);
+    var newNode = tblBody.cloneNode(true);
+    newNode.value='';
+    var etiqueta = document.getElementById('etiqueta');
+    var NuevaEtiqueta = etiqueta.cloneNode(true);
+    
+    var agregar = document.getElementById('agregar');
+    agregar.appendChild(NuevaEtiqueta);
+    agregar.appendChild(newNode);
+
+}
+
+function Eliminar_Todas_Filas()
+{
+    var filas = document.getElementById('agregar');
+    while (filas.hasChildNodes())
+        filas.removeChild(filas.firstChild);
+}
+</script>
+            <article class="box span_12 align_center">
+                <h1>Registrar Nuevas Estrategias</h1>
+               <form name="form_registro_programa" method="post" action="../controlador/con_programa.php">
+                <input type="hidden" value="registrar_estrategia" name="operacion"/>
+                <input type="hidden" value="{PROGRAMA}" name="programa"/>
+
+                    <fieldset class="ayudarecomendacion">
+                            <i class="icon-file-alt font-icon"></i>
+                            <i style="font-size: 20px; color: #9c0000;" class="icon-plus"></i>
+                            <div class="nota">
+                                <p class="texto">
+                                Esta opción permite crear un curso en el portal de aprendizaje <strong style="color:#b4ae14">aul@</strong><strong style="color:#951313">FRONTINO</strong>. 
+                               </p>
+                            </div>     
+                        </fieldset>
+                    <fieldset class="ayudarecomendacion">
+                            <i class="icon-exclamation-sign font-icon-ayuda"></i>
+                            <div class="nota">
+                                <p class="recomendacion">Recomendaciones:</p>
+                                <ul class="lista_grupo">
+                                    <li class="texto">
+                                        Los campos obligatorios serán señalados con un asterisco '<span class="obligatorio">*</span>'.
+                                    </li>
+                                    <li class="texto">
+                                        Si tiene alguna duda sobre un campo en específico, coloque el puntero del mouse sobre el ícono de ayuda (<img src="../media/img/imgformulario/ayuda.png" alt="">) del campo que desee conocer.
+                                    </li>
+                                    <li class="texto">
+                                        Si desea ayuda para configurar sus evaluaciones, haga clic en el botón
+                                        <a href="../ayuda/formulario/crear_curso" class="btn_amarillo iframe"><i class="icon-question-sign"></i> Ayuda</a>
+                                    </li>
+                                </ul>
+                            </div>     
+                    </fieldset>
+                     <fieldset>
+                        <legend>Datos de la estrategia</legend>
+                        <section class="dos_columnas">
+                            
+                            <article class="completo" id="completo">
+                                <div id="copiar">
+                                    <label id="etiqueta">Nombre Estrategia: <span class="obligatorio">*</span></label>
+                                    <input type="text" name="nombre_corto[]" id="nombre_corto" tabindex="2" require="required" />
+                                    <div class="ayuda" title="
+                                    <h3 class='tituloayuda'>Ayuda: Clave Aula Virtual</h3>
+                                    <div class='contayuda'>
+                                        <p class='texto_ayuda'>Esta Clave le permite el acceso a los estudiantes al curso.</p>
+                                    </div>"></div>
+                                </div>
+                            </article>
+
+                            <article class="completo" id="agregar">
+                            </article>
+
+                            <article class="completo">
+                                <input type="button" value="Agregar" onclick="Agregar_Fila('nombre_corto');" />
+                                
+                                <input type="button" value="Reiniciar" onclick="Eliminar_Todas_Filas();" />
+                                <!-- <div class="ayuda" title="
+                                <h3 class='tituloayuda'>Ayuda: Nombre curso</h3>
+                                <div class='contayuda'>
+                                    <p class='texto_ayuda'></p>
+                                </div>"></div> -->
+                            </article>
+                            
+                        </section>
+                    </fieldset>
+                    
+                    <div class="cuadro_botones">
+                        <div class="span_4 align_left talign_center">
+                            <a class="btn_rojo" href="../curso"><i class="icon-chevron-left icon-white"></i> Regresar</a>
+                        </div>
+                        <div class="span_4 divider talign_center margin">
+                            <input class="btn_aceptar" type="submit" name="btnenviar" id="btnenviar" value="Aceptar" tabindex="7" />
+                        </div>
+                        <div class="span_4 align_right talign_center">
+                            <a href="../ayuda/formulario/crear_curso" class="btn_amarillo iframe"><i class="icon-question-sign"></i> Ayuda</a>     
+                        </div>
+                    </div>  
+                </form>
+            </article>

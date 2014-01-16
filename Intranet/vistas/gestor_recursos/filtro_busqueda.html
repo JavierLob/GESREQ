@@ -1,0 +1,43 @@
+                <div class="box span_11 align_center">
+                    <form id="form_buscar_recurso" action="?q=listado_recursos" method="POST" enctype="multipart/form-data">
+                        <h1>MOTOR DE BÚSQUEDA (SIMPLE)</h1>
+                        <fieldset class="ayudarecomendacion">
+                            <i class="icon-book font-icon"></i>
+                            <div class="nota">
+                                  <p class="texto"> Esta opción le permitirá a usted acceder a los recursos registrados en la plataforma <strong style="color:#b4ae14">aul@</strong><strong style="color:#951313">FRONTINO</strong>.</p>
+                            </div>    
+                        </fieldset>
+                        <fieldset>
+                            <legend>Datos de la búsqueda</legend>
+                            <section class="dos_columnas">
+                                <article class="izquierda">
+                                    <label>Expresión de la búsqueda: <span class="obligatorio">*</span></label>
+                                    <input name="criterio" type="text" tabindex="1" required />
+                                    <div class="ayuda ayuda_nombre_recurso" title=""></div>                            
+
+                                </article>
+                                <article class="derecha">
+                                    <label>Buscar por: <span class="obligatorio">*</span></label>
+                                    <select name="campo" tabindex="2" required/>
+                                        <option value="todos">Todos</option>
+                                        <option value="autorrec">Autor</option>
+                                        <option value="nombrerec">Título</option>
+                                        <option value="resumenrec">Resumen</option>
+                                    </select>
+                                    <div class="ayuda autor" title=""></div>
+                                </article>  
+                            </section>
+                        </fieldset>
+                         <div class="cuadro_botones">
+                            <div class="span_4 align_left talign_center">
+                                <a class="btn_rojo" href="../entorno_virtual/?q=repositorio_recurso"><i class="icon-chevron-left icon-white"></i> Regresar</a>
+                            </div>
+                            <div class="span_4 divider talign_center margin">
+                                <input type="submit" name="button" class="btn_aceptar" value="Aceptar" />
+                            </div>
+                            <div class="span_3 divider talign_center margin">
+                                    <a class="btn_rojo" href="../entorno_virtual/?q=busqueda_avanzada"><i class="icon-search"></i> Búsqueda avanzada</a>
+                            </div>
+                        </div>
+                    </form>
+            </div>

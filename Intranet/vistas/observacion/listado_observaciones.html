@@ -1,0 +1,35 @@
+                <div class="box span_12 align_center">
+                        <h1>Listado de observaciones</h1>
+                        <fieldset>
+                            <legend>Datos del usuario</legend>
+                            <section class="dos_columnas">
+                                <article class="izquierda">
+                                    <label>Cédula de identidad: <b> {Cedula}</b></label>
+                                </article>
+                                
+                                <article class="derecha">
+                                    <label>Nombre y apellido: <b> {Nombre}</b></label>
+                                </article>
+                            </section>
+                        </fieldset>
+                        <fieldset>
+                            <legend>Listado de Observaciones</legend>
+                            <table class="tabla_zebra" id="filtro">
+                                <thead>    
+                                    <tr>
+                                        <th>Num</th>        
+                                        <th>Título</th>
+                                        <th>De</th>
+                                        <th>Fecha</th>
+                                        <th>Estado</th>
+                                    </tr>
+                                </thead> 
+                                {LISTADO_OBSERVACIONES}
+                            </table>
+                        </fieldset>
+                        <div class="cuadro_botones">
+                            <div class="span_4 align_left talign_center">
+                                <a class="btn_rojo" href="../observacion/"><i class="icon-chevron-left icon-white"></i>Regresar</a>
+                            </div>
+                        </div>  
+                </div>

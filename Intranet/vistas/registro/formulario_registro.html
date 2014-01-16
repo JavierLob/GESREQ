@@ -1,0 +1,185 @@
+<link rel="stylesheet" type="text/css" href="../media/css/reg/jscal2.css" />
+<link rel="stylesheet" type="text/css" href="../media/css/reg/border-radius.css" />
+<link rel="stylesheet" type="text/css" href="../media/css/reg/steel/steel.css" />
+<script type="text/javascript" src="../media/js/valida_registro.js"></script>
+<script src="../media/js/reg/jscal2.js"></script>
+<script src="../media/js/reg/lang/es.js"></script>
+<script type="text/javascript" src="select_ajax_registro.js"></script>
+<section id="cont_completo">
+            <article class="box span_12 align_center">
+                <h1>SOLICITUD DE REGISTRO</h1>
+               <form name="form_registro" method="post" action="../controlador/con_validar_registro.php" onSubmit="return aceptar()" autocomplete="off">
+                    <fieldset class="ayudarecomendacion">
+                        <img class="small" src="../media/img/add_user.png">
+                        <div class="cont_ayudarecomendacion">
+                            <p class="texto">A continuación se le presentará un formulario el cual debe ser llenado en su totalidad. 
+                            Una vez revisada la información enviada, el administrador del sistema <strong style="color:#b4ae14">aul@</strong><strong style="color:#951313">FRONTINO</strong> 
+                            aprobará o desaprobará su solicitud. De ser aprobada, se le enviará a la dirección de correo que ud. suministró su cuenta de <b>usuario</b> y la <b>clave</b> 
+                            con la que podrá acceder al sistema. 
+                           </p>
+                        </div>    
+                    </fieldset>
+                    <fieldset class="ayudarecomendacion">
+                        <img class="small" src="../media/img/imgregistro/icon_informacion.png">
+                        <div class="cont_ayudarecomendacion">
+                            <p class="recomendacion"><b>Recomendaciones: </b></p><br>
+                            <ul class="lista_grupo">
+                                <li>
+                                    <p class="texto">Recuerde que los campos en el formulario marcados con (<span class="obligatorio">*</span>) son obligatorios.</p>
+                                </li>
+                                <li>
+                                    <p class="texto">Introduzca una dirección de correo electrónico válida en el campo de correo electrónico principal, ya que a esta dirección le será enviado su <strong>usuario y clave</strong> para acceder al portal de aprendizaje <strong style="color:#b4ae14">aul@</strong><strong style="color:#951313">FRONTINO</strong>. Recuerde <strong>revisar la bandeja de spam</strong>, posiblemente el correo llegue a ésta bandeja.</p>
+                                </li>
+                                <li class="texto">
+                                    Para mayor información haz clic en el botón 
+                                    <a href="../ayuda/formulario/registro/index.html" class="btn_amarillo iframe"><i class="icon-question-sign"></i> Ayuda</a>
+                                </li>
+                            </ul>
+                        </div>    
+                    </fieldset>
+                    <fieldset>
+                        <legend>Datos personales</legend>
+                        <section class="dos_columnas">
+                            <article class="izquierda">
+                                <label>Cédula de identidad <span class="obligatorio">*</span>:</label>
+                                <input type="text" value="{lcCedula}" name="txtcedula" maxlength="8" size="15" tabindex="1" required/>
+                            </article>
+                            
+                            <article class="derecha">
+                                <label>Nacionalidad <span class="obligatorio">*</span>:</label>
+                                <select name="txtnacionalidad" tabindex="2" required>
+                                    {lcNacionalidad}
+                                                        
+                                </select>
+                            </article>
+                            <article class="izquierda">
+                                <label>Primer nombre <span class="obligatorio">*</span>:</label>
+                                <input type="text" name="txtpnombre" value="{lcNombreuno}" size="30" maxlength="35" tabindex="3" required/>
+                            </article>
+                            
+                            <article class="derecha">
+                                <label>Segundo nombre:</label>
+                                <input type="text" value="{lcNombredos}" name="txtsnombre" size="30" maxlength="35" tabindex="4"/>
+                            </article>
+                            <article class="izquierda">
+                                <label>Primer apellido <span class="obligatorio">*</span>:</label>
+                                <input type="text" name="txtpapellido" value="{lcApellidouno}" size="30" maxlength="35" tabindex="5" required/>
+                            </article>
+                            
+                            <article class="derecha">
+                                <label>Segundo apellido:</label>
+                                <input type="text" value="{lcApellidodos}" name="txtsapellido" size="30" maxlength="35" tabindex="6"/>
+                            </article>
+                            <article class="izquierda">
+                                <label>Fecha de nacimiento <span class="obligatorio">*</span>:</label>
+                                <input type="text" name="txtfechanac" value="{lcFechanac}" size="15" disabled id="f_date1" required/><button name="calendario" id="f_btn1" tabindex="7">...</button>
+                                        <script type="text/javascript">//<![CDATA[
+                                            Calendar.setup({
+                                            inputField : "f_date1",
+                                            trigger    : "f_btn1",
+                                            onSelect   : function() { this.hide() },
+                                            dateFormat : "%d/%m/%Y"
+                                            });
+                                        //]]></script>
+                            </article>
+                            
+                            <article class="derecha">
+                                <label>Sexo<span class="obligatorio">*</span>:</label>
+                                <select name="txtsexo" tabindex="8" required>
+                                    {lcSexo}
+                                </select>
+                            </article>
+                            <article class="izquierda">
+                                <label>Correo electrónico principal <span class="obligatorio">*</span>:</label>
+                               <input type="email" name="txtcorreouno" value="{lcCorreouno}" size="30" maxlength="50" tabindex="9" required/>
+                                <a href="#" title="Ingrese un correo electrónico valido. Ejemplo: juan@hotmail.com." data-rel="tooltip" class="ayuda"></a>
+                            </article>
+                            
+                            <article class="derecha">
+                                <label>Correo electrónico alternativo:</label>
+                                <input type="text" name="txtcorreodos" value="{lcCorreodos}" size="30" maxlength="50" tabindex="10"/>
+                            </article>
+                            <article class="izquierda">
+                                <label>Teléfono principal <span class="obligatorio">*</span>:</label>
+                                <input type="text" name="txttelefonouno" value="{lcNumerouno}" size="15" maxlength="11" tabindex="11" required/>
+                                <a href="#" title="No debe separar el número de teléfono Ej: 04160000000." data-rel="tooltip" class="ayuda"></a>
+                            </article>
+                            
+                            <article class="derecha">
+                                <label>Teléfono alternativo:</label>
+                                <input type="text" name="txttelefonodos" value="{lcNumerodos}" size="15"/ maxlength="11" tabindex="12">
+                            </article>
+                            
+                             <article class="completo">
+                                <label>Dirección <span class="obligatorio">*</span>:</label>
+                                <textarea name="txtdireccion" rows="2" cols="65" maxlength="100" tabindex="13" required>{lcDireccion}</textarea>
+                            </article>
+                            
+                        </section>
+                     </fieldset>
+                     <fieldset>
+                        <legend>Datos académicos</legend>
+                        <section class="dos_columnas">
+                            <article class="izquierda">
+                                <label>Institución <span class="obligatorio">*</span>:</label>
+                                <div class="contselect"> 
+                                    {lcInstitucion}
+                                </div>
+                                <label>Tipo de registro<span class="obligatorio">*</span>:</label>
+                                <select name="txttipo" tabindex="14" required>
+                                    {lcTipo}
+                                </select>
+                            </article>
+                            
+                            <article class="derecha">
+                                <label>Campus<span class="obligatorio">*</span>:</label>
+                                <div class="contselect"> 
+                                    {lcCampus}
+                                </div>
+                                <label>Programa <span class="obligatorio">*</span>:</label>
+                               <div class="contselect"> 
+                                    {lcPrograma}
+                                </div>
+                            </article>
+                        </section>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Confirmación de registro</legend>
+                        <section class="dos_columnas">
+                            <article class="completo">
+                                <div style="width: 60%; display: inline-block; vertical-align: top;">
+                                    <ul class="lista_grupo">
+                                        <li>
+                                            <p class="texto">Para finalizar su solicitud debe introducir las dos palabras de confirmación que se muestra en la imagen.</p>
+                                        </li>
+                                        <li>
+                                            <p class="texto">Si no distingue las palabras que se muestran en la imagen genere una nueva haciendo clic en.<img src="../media/img/imgregistro/icono.png"></p> 
+                                        </li>
+                                        <li class="texto">
+                                            <input type="checkbox" name="condiciones" id="condiciones" required >
+                                            Acepto las <a target="_blank" class="link" href="https://aulafrontino.org.ve/condiciones-de-uso/"> Condiciones de uso</a> de <strong style="color:#b4ae14">aul@</strong><strong style="color:#951313">FRONTINO</strong>
+                                        </li>
+                                    </ul>
+                                </div>
+                            <div style="width: 25%; display: inline-block; vertical-align: top;">
+                                {CAPTCHA} 
+                            </div>    
+                            </article>
+                            
+                        </section>
+                       
+                    </fieldset>
+                    <div class="cuadro_botones">
+                        <div class="span_4 align_left talign_center">
+                            <a class="btn_rojo" href="https://aulafrontino.org.ve/"><i class="icon-chevron-left icon-white"></i> Cancelar</a>
+                        </div>
+                        <div class="span_4 divider talign_center margin">
+                            <input class="btn_aceptar" type="submit"  name="btnenviar" id="btnenviar" value="Aceptar" tabindex="7" />
+                        </div>
+                        <div class="span_4 align_right talign_center">
+                            <a href="../ayuda/formulario/registro" class="btn_amarillo iframe"><i class="icon-question-sign"></i> Ayuda</a>      
+                        </div>
+                    </div>   
+                </form>
+            </article>
+        </section>

@@ -1,0 +1,97 @@
+            <article class="box span_12 align_center">
+                <h1>CONSULTAR REGISTRO</h1>
+                <form name="form_consulta_registro" method="post" action="./">
+                <fieldset class="ayudarecomendacion">
+                        <i class="icon-search font-icon"></i>
+                        <div class="nota">
+                            <p class="texto">
+                                Esta opción permite visualizar sus datos personles existentes en 
+                                <strong style="color:#b4ae14">aul@</strong><strong style="color:#951313">FRONTINO</strong>.
+                            </p>
+                        </div>    
+                </fieldset>
+                <fieldset>
+                    <legend>Datos personales</legend>
+                        <section class="dos_columnas">
+                            <article class="izquierda">
+                                <label>Cédula de identidad:</label>
+                                <input type="text" value="{lcCedula}" disabled name="txtcedula" maxlength="8" tabindex="1" />
+
+                                <label>Primer nombre:</label>
+                                <input type="text" value="{lcNombreuno}" disabled name="txtpnombre" maxlength="35" tabindex="2" />
+
+                                <label>Primer apellido:</label>
+                                <input type="text" value="{lcApellidouno}" disabled name="txtpapellido" maxlength="35" tabindex="3" />
+
+                                <label>Fecha de nacimiento:</label>
+                                <input type="text" name="txtfechanac" value="{lcFechanac}"  disabled id="f_date1" tabindex="4" />
+
+                                <label>Correo electrónico principal:</label>
+                                <input disabled type="text" name="txtcorreouno" value="{lcCorreouno}" maxlength="50" tabindex="5" />
+                            </article>
+                            
+                            <article class="derecha">
+                                <label>Nacionalidad:</label>
+                                <select class="text_select" disabled name="txtnacionalidad" tabindex="6" >
+                                    {lcNacionalidad}
+                                </select>
+
+                                <label>Segundo nombre:</label>
+                                <input type="text" value="{lcNombredos}" disabled name="txtsnombre" maxlength="35" tabindex="7" />
+
+                                <label>Segundo apellido:</label>
+                                <input type="text" value="{lcApellidodos}" disabled name="txtsapellido" maxlength="35" tabindex="8" />
+
+                                <label>Sexo:</label>
+                                <select class="text_select" disabled name="txtsexo" tabindex="9">
+                                    {lcSexo}
+                                </select>
+
+                                <label>Teléfono principal:</label>
+                                <input disabled type="text" name="txttelefonouno" value="{lcNumerouno}" maxlength="11" tabindex="10"/>
+                            </article>
+                            <article class="completo">
+                                <label>Dirección:</label>
+                                <textarea disabled name="txtdireccion" rows="2" cols="65" maxlength="100" tabindex="11">{lcDireccion}</textarea>
+                            </article>
+                        </section>                            
+                    </fieldset>
+                    <fieldset>
+                        <legend>Datos Académicos</legend>
+                        <section class="dos_columnas">
+                            <article class="izquierda">
+                                <label>Institución:</label>
+                                <input disabled type="text" name="txtnombreusu" value='{lcInstitucion}' maxlength="35" tabindex="3"/>
+                                 <label>Programa:</label>
+                                <input disabled type="text" name="txtnombreusu" value="{lcPrograma}" maxlength="35" tabindex="3"/>
+                            </article>
+                            
+                            <article class="derecha">
+                                <label>Campus:</label>
+                                <input disabled type="text" name="txtactivo" value="{lcCampus}" maxlength="35" tabindex="1"/>
+                                <label>Tipo de usuario:</label>
+                                <input disabled type="text" name="txtactivo" value="{lcTipo_usuario}" maxlength="35" tabindex="1"/>
+                            </article>
+                        </section>
+                   </fieldset>
+                    <fieldset>
+                        <legend>Datos de la cuenta de usuario</legend>
+                        <section class="dos_columnas">
+                            <article class="izquierda">
+                                <label>Cuenta de usuario:</label>
+                                <input disabled type="text" name="txtnombreusu" value="{lcNombreusu}" maxlength="35" tabindex="3"/>
+                            </article>
+                            
+                            <article class="derecha">
+                                <label>Usuario activo desde:</label>
+                                <input disabled type="text" name="txtactivo" value="{lcActivo}" maxlength="35" tabindex="1"/>
+                            </article>
+                        </section>
+                   </fieldset>
+                    <div class="cuadro_botones">
+                        <div class="span_4 align_left talign_center">
+                            <a class="btn_rojo" href="../perfil"><i class="icon-chevron-left icon-white"></i> Regresar</a>
+                        </div>
+                    </div> 
+                </form>
+            </article>

@@ -1,0 +1,87 @@
+<script> 
+        function cargar(){
+            if(validar())
+            {
+                var d = document.getElementById("previo");
+                var id = document.getElementById('select_curso').value;
+                var idsesion = document.getElementById('select_sesion').value;
+                while (d.hasChildNodes())
+                    d.removeChild(d.firstChild);
+                $("#loader_gif").fadeIn("slow");
+                $("#cargando").fadeIn("slow");
+                var url="../ajax/";
+                $.ajax({   
+                    type: "GET",
+                    url:url,
+                    data:{id:id,
+                            q:'asistencia',
+                          idsesion:idsesion},
+                    success: function(datos){  
+                        $("#loader_gif").fadeOut("slow");
+                        $("#cargando").fadeOut("slow");
+
+                       $('#datos').html(datos);
+                       
+                     }
+                });
+            }
+            }
+
+         function validar()
+        {
+            bueno=true;
+            f=document.form_registro_asistencia;
+            if((f.select_curso.value=="0")||(f.select_sesion.value=="0"))
+            {
+                alert("Debe seleccionar un curso y una sesion para poder avanzar")
+                bueno=false;
+            }
+            return bueno;
+        }
+      </script>
+                <script type="text/javascript" src="select_curso_asistencia.js"></script> 
+                <form name="form_registro_asistencia" action="../controlador/con_asistencia.php" method="POST" >
+                    <input type="hidden" name="operacion" value="asistencia" />
+                    <article class="box span_12 align_center">
+                        <h1>REGISTRAR ASISTENCIAS</h1>
+                        <form name="form_consulta_registro" method="post" action="./">
+                        <fieldset class="ayudarecomendacion">
+                        <i class="icon-check font-icon"></i>
+                        <div class="nota"> <p class="texto">
+                            Esta opción permite registrar las asistencias de las sesiones.
+                            </p></div>
+                        </fieldset>
+                        <div id="previo">
+                        <fieldset>
+                            <legend>Datos del Curso</legend>
+                            <section class="dos_columnas">
+                                <article class="izquierda">
+                                    <label>Curso:</label><div class="contselect"> 
+                                    <select name="select_curso" id="select_curso" onchange="cargaContenido(this.id)">
+                                        <option value="0">Seleccione un curso</option>
+                                        {mis-cursos}
+                                    </select>
+                                    </div>
+                                </article>
+                                <article class="derecha">
+                                    <label>Sesión:</label><div class="contselect"> 
+
+                                    <select name="select_sesion" id="select_sesion" disabled>
+                                        <option value="0">Seleccione una sesión</option>
+                                    </select>
+                                    </div>
+                                </article>
+                            </section> 
+                         </fieldset>
+                        <div class="cuadro_botones">
+                            <div class="span_4 align_center talign_center">
+                                <input class="btn_aceptar" onclick="cargar()" type="button" name="btnenviar" id="btnenviar" value="Aceptar" tabindex="7" />
+                            </div>
+                        </div>
+                    </div>
+                    <div id="datos">
+                        <div style="margin: 0 auto; display: block; width: 100px;" id="ajax_loader"><img id="loader_gif" src="../media/img/loader.gif" style=" display:none;"/><div id="cargando" style="display:none;font-size: 11px; color: #777;">Cargando...</div></div>
+                        <div id="datos"></div>
+                    </div>  
+                    </article>
+                </form>

@@ -1,0 +1,95 @@
+<script type="text/javascript" src="select_dependientes_3_niveles.js"></script>
+<script type="text/javascript" src="../media/js/curso/crear_curso.js"></script>
+            <article class="box span_12 align_center">
+                <h1>Crear nuevo curso</h1>
+               <form name="form_registro_curso" method="post" action="../controlador/con_curso.php">
+                <input type="hidden" value="crear" name="Operacion"/>
+                 <input type="hidden" value="{ID_CURSO}" name="id_curso"/>
+                <input type="hidden" value="{LAPSO_ACADEMICO}" name="lapso_academico"/>
+                    <fieldset class="ayudarecomendacion">
+                            <i class="icon-file-alt font-icon"></i>
+                            <i style="font-size: 20px; color: #9c0000;" class="icon-plus"></i>
+                            <div class="nota">
+                                <p class="texto">
+                                Esta opción permite crear un curso en el portal de aprendizaje <strong style="color:#b4ae14">aul@</strong><strong style="color:#951313">FRONTINO</strong>. 
+                               </p>
+                            </div>     
+                        </fieldset>
+                    <fieldset class="ayudarecomendacion">
+                            <i class="icon-exclamation-sign font-icon-ayuda"></i>
+                            <div class="nota">
+                                <p class="recomendacion">Recomendaciones:</p>
+                                <ul class="lista_grupo">
+                                    <li class="texto">
+                                        Los campos obligatorios serán señalados con un asterisco '<span class="obligatorio">*</span>'.
+                                    </li>
+                                    <li class="texto">
+                                        Si tiene alguna duda sobre un campo en específico, coloque el puntero del mouse sobre el ícono de ayuda (<img src="../media/img/imgformulario/ayuda.png" alt="">) del campo que desee conocer.
+                                    </li>
+                                    <li class="texto">
+                                        Si desea ayuda para configurar sus evaluaciones, haga clic en el botón
+                                        <a href="../ayuda/formulario/crear_curso" class="btn_amarillo iframe"><i class="icon-question-sign"></i> Ayuda</a>
+                                    </li>
+                                </ul>
+                            </div>     
+                    </fieldset>
+                     <fieldset>
+                        <legend>Datos del curso</legend>
+                        <section class="dos_columnas">
+                            <article class="izquierda">
+                                <label>Nombre del curso: <span class="obligatorio">*</span></label>
+                                <input type="text" name="nombre_curso" id="nombre_curso" tabindex="1" />
+                            </article>
+                            
+                            <article class="derecha">
+                                <label>Clave aula virtual: <span class="obligatorio">*</span></label>
+                                <input type="text" name="contrasena_curso" id="contrasena_curso" tabindex="3" />
+                                <a style="text-align: center;" href="#" title="Esta Clave le permite el acceso a los estudiantes al curso." data-rel="tooltip" class="ayuda"></a>
+                            </article>
+                        </section>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Datos del programa de formación</legend>
+                        <section class="dos_columnas">
+                            <article class="izquierda">
+                                <label for="">Programa: <span class="obligatorio">*</span></label>
+                                <div class="contselect" >{SELECT_PROGRAMA}</div>
+                                <a style="text-align: center;" href="#" title="Seleccione el programa de formación el cual imparte." data-rel="tooltip" class="ayuda"></a>
+                                <label for="">Módulo: <span class="obligatorio">*</span></label>
+                                <div class="contselect">           
+                                    <select class="text_select" tabindex="5"  disabled="disabled" name="select_modulo" id="select_modulo">
+                                        <option value="">Seleccione un módulo</option>
+                                    </select>
+                                </div>
+                                <a style="text-align: center;" href="#" title="Seleccione el Módulo del curso." data-rel="tooltip" class="ayuda"></a>
+
+                            </article>
+                            <article class="derecha">
+                                <label for="">Unidad curricular: <span class="obligatorio">*</span></label>
+                                    <div class="contselect"> 
+                                        <select class="text_select" tabindex="4"  name="select_unidad" id="select_unidad" onChange='cargaContenido(this.id)'>
+                                            {SELECT_UNIDAD}
+                                        </select>
+                                    </div>
+                                    <a style="text-align: center;" href="#" title="Seleccione la Unidad curricular del curso." data-rel="tooltip" class="ayuda"></a>
+
+                                <label for="">Sección: <span class="obligatorio">*</span></label>
+                                <input type="text" name="seccion" maxlength="4" id="seccion" tabindex="6" />
+                                <a style="text-align: center;" href="#" title="Seleccione la sección del curso." data-rel="tooltip" class="ayuda"></a>
+                            </article>
+                        </section>
+                       
+                    </fieldset> 
+                    <div class="cuadro_botones">
+                        <div class="span_4 align_left talign_center">
+                            <a class="btn_rojo" href="../curso"><i class="icon-chevron-left icon-white"></i> Regresar</a>
+                        </div>
+                        <div class="span_4 divider talign_center margin">
+                            <input class="btn_aceptar" type="submit" name="btnenviar" id="btnenviar" value="Aceptar" tabindex="7" />
+                        </div>
+                        <div class="span_4 align_right talign_center">
+                            <a href="../ayuda/formulario/crear_curso" class="btn_amarillo iframe"><i class="icon-question-sign"></i> Ayuda</a>     
+                        </div>
+                    </div>  
+                </form>
+            </article>

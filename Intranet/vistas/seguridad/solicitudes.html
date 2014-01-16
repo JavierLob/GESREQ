@@ -1,0 +1,31 @@
+                <form name="" action="" method="POST" ><!-- formulario -->
+                    <article class="box span_12 align_center">
+                        <h1>Bandeja de Solicitudes de Registro</h1><!-- título del listado -->
+                        <fieldset>
+                            <legend>Solicitudes de registro</legend>
+                            <table class="tabla_zebra" id="filtro">
+                                <thead>   <!-- thead cabecera tabla  -->
+                                    <tr>
+                                        <th>Cedula</th> <!-- th datos cabecera -->       
+                                        <th>Nombre</th> 
+                                        <th>Apellido</th>
+                                        <th>Visualizar Registro</th>
+                                    </tr>
+                                </thead> <!-- final del thead -->
+                                	{SOLICITUDES}
+                                <tr>
+								<td colspan="3"><a href='./?q=solicitudes'><i class="icon-repeat"></i>Actualizar</a></td>
+								</tr>     
+                            </table>
+                        </fieldset> 
+                        <div class="cuadro_botones">
+                            <div class="span_4 align_left talign_center">
+                                <a class="btn_rojo" href="../perfil"><i class="icon-chevron-left"></i> Regresar</a>
+                            </div>
+                            <div class="span_4 align_right talign_center">
+                                <a href="tutorial" class="btn_amarillo iframe"><i class="icon-question-sign"></i> Ayuda</a>      
+                            </div>
+                        </div>  
+                    </article>
+                </form>
+         

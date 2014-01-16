@@ -1,0 +1,79 @@
+                <script>
+                    function eliminar(idrecurso)
+                    {
+
+                        document.getElementById('idrecurso').value= idrecurso;
+                        if(confirm('¿Desea eliminar este recurso?'))
+                        {
+                            document.getElementById('form_recurso').submit();
+                        }
+                    }
+
+                    function cargar(idrecurso)
+                    {
+                        var idrecurso = idrecurso;
+                        var d = document.getElementById("previo");
+                        while (d.hasChildNodes())
+                            d.removeChild(d.firstChild);
+                        $("#loader_gif").fadeIn("slow");
+                        $("#cargando").fadeIn("slow");
+                        var url="../ajax/";
+                        $.ajax({   
+                            type: "GET",
+                            url:url,
+                            data:{id:idrecurso,
+                                    q:'consultar_recurso'},
+                            success: function(datos){  
+                                $("#loader_gif").fadeOut("slow");
+                                $("#cargando").fadeOut("slow");
+
+                               $('#datos').html(datos);
+                               
+                             }
+                        });
+                    }
+                </script>
+                <form name="form_recurso" id="form_recurso" action="../controlador/con_programa.php" method="POST" >
+                    <div id="previo">
+                        <input type="hidden" name="operacion" id="operacion" value="eliminar_recurso" />
+                        <input type="hidden" name="idrecurso" id="idrecurso"  value="" />
+                        <article class="box span_12 align_center">
+                            <h1>Listado de Recursos</h1>
+                           <fieldset class="ayudarecomendacion">                      
+                            <i class="icon-exclamation-sign font-icon-ayuda"></i>
+                            <div class="nota">
+                                <p class="recomendacion"><b>Recomendaciones: </b></p>
+                                <ul class="lista_grupo">    
+                                    <li class="texto">
+                                        Antes de aceptar o rechazar alguna solicitud recuerde validar si pertenecen o no a su listado de estudiantes.
+                                    </li>
+                                    <li class="texto">
+                                        Una vez seleccionadas las opciones de las solicitudes, haga clic en el botón <b>“ACEPTAR”</b>.
+                                    </li>
+                                </ul>
+                            </div>
+                        </fieldset>
+                            <fieldset>
+                                <legend>Listado de recursos</legend>
+                                <table class="tabla_zebra" {FILTRO}>
+                                    <thead>
+                                        <tr>
+                                        <th>Nombre</th>
+                                        <th>Acción</th>
+                                        </tr>
+                                    </thead>  
+                                    {LISTADO_RECURSOS}
+                                </table>
+                                <a class="btn btn-link" href="./?q=registrar_recurso"><i class="icon-plus-sign "></i> Agregar nuevo recurso</a>
+                            </fieldset>
+                            <div class="cuadro_botones">
+                                <div class="span_4 align_left talign_center">
+                                   <a class="btn_rojo" href="../configuracion/?q=listado_recursos"><i class="icon-chevron-left"></i> Regresar</a>
+                                </div>
+                            </div>
+                    </div>
+                     <div id="datos">
+                        <div style="margin: 0 auto; display: block; width: 100px;" id="ajax_loader"><img id="loader_gif" src="../media/img/loader.gif" style=" display:none;"/><div id="cargando" style="display:none;font-size: 11px; color: #777;">Cargando...</div></div>
+                        <div id="datos"></div>
+                    </div>  
+                </form>

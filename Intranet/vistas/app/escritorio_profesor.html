@@ -1,0 +1,63 @@
+                       
+                       <script>
+                            function ver_avance(idcurso)
+                            {
+                                var formulario = document.getElementById('form_escritorio_profesor');
+                                document.getElementById('idcurso').value = idcurso;
+                                formulario.submit();
+                            }
+                       </script>
+
+                        <form action="../curso/?q=avance_calificacion" method="POST" name="form_escritorio_profesor" id="form_escritorio_profesor">
+                          <input type="hidden" name="idcurso" value="" id="idcurso"/>
+                        <div class="box_bordernone span_12 align_center">
+                            <h3>Mis cursos</h3>
+                            <table class="table table-striped sombra" style="margin-bottom: 35px;">
+                              <thead>
+                                    <tr>
+                                        <th class="span_5"></th>
+                                        <th>Matricula<span>(Nº Estudiantes)</span></th>
+                                        <th>Asistencia <span>(Promedio asistencia)</span></th>
+                                        <th>Promedio <span>(Promedio calificación)</span></th> 
+                                        <th></th>                          
+                                    </tr>
+                              </thead>   
+                              <tbody>
+                                {LISTADO_CURSOS}
+                              </tbody>
+                         </table>
+                        </div>
+                       </form>
+                      <div class="box_bordernone span_12 align_center">
+                        <h3>Mi agenda</h3>
+                        <div class="box_bordernone sombra span_13 align_center" style="border-radius: 10px;">
+                            <h4>Sesiones</h4>
+                            <table class="table table-striped sombra_lados" style="margin-bottom: 20px;">
+                                <thead>
+                                      <tr>
+                                          <th class="span_5"></th>
+                                          <th>Nombre <span>(Sesión)</span></th>
+                                          <th>Nº Sesión <span>(Numero de Sesión )</span></th>
+                                          <th></th>                          
+                                      </tr>
+                                </thead>   
+                                <tbody>
+                                  {LISTADO_AGENDA}
+                                </tbody>
+                           </table>
+                            <h4>Evaluaciones</h4>
+                            <table class="table table-striped sombra_lados">
+                                <thead>
+                                      <tr>
+                                          <th class="span_5"></th>
+                                          <th>Nombre <span>(Evaluación)</span></th>
+                                          <th>Nº Sesión <span>(Numero de Sesión )</span></th>
+                                          <th></th>                          
+                                      </tr>
+                                </thead>   
+                                <tbody>
+                                  {LISTADO_AGENDA_EVALUACION}
+                                </tbody>
+                           </table>
+                        </div>
+                      </div>

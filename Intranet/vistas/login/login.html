@@ -1,0 +1,78 @@
+<!-- tour run -->
+<section id="cont_completo">
+            <section id="cont_left">
+                <article>
+                <h1 class="titulo" style="letter-spacing: 8px; text-align: center; margin-bottom: 25px; color: #9c0000;">BIENVENIDO</h1>
+                <p class="texto">POR SU SEGURIDAD SE LE RECOMIENDA:</p>
+                    <ul class="cuadro_infologin">
+                        <li>
+                            <i class="icon-key"></i> No revele su clave.
+                        </li>
+                        <li>
+                            <i class="icon-font"></i> Recuerde diferenciar mayúsculas de minúsculas.
+                        </li>
+                        <li>
+                            <i class="icon-lock"></i> Verifique que la barra de direcciones sea de color verde <img src="../media/img/iconhttps.png" alt="">.</b></span>
+                        </li>
+                        <li>
+                            <i class="icon-user"></i> ¿Eres nuevo en <strong style="color:#b4ae14">aul@</strong><strong style="color:#951313">FRONTINO</strong>? regístrate <a href="../registro" class="resaltar">aquí</a>
+                        </li>
+                    </ul>
+                </article>
+            </section>
+            <section id="cont_right">
+                <div id="cuadro_login" class="box span_12 align_right" style="height: 256px">
+                        <h1 class="login">INICIAR SESIÓN EN aul@FRONTINO</h1>
+                        <form autocomplete="off" name="form_acceso" id="acceso_intranet" method="post" action="../controlador/con_validar_acceso.php" onsubmit="return aceptar()">
+                            <input type="hidden" name="tipo" value="login_web" >
+                                <table class="campos">
+                                    <tr>
+                                        <td><label for="username">Usuario:</label></td><td><input placeholder="Introduce tu usuario" class="text"  type="text" name="username" value="" size="20" maxlength="35" tabindex="1" required="required" />
+                                        
+                                        <a href="#" title="Ingrese el usuario que le fue asignado por el administrador de aul@Frontino." data-rel="tooltip" class="ayudalg"></a>
+                                    </td>
+                                    </tr>
+                                    <tr>
+                                        <td><label for="password">Clave:</label></td><td><input placeholder="Introduce tu clave" class="text"  type="password" name="password" value="" size="20" maxlength="35" tabindex="2" required="required"/>
+                                        <a href="#" title="Ingrese la clave que usted seleccionó para acceder al sistema." data-rel="tooltip" class="ayudalg"></a>
+                                    </td>
+                                    </tr>
+                                </table>
+                                <table width="100%">
+                                    <tr>
+                                        <td  width="100%" align="center">
+                                            <input class="btn_entrar" type="submit" name="btniniciar" id="btniniciar"  value="Iniciar Sesión"/>
+                                        </td>
+                                    </tr>
+                                </table>
+                        </form>
+                        <a class="olvido" href="../olvido/">¿Olvidó su usuario ó clave? <span class="resaltar">Haga click aquí</span></a>
+                    </div>
+            </section>
+        </section>
+        <!-- mensajes del tour -->
+        <!-- <ol id="joyRideTipContent">
+          <li data-id="banner" data-text="Siguiente" class="custom">
+            <h2>Bienvenido a aul@FRONTINO</h2>
+            <p>En el siguiente tour te mostraremos rápidamente la puerta de la intranet.</p>
+            <p>¡Haz clic en siguiente para empezar el tour!</p>
+            <p>Si no deseas ver este tour haz clic en la 'x' que se encuentra en la parte superior del cuadro de dialogo para finalizar el tour.</p>
+          </li>
+          <li data-class="breadcrumb" data-button="Siguiente" data-options="tipLocation:top;">
+            <h2>Menú de navegación</h2>
+            <p>En esta sección se encuentra el menú de navegación. Este menú muestra una guía de la navegación de nuestra web a través de las diferentes secciones de esta.</p>
+          </li>
+          <li data-id="cont_left" data-button="Siguiente" data-options="tipLocation:top;">
+            <h2>Recomendaciones de seguridad</h2>
+            <p>En esta sección se muestra las recomendaciones de seguridad que debes tener en cuenta antes de iniciar sección en aul@FRONTINO.</p>
+          </li>
+          <li data-id="cont_right" data-button="Siguiente" data-options="tipLocation:top;">
+            <h2>Formulario de iniciar sesión en aul@FRONTINO</h2>
+            <p>Aquí ingresaras el usuario y clave de tu cuenta de aul@FRONTINO que te fue enviada al correo electrónico.</p>
+          </li>
+            <li data-id="cont_completo" data-button="Cerrar" data-options="tipLocation:top;">
+            <h2>Final del tour</h2>
+            <p>El tour ha finalizado ahora puedes entrar a la intranet de aul@FRONTINO. Gracias por tu paciencia.</p>
+            <p>haz clic en el boton cerrar para salir del tour.</p>
+          </li>
+        </ol> -->

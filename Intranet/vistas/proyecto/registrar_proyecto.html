@@ -1,0 +1,86 @@
+<script type="text/javascript" src="select_dependientes_3_niveles.js"></script>
+            <article id="cuadro_grande">
+                <h1>REGISTRAR PROYECTO</h1>
+               <form name="form_registro_proyecto" method="post" action="../controlador/con_proyecto.php">
+                <input type="hidden" value="registrar" name="Operacion"/>
+                <input type="hidden" value="1" name="lapso_academico"/>
+                    <fieldset>
+                        <legend>Datos del Estudiante</legend>
+                        <section class="dos_columnas">
+                            <article class="izquierda">
+                                <label>Cédula Identidad: <b>{Cedula_Estudiante}</b> </label>
+                            </article>
+                            
+                            <article class="derecha">
+                                <label>Nombre y Apellido: <b>{Nombre_Estudiante}</b></label>
+                            </article>
+                        </section>
+                     </fieldset>
+                     <fieldset>
+                        <legend>Datos del Proyecto</legend>
+                        <section class="dos_columnas">
+                            <article class="izquierda">
+                                <label>Nombre Proyecto:</label>
+                                <textarea name="nombre_curso" id="nombre_curso" tabindex="1" /></textarea>
+                                <div class="ayuda ayuda_nombre_curso" title=""></div>
+                            </article>
+                            
+                            <article class="derecha">
+                                <label>Nombre Corto Proyecto:</label>
+                                <input type="text" name="contrasena_curso" id="contrasena_curso" tabindex="2" />
+                                <div class="ayuda ayuda_nombre_curso" title=""></div>
+                            </article>
+                        </section>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Datos de la Organizacion</legend>
+                        <section class="dos_columnas">
+                            <article class="izquierda">
+                                <label>Nombre Organizacion:</label>
+                                 <textarea name="nombre_curso" id="nombre_curso" tabindex="1" /></textarea>
+                                <div class="ayuda ayuda_nombre_curso" title=""></div>
+                            </article>
+                            
+                            <article class="derecha">
+                                <label>Ubicación:</label>
+                                 <textarea name="nombre_curso" id="nombre_curso" tabindex="1" /></textarea>
+                                <div class="ayuda ayuda_nombre_curso" title=""></div>
+                            </article>
+                        </section>
+						<section class="dos_columnas">
+                            <article class="izquierda">
+                                <label>Visión:</label>
+                                <textarea name="nombre_curso" id="nombre_curso" tabindex="1" /></textarea>
+                                <div class="ayuda ayuda_nombre_curso" title=""></div>
+                            </article>
+                            
+                            <article class="derecha">
+                                <label>Misión:</label>
+                                <textarea name="nombre_curso"id="nombre_curso" tabindex="1" /></textarea>
+                                <div class="ayuda ayuda_nombre_curso" title=""></div>
+                            </article>
+                        </section>
+                    </fieldset>
+					<fieldset>
+                        <legend>Planteamiento</legend>
+                        <section class="dos_columnas">
+                            <article class="izquierda">
+                                <label>Problema:</label>
+                                 <textarea name="nombre_curso" id="nombre_curso" tabindex="1" /></textarea>
+                                 <div class="ayuda ayuda_nombre_curso" title=""></div>
+                            </article>
+                            
+                            <article class="derecha">
+                                <label>Alcance:</label>
+                                 <textarea name="nombre_curso" id="nombre_curso" tabindex="1" /></textarea>
+                                 <div class="ayuda ayuda_nombre_curso" title=""></div>
+                            </article>
+                        </section>
+                    </fieldset> 					
+                    <div class="cuadro_botones">
+                        <a style="margin: 0 0 0 12%;" class="myButton" href="../proyecto"><i class="icon-chevron-left icon-white"></i> Regresar</a>
+                        <input style="margin: 0 0 0 21%;" class="myButton" type="submit" name="btnenviar" id="btnenviar" value="Aceptar" tabindex="7" />
+                        <a href="tutorial" style="margin: 0 0 0 23%;"  class="myButton_ayuda iframe"><i class="icon-question-sign"></i> Ayuda</a>      
+                    </div>  
+                </form>
+            </article>

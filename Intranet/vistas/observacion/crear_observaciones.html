@@ -1,0 +1,88 @@
+<script type="text/javascript" src="../lib/tiny_mce/tiny_mce.js"></script>
+<script type="text/javascript" src="../media/js/observaciones/crear_observacion.js"></script>
+<script type="text/javascript">
+    tinyMCE.init({
+        mode : "textareas",
+        theme : "simple"
+    });s
+</script>
+
+            <article class="box span_12 align_center">
+                <h1>Crear observación</h1>
+                <form name="form_crear_observacion" id="form_crear_observacion" method="post" action="../controlador/con_observacion.php" onsubmit="return validar()"> 
+                    <input type="hidden" name="operacion" value="crear_observacion">
+                    <input type="hidden" name="usuario"   value="{Usuario}">
+                    <input type="hidden" name="idusuario"   value="{IDUSUARIO}">
+                    <input type="hidden" name="hora"      value="{HORA}" />
+                    <input type="hidden" name="fecha"     value="{FECHA}" />
+                    <fieldset>
+                        <legend>Datos de la observación</legend>
+                        <section class="dos_columnas">  
+                            <article class="completo">
+                                <label><b>Observación sobre la funcionalidad o caso de uso:</b></label>
+                                <input type="text" name="url" id="url" tabindex="5" value="{URL}" readonly maxlength="100"/>
+                                <div class="ayuda ayuda_ejemplo" title="Pagina en la cual se hace la observación"></div>
+                            </article>
+                        </section>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Observación</legend> 
+                        <section class="dos_columnas">   
+
+                            <article class="completo">
+                                <label><b>Título</b></label>
+                                <input type="text" name="titulo" id="titulo" tabindex="1" value="" required maxlength="150"/>
+                                <div class="ayuda ayuda_ejemplo" title="Escriba el título de la observación."></div>
+                            </article>
+
+                            <article class="derecha">
+                                <label><b>Criterio</b></label>
+                                <select name="clasificacion" id="clasificacion">
+                                    <option value="APARIENCIA">APARIENCIA</option>
+                                    <option value="FUNCIONALIDAD">FUNCIONALIDAD</option>
+                                    <option value="INTEROPERABILIDAD">INTEROPERABILIDAD</option>
+                                    <option value="NAVEGABILIDAD">NAVEGABILIDAD</option>
+                                    <option value="ORTOGRAFIA">ORTOGRAFIA</option>
+                                    <option value="REDACCION">REDACCIÓN</option>
+                                    <option value="RENDIMIENTO">RENDIMIENTO</option>
+                                    <option value="SEGURIDAD ">SEGURIDAD  </option>
+                                </select>
+                                 <div class="ayuda ayuda_ejemplo" title="Seleccione un criterio para realizar la observación"></div>
+                            </article>
+                            
+
+                            <article class="completo">
+                                <label><b>Observación / Descripción</b></label>
+                                <textarea name="observacion" id="observacion" style="width: 90%; height: 300px;"></textarea>
+                                <div class="ayuda ayuda_ejemplo" title="Escriba la observación que desea realizar."></div>
+                            </article>
+                            
+                        </section>
+                    </fieldset>
+                    <div class="cuadro_botones">
+                        <div class="span_4 align_center talign_center">
+                            <input class="btn_aceptar" type="submit" name="button" value="Aceptar" />
+                        </div>
+                    </div>
+                </form>
+            </article>
+
+<script type="text/javascript">
+//Funcion valida observación
+function validar()
+{
+    var observacion = tinyMCE.get("observacion").getContent();;
+    if(observacion == '' )
+    {
+    alert('La observación/descripción es obligatoria');
+    tinyMCE.execCommand('mceFocus', false, 'observacion');
+    return false;
+    }
+    else if(observacion > 250 )
+    {
+    alert('El texto de observación/descripción no puede ser mayor de 250 caracteres');
+    tinyMCE.execCommand('mceFocus', false, 'observacion');
+    return false;
+    }
+}
+</script>
