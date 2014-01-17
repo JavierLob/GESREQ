@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 16-01-2014 a las 02:43:20
+-- Tiempo de generación: 17-01-2014 a las 07:27:32
 -- Versión del servidor: 5.5.24-log
 -- Versión de PHP: 5.4.3
 
@@ -19,9 +19,7 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `db_ges_req`
 --
-DROP SCHEMA IF EXISTS `db_ges_req` ;
-CREATE SCHEMA IF NOT EXISTS `db_ges_req` DEFAULT CHARACTER SET utf8 COLLATE utf8_spanish2_ci ;
-USE `db_ges_req` ;
+
 -- --------------------------------------------------------
 
 --
@@ -35,14 +33,34 @@ CREATE TABLE IF NOT EXISTS `tacceso` (
   `horaacceso` time DEFAULT NULL,
   `ip` char(20) COLLATE utf8_spanish2_ci DEFAULT NULL,
   PRIMARY KEY (`idacceso`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci AUTO_INCREMENT=2410 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci AUTO_INCREMENT=2412 ;
 
 --
 -- Volcado de datos para la tabla `tacceso`
 --
 
 INSERT INTO `tacceso` (`idacceso`, `idusuario`, `fechaacceso`, `horaacceso`, `ip`) VALUES
-(2409, 'ljbracho47', '2014-01-16', '02:42:08', '::1');
+(2409, 'ljbracho47', '2014-01-16', '02:42:08', '::1'),
+(2410, 'jamartin68', '2014-01-16', '05:59:23', '127.0.0.1'),
+(2411, 'jamartin68', '2014-01-17', '03:04:00', '127.0.0.1');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tartefacto`
+--
+
+CREATE TABLE IF NOT EXISTS `tartefacto` (
+  `idartefacto` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(300) COLLATE utf8_spanish2_ci NOT NULL,
+  `tipo` varchar(50) COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `extension` varchar(4) COLLATE utf8_spanish2_ci NOT NULL,
+  `idusuario` char(45) COLLATE utf8_spanish2_ci NOT NULL,
+  `idrequerimiento` int(11) NOT NULL,
+  PRIMARY KEY (`idartefacto`),
+  KEY `idusuario` (`idusuario`,`idrequerimiento`),
+  KEY `idrequerimiento` (`idrequerimiento`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -75,7 +93,8 @@ CREATE TABLE IF NOT EXISTS `testatusip` (
 --
 
 INSERT INTO `testatusip` (`ip`, `estatus`, `intentos`) VALUES
-('::1', '0', 0);
+('::1', '0', 0),
+('127.0.0.1', '0', 0);
 
 -- --------------------------------------------------------
 
@@ -132,7 +151,8 @@ CREATE TABLE IF NOT EXISTS `tintentos` (
 --
 
 INSERT INTO `tintentos` (`ip`, `campousuario`, `campopassword`, `fechaintento`, `horaintento`) VALUES
-('::1', 'invalido', 'invalido', '2014/01/16', '01:53:21');
+('::1', 'invalido', 'invalido', '2014/01/16', '01:53:21'),
+('127.0.0.1', '', '', '2014/01/16', '05:32:53');
 
 -- --------------------------------------------------------
 
@@ -150,7 +170,7 @@ CREATE TABLE IF NOT EXISTS `tmensaje` (
   PRIMARY KEY (`idmensaje`),
   KEY `remitentemen` (`remitentemen`),
   KEY `destinatariomen` (`destinatariomen`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci AUTO_INCREMENT=95 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -165,7 +185,7 @@ CREATE TABLE IF NOT EXISTS `tmodulo_sistema` (
   `iconomodsis` varchar(100) COLLATE utf8_spanish2_ci DEFAULT NULL,
   `descripcionmodsis` varchar(250) COLLATE utf8_spanish2_ci DEFAULT NULL,
   PRIMARY KEY (`idmodulosis`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci AUTO_INCREMENT=121 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -184,7 +204,7 @@ CREATE TABLE IF NOT EXISTS `tnotificacion` (
   PRIMARY KEY (`idnotificacion`),
   KEY `fk_tnotificacion_idpersona1_idx` (`idremitente`),
   KEY `fk_tnotificacion_idpersona2_idx` (`iddestinatario`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci AUTO_INCREMENT=156 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -241,7 +261,7 @@ CREATE TABLE IF NOT EXISTS `tpublicacion` (
   PRIMARY KEY (`idpublicacion`),
   KEY `idusuariopub` (`idusuariopub`),
   KEY `idprogramapub` (`idprogramapub`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci AUTO_INCREMENT=22 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -254,15 +274,28 @@ CREATE TABLE IF NOT EXISTS `trequerimiento` (
   `titulo` varchar(150) COLLATE utf8_spanish2_ci DEFAULT NULL,
   `descripcion` text COLLATE utf8_spanish2_ci,
   `codigo` varchar(25) COLLATE utf8_spanish2_ci DEFAULT NULL,
-  `tipo` VARCHAR(20) CHARACTER SET 'utf8' COLLATE 'utf8_spanish2_ci' NULL DEFAULT NULL,
+  `tipo` varchar(20) COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `requepadre` int(11) DEFAULT NULL,
+  `idresponsable` char(45) COLLATE utf8_spanish2_ci NOT NULL DEFAULT 'Sin Asignar',
   `fechareg` date DEFAULT NULL,
   `fechaact` date DEFAULT NULL,
   `fechafin` date DEFAULT NULL,
   `prioridad` varchar(50) COLLATE utf8_spanish2_ci DEFAULT NULL,
   `dificultad` varchar(50) COLLATE utf8_spanish2_ci DEFAULT NULL,
   `estatus` varchar(20) COLLATE utf8_spanish2_ci DEFAULT 'ABIERTO',
-  PRIMARY KEY (`idrequerimiento`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci AUTO_INCREMENT=1 ;
+  PRIMARY KEY (`idrequerimiento`),
+  KEY `idresponsable` (`idresponsable`),
+  KEY `requepadre` (`requepadre`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci AUTO_INCREMENT=4 ;
+
+--
+-- Volcado de datos para la tabla `trequerimiento`
+--
+
+INSERT INTO `trequerimiento` (`idrequerimiento`, `titulo`, `descripcion`, `codigo`, `tipo`, `requepadre`, `idresponsable`, `fechareg`, `fechaact`, `fechafin`, `prioridad`, `dificultad`, `estatus`) VALUES
+(1, 'Registro de usuarios', 'Se deben poder registrar los usuarios del sistema', 'RE-01', 'Funcional', NULL, 'jamartin68', '2014-01-16', NULL, NULL, 'Alta', 'Alta', 'ABIERTO'),
+(2, 'Consultar Usuario', 'Se debe poder consultar los datos del usuario', 'RE-02', 'Funcional', NULL, 'ajmorales41', '2014-01-17', NULL, NULL, 'Media', 'Media', 'ABIERTO'),
+(3, 'Modificar Usuarios', 'El Usuario debe poder cambiar sus datos personales, como teléfono, dirección y correo alternativo', 'RE-03', 'Funcional', 1, 'jamartin68', '2014-01-17', NULL, NULL, 'Alta', 'Alta', 'ABIERTO');
 
 -- --------------------------------------------------------
 
@@ -304,7 +337,7 @@ CREATE TABLE IF NOT EXISTS `tservicio` (
   `action` text CHARACTER SET utf8 COLLATE utf8_swedish_ci,
   PRIMARY KEY (`idservicio`),
   KEY `fk_idmodulo_tmodulo` (`idmodulo`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci AUTO_INCREMENT=157 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -436,6 +469,13 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`amilcar`@`localhost` SQL SECURITY DEFINER VI
 --
 
 --
+-- Filtros para la tabla `tartefacto`
+--
+ALTER TABLE `tartefacto`
+  ADD CONSTRAINT `tartefacto_ibfk_2` FOREIGN KEY (`idrequerimiento`) REFERENCES `trequerimiento` (`idrequerimiento`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `tartefacto_ibfk_1` FOREIGN KEY (`idusuario`) REFERENCES `tusuario` (`idusuario`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
 -- Filtros para la tabla `thistorial`
 --
 ALTER TABLE `thistorial`
@@ -447,6 +487,13 @@ ALTER TABLE `thistorial`
 --
 ALTER TABLE `tpersona`
   ADD CONSTRAINT `fk_idtipoper_tpersona` FOREIGN KEY (`idtipoper`) REFERENCES `ttipopersona` (`idtipopersona`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `trequerimiento`
+--
+ALTER TABLE `trequerimiento`
+  ADD CONSTRAINT `trequerimiento_ibfk_2` FOREIGN KEY (`requepadre`) REFERENCES `trequerimiento` (`idrequerimiento`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `trequerimiento_ibfk_1` FOREIGN KEY (`idresponsable`) REFERENCES `tusuario` (`idusuario`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `tservicio`
