@@ -1,17 +1,15 @@
 <?php
 	ini_set('display_errors',1);
 
-	/*session_start();
+	session_start();
 	
-	if(!array_key_exists(session,$_SESSION))	//Validaciones para saber si tiene una sesion abierta
+   
+/*	if(!array_key_exists(session,$_SESSION))	//Validaciones para saber si tiene una sesion abierta
    {
 	   header("location: ../index.php");
    }
-   
-  	require_once("../lib/timeout.php");
-	require_once("../class/usuario.class.php");
 	require_once("../class/intento.class.php");
-	require_once("../lib/utilidades.php");
+  	require_once("../lib/timeout.php");
 	require_once("../class/curso.class.php");
 	$lobjUsuario 	= new clsUsuario();
 	$lobjCurso		= new clsCurso();
@@ -19,6 +17,11 @@
 	$lobjUtil 		= new clsUtilidades();
 	$lobjUtil->timeout($_SESSION["timeup"]);
 */
+	require_once("../class/usuario.class.php");
+	require_once('../lib/utilidades.php');
+	$lobjUsuario = new clsUsuario;
+	$lobjUtil = new clsUtilidades;	
+
 	require_once('../lib/constantes.php');
 	include_once('../lib/armar_cuerpo.php');
 	function CapturarVista() 
