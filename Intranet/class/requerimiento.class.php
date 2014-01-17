@@ -13,6 +13,7 @@ class clsRequerimiento extends clsModel
 	private $ldFechaReg;
 	private $ldFechaAct;
 	private $ldFechaFin;
+	private $lcResponsable;
 
 	public function set_IdRequerimiento($pnIdRequerimiento)
 	{
@@ -65,10 +66,15 @@ class clsRequerimiento extends clsModel
 		$this->ldFechaFin=$pdFechaFin;
 	}
 
+	public function set_Responsable($pcResponsable)
+	{
+		$this->lcResponsable=$pcResponsable;
+	}
+
 	public function registrar()
 	{
 		$this->conectar();
-		$lcSql="INSERT INTO trequerimiento (codigo,titulo,tipo,prioridad,dificultad,descripcion,fechareg)VALUES('$this->lcCodigo','$this->lcTitulo','$this->lcTipo','$this->lcPrioridad','$this->lcDificultad','$this->lcDescripcion',CURRENT_DATE())";
+		$lcSql="INSERT INTO trequerimiento (codigo,titulo,tipo,prioridad,dificultad,descripcion,fechareg,idresponsable)VALUES('$this->lcCodigo','$this->lcTitulo','$this->lcTipo','$this->lcPrioridad','$this->lcDificultad','$this->lcDescripcion',CURRENT_DATE(),'$this->lcResponsable')";
 		$llHecho=$this->ejecutar($lcSql);
 		$this->desconectar();
 		return $llHecho;
@@ -77,7 +83,7 @@ class clsRequerimiento extends clsModel
 	public function listar_requerimientos()
 	{
 		$this->conectar();
-		$lcSql="SELECT * FROM trequerimiento;";
+		$lcSql="SELECT *,date_format(fechareg,'%d-%m-%Y')as fechareg FROM trequerimiento;";
 		$lrTb=$this->filtro($lcSql);
 		$cont=0;
 		while($laRow=$this->proximo($lrTb))
@@ -91,6 +97,7 @@ class clsRequerimiento extends clsModel
 				$lafilas[$cont][6] = $laRow["descripcion"];
 				$lafilas[$cont][7] = $laRow["fechareg"];
 				$lafilas[$cont][8] = $laRow["estatus"];
+				$lafilas[$cont][9] = $laRow["idresponsable"];
 				$cont++;
 		}
 		$this->cierrafiltro($lrTb);

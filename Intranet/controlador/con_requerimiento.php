@@ -13,6 +13,7 @@
 	$ldFechaReg= $_POST['fechareg'];
 	$ldFechaAct= $_POST['fechaact'];
 	$ldFechaFin= $_POST['fechafin'];
+	$lcResponsable= $_POST['responsable'];
 	$lcOperacion= $_POST['operacion'];
 
 	$lobjRequerimiento->set_IdRequerimiento($lnIdRequerimiento);
@@ -25,6 +26,7 @@
 	$lobjRequerimiento->set_FechaReg($ldFechaReg);
 	$lobjRequerimiento->set_FechaAct($ldFechaAct);
 	$lobjRequerimiento->set_FechaFin($ldFechaFin);
+	$lobjRequerimiento->set_Responsable($lcResponsable);
 
 	switch ($lcOperacion) {
 		case 'registrar':

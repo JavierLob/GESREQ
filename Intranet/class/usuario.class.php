@@ -444,7 +444,7 @@
 				{
 					$llEncontro=false;
 					$this->conectar();	  
-					$lcSql="SELECT * from vusuario order by apellidounoper,nombreunoper";
+					$lcSql="SELECT * from vusuario WHERE idpersona!='00000000' order by apellidounoper,nombreunoper";
 					$cursor=$this->filtro($lcSql);
 					$contador=0;
 					if ($laRow=$this->proximo($cursor))
