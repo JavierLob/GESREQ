@@ -95,7 +95,7 @@
 						$LISTADO_REQUERIMIENTOS.='<td>'.$laRequerimientos[$i][7].'</td>';
 						$LISTADO_REQUERIMIENTOS.='<td ><img alt="'.$laRequerimientos[$i][9].'" title="'.$laRequerimientos[$i][9].'" width="29px" height="29px" src="../media/img/foto/'.$laRequerimientos[$i][9].'.jpg" /></td>';
 						$LISTADO_REQUERIMIENTOS.='<td ><a href="#" class="btn mini yellow"> <i class="icon-refresh" title="Actualizar requerimiento"></i> </a> <a href="?q=modificar_requerimiento&id='.$laRequerimientos[$i][0].'" class="btn mini blue"> <i class="icon-edit" title="Editar requerimiento"></i> </a> <a href="#" class="btn mini red" title="Eliminar requerimiento"> <i class="icon-trash"></i> </a> <a href="#" class="btn mini green" title="Subir artefacto"> <i class="icon-upload-alt"></i> </a></td>';
-						$LISTADO_REQUERIMIENTOS.='<td ><a href="?id='.$laRequerimientos[$i][0].'" class="btn mini green-stripe">Ver</a></td>';
+						$LISTADO_REQUERIMIENTOS.='<td ><a href="?q=consultar_requerimiento&id='.$laRequerimientos[$i][0].'" class="btn mini green-stripe">Ver</a></td>';
 					$LISTADO_REQUERIMIENTOS.='</tr>';
 				}
 				$CONTENIDO		= 	file_get_contents(VISTA.'/requerimiento/listado_requerimiento.html');
@@ -120,40 +120,9 @@
 					$CONTENIDO		=	str_replace('{OPERACION}', $operacion, $CONTENIDO);
 				}
 				else
-				{
-					$lobjRequerimiento->set_IdRequerimiento($id);
-					$laRequerimiento=$lobjRequerimiento->consultar_requerimiento();
+				{	
+					include('../lib/datos_requerimiento.php');
 
-					$ID=$laRequerimiento[0];
-					$CODIGO= $laRequerimiento[1];
-					$TITULO= $laRequerimiento[2];
-					$DESCRIPCION = $laRequerimiento[6];
-
-					$PRIORIDAD.='<option value="Baja"';if($laRequerimiento[4]=="Baja"){$PRIORIDAD.='selected';}$PRIORIDAD.='>Baja</option>';
-					$PRIORIDAD.='<option value="Media"';if($laRequerimiento[4]=="Media"){$PRIORIDAD.='selected';}$PRIORIDAD.='>Media</option>';
-					$PRIORIDAD.='<option value="Alta"';if($laRequerimiento[4]=="Alta"){$PRIORIDAD.='selected';}$PRIORIDAD.='>Alta</option>';
-                    
-
-                    $TIPO.='<label class="radio">';
-                    $TIPO.='<input type="radio" name="tipo" value="Funcional" ';if($laRequerimiento[3]=="Funcional"){ $TIPO.='checked';} $TIPO.=' />';
-                    $TIPO.='Funcional';
-                   $TIPO.=' </label>';
-                    $TIPO.='<label class="radio">';
-                    $TIPO.='<input type="radio" name="tipo" value="No Funcional" ';if($laRequerimiento[3]=="No Funcional"){ $TIPO.='checked'; } $TIPO.='/>';
-                    $TIPO.='No Funcional';
-                    $TIPO.='</label>';
-
-					$DIFICULTAD.='<option value="Baja"';if($laRequerimiento[5]=="Baja"){$DIFICULTAD.='selected';}$DIFICULTAD.='>Baja</option>';
-					$DIFICULTAD.='<option value="Media"';if($laRequerimiento[5]=="Media"){$DIFICULTAD.='selected';}$DIFICULTAD.='>Media</option>';
-					$DIFICULTAD.='<option value="Alta"';if($laRequerimiento[5]=="Alta"){$DIFICULTAD.='selected';}$DIFICULTAD.='>Alta</option>';
-                    
-                    $lobjUsuario->Lista_Usuario();
-					$laUsuario=$lobjUsuario->get_Arreglo();
-					for($i=0;$i<count($laUsuario);$i++)
-					{
-						$USUARIOS.='<option value="'.$laUsuario[$i][0].'"'; if($laRequerimiento[9]==$laUsuario[$i][0]){;$USUARIOS.='selected';} $USUARIOS.='>'.$laUsuario[$i][2].' '.$laUsuario[$i][1].'</option>';
-					}
-					
 					$Datos_requerimiento	=array(	'ID'			=>$ID,
 								'CODIGO'			=>$CODIGO,
 								'TITULO'			=>$TITULO,
@@ -162,11 +131,30 @@
 								'TIPO'			=>$TIPO,
 								'DIFICULTAD'			=>$DIFICULTAD,
 								'DESCRIPCION'			=>$DESCRIPCION
-								);	
+								);
 
 					$CONTENIDO		= 	file_get_contents(VISTA.'/requerimiento/modificar_requerimiento.html');
 					$CONTENIDO = $lobjUtil->ActualizarDatosHtml($CONTENIDO, $Datos_requerimiento);
 				}
+					$HTML		=	str_replace('{CONTENIDO}', $CONTENIDO, $Vista_Template);
+				print($HTML);
+			break;
+			case 'consultar_requerimiento':				
+					include('../lib/datos_requerimiento.php');
+
+					$Datos_requerimiento	=array(	'ID'			=>$ID,
+								'CODIGO'			=>$CODIGO,
+								'TITULO'			=>$TITULO,
+								'USUARIOS'			=>$laRequerimiento[9],
+								'PRIORIDAD'			=>$laRequerimiento[4],
+								'TIPO'			=>$laRequerimiento[3],
+								'DIFICULTAD'			=>$laRequerimiento[5],
+								'ESTATUS'			=>$ESTATUS,
+								'DESCRIPCION'			=>$DESCRIPCION
+								);
+
+					$CONTENIDO		= 	file_get_contents(VISTA.'/requerimiento/consultar_requerimiento.html');
+					$CONTENIDO = $lobjUtil->ActualizarDatosHtml($CONTENIDO, $Datos_requerimiento);
 					$HTML		=	str_replace('{CONTENIDO}', $CONTENIDO, $Vista_Template);
 				print($HTML);
 			break;
