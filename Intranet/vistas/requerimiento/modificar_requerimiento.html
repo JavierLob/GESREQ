@@ -1,0 +1,135 @@
+						<!-- BEGIN PAGE HEADER-->
+            <div class="row-fluid">
+               <div class="span12">
+                  <!-- BEGIN PAGE TITLE & BREADCRUMB-->
+						<!-- BEGIN PAGE TITLE & BREADCRUMB-->			
+						<ul class="breadcrumb">
+							<li>
+								<i class="icon-home"></i>
+								<a href="index.html">Home</a> 
+								<i class="icon-angle-right"></i>
+							</li>
+							<li>
+								<a href="#">Requerimiento</a>
+								<i class="icon-angle-right"></i>
+							</li>
+							<li><a href="#">Modificar requerimiento</a></li>
+						</ul>
+						<!-- END PAGE TITLE & BREADCRUMB-->
+					</div>
+				</div>
+				<!-- END PAGE HEADER-->
+				<!-- BEGIN PAGE CONTENT-->
+				<div class="row-fluid">
+					<div class="span12">
+						<div class="tab-pane " id="tab_2">
+                           <div class="portlet box red">
+                              <div class="portlet-title">
+                                 <h4><i class="icon-reorder"></i>Modificar requerimiento</h4>
+                              </div>
+                              <div class="portlet-body form">
+                                 <!-- BEGIN FORM-->
+                                 <form action="../controlador/con_requerimiento.php" id="form_registro_requerimiento" method="POST" class="form-horizontal">
+                                    <input type="hidden" name="operacion" value="modificar" />
+                                    <input type="hidden" name="idrequerimiento" value="{ID}" />
+                                    <h3 class="form-section">Datos del requerimiento</h3>
+                                    <div class="row-fluid">
+                                       <div class="span6 ">
+                                          <div class="control-group">
+                                             <label class="control-label">Codigo</label>
+                                             <div class="controls">
+                                                <input type="text" name="codigo" value="{CODIGO}" class="m-wrap span12" placeholder="">
+                                                <span class="help-block">Ingrese el codigo del requerimiento</span>
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <!--/span-->
+                                       <div class="span6 ">
+                                          <div class="control-group">
+                                             <label class="control-label">Titulo</label>
+                                             <div class="controls">
+                                                <input type="text" name="titulo" value="{TITULO}" class="m-wrap span12" placeholder="">
+                                                <span class="help-block">Ingrese el titulo del requerimiento</span>
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <!--/span-->
+                                    </div>
+                                    <!--/row-->
+                                    <div class="row-fluid">
+                                       <div class="span6 ">
+                                          <div class="control-group">
+                                             <label class="control-label">Dificultad</label>
+                                             <div class="controls">
+                                                <select name="dificultad" class="m-wrap span12">
+                                                   {DIFICULTAD}
+                                                </select>
+                                                <span class="help-block">Selecciona la dificultad.</span>
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <!--/span-->
+                                       <div class="span6 ">
+                                          <div class="control-group">
+                                             <label class="control-label">Tipo</label>
+                                             <div class="controls">                                             
+                                                {TIPO}
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <!--/span-->
+                                    </div>
+                                    <!--/row-->      
+                                    <!--/row-->
+                                    <div class="row-fluid">
+                                       <div class="span6 ">
+                                          <div class="control-group">
+                                             <label class="control-label">Prioridad</label>
+                                             <div class="controls">
+                                                <select name="prioridad" class="m-wrap span12">
+                                                  {PRIORIDAD}
+                                                </select>
+                                                <span class="help-block">Selecciona la prioridad.</span>
+                                             </div>
+                                          </div>
+                                       </div>
+                                       
+                                       <div class="span6 ">
+                                          <div class="control-group">
+                                             <label class="control-label">Responsable</label>
+                                             <div class="controls">
+                                                <select name="responsable" class="span12 chosen" data-placeholder="Elije un usuario" tabindex="1">
+                                                   <option value=""></option>
+                                                   {USUARIOS}
+                                                </select>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                    <!--/row-->
+                                    <div class="row-fluid">
+                                       <!--span-->
+                                       <div class="span6 ">
+                                          <div class="control-group">
+                                          <label class="control-label">Descripción</label>
+                                          <div class="controls">
+                                             <textarea name="descripcion" class="span12 m-wrap" rows="3">{DESCRIPCION}</textarea>
+                                          </div>
+                                       </div>
+                                       </div>
+                                       <!--/span-->
+                                       
+                                    </div>
+                                    <!--/row-->       
+                                    <div class="form-actions">
+                                       <button type="submit" class="btn blue"><i class="icon-ok"></i> Enviar</button>
+                                       <button type="button" class="btn">Cancel</button>
+                                    </div>
+                                 </form>
+                                 <!-- END FORM-->                
+                              </div>
+                           </div>
+                  </div>
+					</div>
+				</div>
+				<!-- END PAGE CONTENT-->

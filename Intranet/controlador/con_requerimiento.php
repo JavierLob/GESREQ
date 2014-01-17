@@ -44,10 +44,23 @@
 					$_SESSION['operacion']='El requerimiento no pudo ser registrado.';
 				}
 					header('location: ../requerimiento/?q=registro_requerimiento');
-			break;
+		break;
 		case 'modificar':
-			# code...
-			break;
+			$llHecho=$lobjRequerimiento->modificar();
+
+				$_SESSION['titulo']='Modificar requerimientos';
+				if($llHecho)
+				{
+					$_SESSION['msj']='exito';
+					$_SESSION['operacion']='El requerimiento se modificó con exito.';
+				}
+				else
+				{
+					$_SESSION['msj']='error';
+					$_SESSION['operacion']='El requerimiento no pudo ser modificado.';
+				}
+					header('location: ../requerimiento/?q=modificar_requerimiento');
+		break;
 		case 'actualizar':
 			# code...
 			break;

@@ -105,5 +105,39 @@ class clsRequerimiento extends clsModel
 		return $lafilas;
 	}
 
+	public function consultar_requerimiento()
+	{
+		$this->conectar();
+		$lcSql="SELECT *,date_format(fechareg,'%d-%m-%Y')as fechareg FROM trequerimiento WHERE idrequerimiento='$this->lnIdRequerimiento'";
+		$lrTb=$this->filtro($lcSql);
+		$cont=0;
+		while($laRow=$this->proximo($lrTb))
+		{
+				$lafila[0] = $laRow["idrequerimiento"];
+				$lafila[1] = $laRow["codigo"];
+				$lafila[2] = $laRow["titulo"];
+				$lafila[3] = $laRow["tipo"];
+				$lafila[4] = $laRow["prioridad"];
+				$lafila[5] = $laRow["dificultad"];
+				$lafila[6] = $laRow["descripcion"];
+				$lafila[7] = $laRow["fechareg"];
+				$lafila[8] = $laRow["estatus"];
+				$lafila[9] = $laRow["idresponsable"];
+				$cont++;
+		}
+		$this->cierrafiltro($lrTb);
+		$this->desconectar();
+		return $lafila;
+	}
+
+	public function modificar()
+	{
+		$this->conectar();
+		$lcSql="UPDATE trequerimiento SET codigo='$this->lcCodigo',titulo='$this->lcTitulo',tipo='$this->lcTipo',prioridad='$this->lcPrioridad',dificultad='$this->lcDificultad',descripcion='$this->lcDescripcion',idresponsable='$this->lcResponsable' WHERE idrequerimiento='$this->lnIdRequerimiento' ";
+		$llHecho=$this->ejecutar($lcSql);
+		$this->desconectar();
+		return $llHecho;
+	}
+
 }
 ?>
