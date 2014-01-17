@@ -7,6 +7,7 @@ class clsRequerimiento extends clsModel
 	private $lcCodigo;
 	private $lcTitulo;
 	private $lcTipo;
+	private $lnRequePadre;
 	private $lcPrioridad;
 	private $lcDificultad;
 	private $lcDescripcion;
@@ -33,6 +34,11 @@ class clsRequerimiento extends clsModel
 	public function set_Tipo($pcTipo)
 	{
 		$this->lcTipo=$pcTipo;
+	}
+
+	public function set_RequePadre($pnRequePadre)
+	{
+		$this->lnRequePadre=$pnRequePadre;
 	}
 
 	public function set_Prioridad($pcPrioridad)
@@ -74,7 +80,7 @@ class clsRequerimiento extends clsModel
 	public function registrar()
 	{
 		$this->conectar();
-		$lcSql="INSERT INTO trequerimiento (codigo,titulo,tipo,prioridad,dificultad,descripcion,fechareg,idresponsable)VALUES('$this->lcCodigo','$this->lcTitulo','$this->lcTipo','$this->lcPrioridad','$this->lcDificultad','$this->lcDescripcion',CURRENT_DATE(),'$this->lcResponsable')";
+		$lcSql="INSERT INTO trequerimiento (codigo,titulo,tipo,prioridad,dificultad,descripcion,fechareg,idresponsable,requepadre)VALUES('$this->lcCodigo','$this->lcTitulo','$this->lcTipo','$this->lcPrioridad','$this->lcDificultad','$this->lcDescripcion',CURRENT_DATE(),'$this->lcResponsable','$this->lnRequePadre')";
 		$llHecho=$this->ejecutar($lcSql);
 		$this->desconectar();
 		return $llHecho;
@@ -98,6 +104,7 @@ class clsRequerimiento extends clsModel
 				$lafilas[$cont][7] = $laRow["fechareg"];
 				$lafilas[$cont][8] = $laRow["estatus"];
 				$lafilas[$cont][9] = $laRow["idresponsable"];
+				$lafilas[$cont][10] = $laRow["requepadre"];
 				$cont++;
 		}
 		$this->cierrafiltro($lrTb);
@@ -123,6 +130,7 @@ class clsRequerimiento extends clsModel
 				$lafila[7] = $laRow["fechareg"];
 				$lafila[8] = $laRow["estatus"];
 				$lafila[9] = $laRow["idresponsable"];
+				$lafila[10] = $laRow["requepadre"];
 				$cont++;
 		}
 		$this->cierrafiltro($lrTb);
@@ -133,7 +141,16 @@ class clsRequerimiento extends clsModel
 	public function modificar()
 	{
 		$this->conectar();
-		$lcSql="UPDATE trequerimiento SET codigo='$this->lcCodigo',titulo='$this->lcTitulo',tipo='$this->lcTipo',prioridad='$this->lcPrioridad',dificultad='$this->lcDificultad',descripcion='$this->lcDescripcion',idresponsable='$this->lcResponsable' WHERE idrequerimiento='$this->lnIdRequerimiento' ";
+		$lcSql="UPDATE trequerimiento SET codigo='$this->lcCodigo',titulo='$this->lcTitulo',tipo='$this->lcTipo',prioridad='$this->lcPrioridad',dificultad='$this->lcDificultad',descripcion='$this->lcDescripcion',idresponsable='$this->lcResponsable',requepadre='$this->lnRequePadre' WHERE idrequerimiento='$this->lnIdRequerimiento' ";
+		$llHecho=$this->ejecutar($lcSql);
+		$this->desconectar();
+		return $llHecho;
+	}
+
+	public function eliminar()
+	{
+		$this->conectar();
+		$lcSql="DELETE FROM trequerimiento WHERE idrequerimiento='$this->lnIdRequerimiento' ";
 		$llHecho=$this->ejecutar($lcSql);
 		$this->desconectar();
 		return $llHecho;

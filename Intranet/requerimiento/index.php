@@ -61,8 +61,18 @@
 					{
 						$USUARIOS.='<option value="'.$laUsuario[$i][0].'">'.$laUsuario[$i][2].' '.$laUsuario[$i][1].'</option>';
 					}
+
+					$laRequerimientos=$lobjRequerimiento->listar_requerimientos();
+					for($i=0;$i<count($laRequerimientos);$i++)
+					{
+						$REQUERIMIENTOS.='<option value="'.$laRequerimientos[$i][0].'"'; if($laRequerimiento[10]==$laRequerimientos[$i][0]){;$REQUERIMIENTOS.='selected';} $REQUERIMIENTOS.='>'.$laRequerimientos[$i][2].' | '.$laRequerimientos[$i][1].'</option>';
+					}
+
+					$Datos_requerimiento	=array(	'USUARIOS'			=>$USUARIOS,						
+								'REQUERIMIENTOS'			=>$REQUERIMIENTOS
+								);
 					$CONTENIDO		= 	file_get_contents(VISTA.'/requerimiento/registro_requerimiento.html');
-					$CONTENIDO		=	str_replace('{USUARIOS}', $USUARIOS, $CONTENIDO);
+					$CONTENIDO = $lobjUtil->ActualizarDatosHtml($CONTENIDO, $Datos_requerimiento);
 				}
 					$HTML		=	str_replace('{CONTENIDO}', $CONTENIDO, $Vista_Template);
 				print($HTML);
@@ -130,6 +140,7 @@
 								'PRIORIDAD'			=>$PRIORIDAD,
 								'TIPO'			=>$TIPO,
 								'DIFICULTAD'			=>$DIFICULTAD,
+								'REQUERIMIENTOS'			=>$REQUERIMIENTOS,
 								'DESCRIPCION'			=>$DESCRIPCION
 								);
 
@@ -142,6 +153,10 @@
 			case 'consultar_requerimiento':				
 					include('../lib/datos_requerimiento.php');
 
+					$lobjRequerimiento->set_IdRequerimiento($laRequerimiento[10]);
+					$requePadre=$lobjRequerimiento->consultar_requerimiento();
+					if($requePadre==''){$requePadre='No aplica';}else{$requePadre=$requePadre[2].' | '.$requePadre[1];}
+					
 					$Datos_requerimiento	=array(	'ID'			=>$ID,
 								'CODIGO'			=>$CODIGO,
 								'TITULO'			=>$TITULO,
@@ -150,6 +165,7 @@
 								'TIPO'			=>$laRequerimiento[3],
 								'DIFICULTAD'			=>$laRequerimiento[5],
 								'ESTATUS'			=>$ESTATUS,
+								'REQUERIMIENTOS'			=>$requePadre,
 								'DESCRIPCION'			=>$DESCRIPCION
 								);
 

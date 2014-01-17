@@ -32,6 +32,12 @@
 					{
 						$USUARIOS.='<option value="'.$laUsuario[$i][0].'"'; if($laRequerimiento[9]==$laUsuario[$i][0]){;$USUARIOS.='selected';} $USUARIOS.='>'.$laUsuario[$i][2].' '.$laUsuario[$i][1].'</option>';
 					}
+
+					$laRequerimientos=$lobjRequerimiento->listar_requerimientos();
+					for($i=0;$i<count($laRequerimientos);$i++)
+					{
+						$REQUERIMIENTOS.='<option value="'.$laRequerimientos[$i][0].'"'; if($laRequerimiento[10]==$laRequerimientos[$i][0]){;$REQUERIMIENTOS.='selected';} $REQUERIMIENTOS.='>'.$laRequerimientos[$i][2].' | '.$laRequerimientos[$i][1].'</option>';
+					}
 					
 					
 ?>
