@@ -47,15 +47,56 @@
 					<li class="dropdown" id="header_notification_bar">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 						<i class="icon-warning-sign"></i>
-						<span class="badge">{NRO_NOTIFICACIONES}</span>
+						<span class="badge">6</span>
 						</a>
 						<ul class="dropdown-menu extended notification">
 							<li>
-								<p>Tienes {NRO_NOTIFICACIONES}</p>
+								<p>You have 14 new notifications</p>
 							</li>
-							{NOTIFICACIONES}
+							<li>
+								<a href="#">
+								<span class="label label-success"><i class="icon-plus"></i></span>
+								New user registered. 
+								<span class="time">Just now</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+								<span class="label label-important"><i class="icon-bolt"></i></span>
+								Server #12 overloaded. 
+								<span class="time">15 mins</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+								<span class="label label-warning"><i class="icon-bell"></i></span>
+								Server #2 not respoding.
+								<span class="time">22 mins</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+								<span class="label label-info"><i class="icon-bullhorn"></i></span>
+								Application error.
+								<span class="time">40 mins</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+								<span class="label label-important"><i class="icon-bolt"></i></span>
+								Database overloaded 68%. 
+								<span class="time">2 hrs</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+								<span class="label label-important"><i class="icon-bolt"></i></span>
+								2 user IP blocked.
+								<span class="time">5 hrs</span>
+								</a>
+							</li>
 							<li class="external">
-								<a href="#">Ver todas las notificaciones <i class="m-icon-swapright"></i></a>
+								<a href="#">Ver todas las notificaciones<i class="m-icon-swapright"></i></a>
 							</li>
 						</ul>
 					</li>
@@ -68,11 +109,11 @@
 						</a>
 						<ul class="dropdown-menu extended inbox">
 							<li>
-								<p>Tienes {NRO_MENSAJES}</p>
+								<p>Tienes {NRO_MENSAJES} mensajes nuevos</p>
 							</li>
 							{MENSAJES}
 							<li class="external">
-								<a href="#">Ver todos<i class="m-icon-swapright"></i></a>
+								<a href="#">Ver todos los mensajes <i class="m-icon-swapright"></i></a>
 							</li>
 						</ul>
 					</li>
@@ -102,10 +143,10 @@
 						<i class="icon-angle-down"></i>
 						</a>
 						<ul class="dropdown-menu">
-							<li><a href="../perfil/"><i class="icon-user"></i> Mi Perfil</a></li>
-							<li><a href="../requerimiento/"><i class="icon-flag"></i> Mis Requerimientos</a></li>
+							<li><a href="extra_profile.html"><i class="icon-user"></i> Mi perfil</a></li>
+							<li><a href="calendar.html"><i class="icon-calendar"></i> Mis requerimientos</a></li>
 							<li class="divider"></li>
-							<li><a href="login.html"><i class="icon-key"></i> Desconectar</a></li>
+							<li><a href="login.html"><i class="icon-key"></i>Cerrar Sesión</a></li>
 						</ul>
 					</li>
 					<!-- END USER LOGIN DROPDOWN -->
@@ -125,12 +166,14 @@
 		<div class="page-content">
 
 			<!-- BEGIN PAGE CONTAINER-->
-			<div class="container-fluid">
-				<!-- BEGIN PAGE HEADER-->
-				<div class="row-fluid">
-					<div class="span12">
-						<!-- BEGIN PAGE TITLE & BREADCRUMB-->			
-						{CONTENIDO}
+			<div class="container-fluid">			
+				{CONTENIDO}
+			</div>
+			<!-- END PAGE CONTAINER-->	
+		</div>
+		<!-- END PAGE -->	 	
+	</div>
+	<!-- END CONTAINER -->
 	<!-- BEGIN FOOTER -->
 	<div class="footer">
 		2013 &copy; Metronic by keenthemes.
