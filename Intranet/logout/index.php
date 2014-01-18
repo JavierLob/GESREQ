@@ -81,7 +81,7 @@
 					print($vista);
 				break;
 			default:
-					header('location:  http://intranet.aulafrontino.org.ve/');
+					header('location:  http://aulafrontino.org.ve/');
 				break;
 		}
 	}
