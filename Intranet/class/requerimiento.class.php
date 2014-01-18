@@ -9,8 +9,10 @@ class clsRequerimiento extends clsModel
 	private $lcTipo;
 	private $lnRequePadre;
 	private $lcPrioridad;
+	private $lcEstatus;
 	private $lcDificultad;
 	private $lcDescripcion;
+	private $lcComentario;
 	private $ldFechaReg;
 	private $ldFechaAct;
 	private $ldFechaFin;
@@ -25,6 +27,7 @@ class clsRequerimiento extends clsModel
 	{
 		$this->lcCodigo=$pcCodigo;
 	}
+
 
 	public function set_Titulo($pcTitulo)
 	{
@@ -46,15 +49,24 @@ class clsRequerimiento extends clsModel
 		$this->lcPrioridad=$pcPrioridad;
 	}
 
+	public function set_Estatus($pcEstatus)
+	{
+		$this->lcEstatus=$pcEstatus;
+	}
+
 	public function set_Dificultad($pcDificultad)
 	{
 		$this->lcDificultad=$pcDificultad;
 	}
 
-
 	public function set_Descripcion($pcDescripcion)
 	{
 		$this->lcDescripcion=$pcDescripcion;
+	}
+
+	public function set_Comentario($pcComentario)
+	{
+		$this->lcComentario=$pcComentario;
 	}
 
 	public function set_FechaReg($pdFechaReg)
@@ -142,6 +154,18 @@ class clsRequerimiento extends clsModel
 	{
 		$this->conectar();
 		$lcSql="UPDATE trequerimiento SET codigo='$this->lcCodigo',titulo='$this->lcTitulo',tipo='$this->lcTipo',prioridad='$this->lcPrioridad',dificultad='$this->lcDificultad',descripcion='$this->lcDescripcion',idresponsable='$this->lcResponsable',requepadre='$this->lnRequePadre' WHERE idrequerimiento='$this->lnIdRequerimiento' ";
+		$llHecho=$this->ejecutar($lcSql);
+		$this->desconectar();
+		return $llHecho;
+	}
+
+	public function actualizar()
+	{
+		$this->conectar();
+		$idpersona=$_SESSION['cedulausu'];
+		$lcSql="UPDATE trequerimiento SET estatus='$this->lcEstatus',descripcion='$this->lcDescripcion',fechaact=CURRENT_DATE() WHERE idrequerimiento='$this->lnIdRequerimiento' ";
+		$llHecho=$this->ejecutar($lcSql);
+		$lcSql="INSERT INTO thistorial( idrequerimiento, idpersona, descripcion)VALUES('$this->lnIdRequerimiento','$idpersona','$this->lcComentario')";
 		$llHecho=$this->ejecutar($lcSql);
 		$this->desconectar();
 		return $llHecho;

@@ -9,8 +9,10 @@
 	$lcTipo= $_POST['tipo'];
 	$lnRequePadre= $_POST['requepadre'];
 	$lcPrioridad= $_POST['prioridad'];
+	$lcEstatus= $_POST['estatus'];
 	$lcDificultad = $_POST['dificultad'];
 	$lcDescripcion= $_POST['descripcion'];
+	$lcComentario= $_POST['comentario'];
 	$ldFechaReg= $_POST['fechareg'];
 	$ldFechaAct= $_POST['fechaact'];
 	$ldFechaFin= $_POST['fechafin'];
@@ -23,8 +25,10 @@
 	$lobjRequerimiento->set_Tipo($lcTipo);
 	$lobjRequerimiento->set_RequePadre($lnRequePadre);
 	$lobjRequerimiento->set_Prioridad($lcPrioridad);
+	$lobjRequerimiento->set_Estatus($lcEstatus);
 	$lobjRequerimiento->set_Dificultad($lcDificultad);
 	$lobjRequerimiento->set_Descripcion($lcDescripcion);
+	$lobjRequerimiento->set_Comentario($lcComentario);
 	$lobjRequerimiento->set_FechaReg($ldFechaReg);
 	$lobjRequerimiento->set_FechaAct($ldFechaAct);
 	$lobjRequerimiento->set_FechaFin($ldFechaFin);
@@ -62,6 +66,22 @@
 					$_SESSION['operacion']='El requerimiento no pudo ser modificado.';
 				}
 					header('location: ../requerimiento/?q=modificar_requerimiento');
+		break;
+		case 'actualizar':
+			$llHecho=$lobjRequerimiento->actualizar();
+
+				$_SESSION['titulo']='Actualizar requerimientos';
+				if($llHecho)
+				{
+					$_SESSION['msj']='exito';
+					$_SESSION['operacion']='El requerimiento se actualizó con exito.';
+				}
+				else
+				{
+					$_SESSION['msj']='error';
+					$_SESSION['operacion']='El requerimiento no pudo ser actualizado.';
+				}
+					header('location: ../requerimiento/?q=actualizar_requerimiento');
 		break;
 		case 'eliminar':
 			$llHecho=$lobjRequerimiento->eliminar();
