@@ -174,6 +174,14 @@
 					$HTML		=	str_replace('{CONTENIDO}', $CONTENIDO, $Vista_Template);
 				print($HTML);
 			break;
+			case 'grafico_requerimiento':
+
+				//include('../lib/genera_datos.php');
+				$CONTENIDO		= 	file_get_contents(VISTA.'/requerimiento/iframe.html');
+				$HTML		=	str_replace('{CONTENIDO}', $CONTENIDO, $Vista_Template);
+				print($HTML);
+
+			break;
 			default:			
 				$CONTENIDO		= 	file_get_contents(VISTA.'/app/escritorio.html');
 				$HTML		=	str_replace('{CONTENIDO}', $CONTENIDO, $Vista_Template);
