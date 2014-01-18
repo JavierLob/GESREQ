@@ -9,6 +9,11 @@
 	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
 	<meta content="" name="description" />
 	<meta content="" name="author" />
+	<!-- LIB JQUERY -->
+	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+	<script src="http://code.jquery.com/jquery-migrate-1.1.0.js"></script>
+	<script type="text/javascript" src="../lib/grafico/js/jquery/jquery-ui-1.10.2.custom.min.js"></script>
+	<!-- OTHER LIB -->
 	<link href="../assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
 	<link href="../assets/css/metro.css" rel="stylesheet" />
 	<link href="../assets/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" />
@@ -23,7 +28,9 @@
 	<link rel="stylesheet" type="text/css" href="../assets/uniform/css/uniform.default.css" />
 	<link rel="shortcut icon" href="favicon.ico" />
 	<link rel="stylesheet" href="../lib/grafico/js/jquery/ui-lightness/jquery-ui-1.10.2.custom.css" />
-	
+	<!-- LIB graficos -->
+	<script type="text/javascript" src="../lib/grafico/js/primitives.min.js"></script>
+    <link href="../lib/grafico/css/primitives.latest.css" media="screen" rel="stylesheet" type="text/css" />
 </head>
 <!-- END HEAD -->
 <!-- BEGIN BODY -->
@@ -45,64 +52,6 @@
 				<!-- END RESPONSIVE MENU TOGGLER -->				
 				<!-- BEGIN TOP NAVIGATION MENU -->					
 				<ul class="nav pull-right">
-					<!-- BEGIN NOTIFICATION DROPDOWN -->	
-					<li class="dropdown" id="header_notification_bar">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-						<i class="icon-warning-sign"></i>
-						<span class="badge">6</span>
-						</a>
-						<ul class="dropdown-menu extended notification">
-							<li>
-								<p>You have 14 new notifications</p>
-							</li>
-							<li>
-								<a href="#">
-								<span class="label label-success"><i class="icon-plus"></i></span>
-								New user registered. 
-								<span class="time">Just now</span>
-								</a>
-							</li>
-							<li>
-								<a href="#">
-								<span class="label label-important"><i class="icon-bolt"></i></span>
-								Server #12 overloaded. 
-								<span class="time">15 mins</span>
-								</a>
-							</li>
-							<li>
-								<a href="#">
-								<span class="label label-warning"><i class="icon-bell"></i></span>
-								Server #2 not respoding.
-								<span class="time">22 mins</span>
-								</a>
-							</li>
-							<li>
-								<a href="#">
-								<span class="label label-info"><i class="icon-bullhorn"></i></span>
-								Application error.
-								<span class="time">40 mins</span>
-								</a>
-							</li>
-							<li>
-								<a href="#">
-								<span class="label label-important"><i class="icon-bolt"></i></span>
-								Database overloaded 68%. 
-								<span class="time">2 hrs</span>
-								</a>
-							</li>
-							<li>
-								<a href="#">
-								<span class="label label-important"><i class="icon-bolt"></i></span>
-								2 user IP blocked.
-								<span class="time">5 hrs</span>
-								</a>
-							</li>
-							<li class="external">
-								<a href="#">Ver todas las notificaciones<i class="m-icon-swapright"></i></a>
-							</li>
-						</ul>
-					</li>
-					<!-- END NOTIFICATION DROPDOWN -->
 					<!-- BEGIN INBOX DROPDOWN -->
 					<li class="dropdown" id="header_inbox_bar">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -186,9 +135,6 @@
 	<!-- END FOOTER -->
 	<!-- BEGIN JAVASCRIPTS -->
 	<!-- Load javascripts at bottom, this will reduce page load time -->
-	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-	<script src="http://code.jquery.com/jquery-migrate-1.1.0.js"></script>
-	<script type="text/javascript" src="../lib/grafico/js/jquery/jquery-ui-1.10.2.custom.min.js"></script>
 	<script src="../assets/breakpoints/breakpoints.js"></script>			
 	<script src="../assets/bootstrap/js/bootstrap.min.js"></script>
 	<script src="../assets/js/jquery.blockui.js"></script>
