@@ -1,0 +1,92 @@
+						<!-- BEGIN PAGE HEADER-->
+            <div class="row-fluid">
+               <div class="span12">
+                  <!-- BEGIN PAGE TITLE & BREADCRUMB-->
+						<!-- BEGIN PAGE TITLE & BREADCRUMB-->			
+						<ul class="breadcrumb">
+							<li>
+								<i class="icon-home"></i>
+								<a href="index.html">Home</a> 
+								<i class="icon-angle-right"></i>
+							</li>
+							<li>
+								<a href="#">Requerimiento</a>
+								<i class="icon-angle-right"></i>
+							</li>
+							<li><a href="#">Actualizar requerimiento</a></li>
+						</ul>
+						<!-- END PAGE TITLE & BREADCRUMB-->
+					</div>
+				</div>
+				<!-- END PAGE HEADER-->
+				<!-- BEGIN PAGE CONTENT-->
+				<div class="row-fluid">
+					<div class="span12">
+						<div class="tab-pane " id="tab_2">
+                           <div class="portlet box red">
+                              <div class="portlet-title">
+                                 <h4><i class="icon-reorder"></i>Actualizar requerimiento</h4>
+                              </div>
+                              <div class="portlet-body form">
+                                 <!-- BEGIN FORM-->
+                                 <form action="../controlador/con_requerimiento.php" id="form_registro_requerimiento" method="POST" class="form-horizontal">
+                                    <input type="hidden" name="operacion" value="actualizar" />
+                                    <input type="hidden" name="idrequerimiento" value="{ID}" />
+                                    <h3 class="form-section">Datos del requerimiento</h3>
+                                    <div class="row-fluid">
+                                       <div class="span6 ">
+                                          <div class="control-group">
+                                             <label class="control-label">Codigo</label>
+                                             <div class="controls">
+                                                <span class="text bold">{CODIGO}</span>
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <!--/span-->
+                                       <div class="span6 ">
+                                          <div class="control-group">
+                                             <label class="control-label">Titulo</label>
+                                             <div class="controls">                                             
+                                                <span class="text bold">{TITULO}</span>
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <!--/span-->
+                                    </div>     
+                                    <!--/row-->
+                                    <div class="row-fluid">
+                                       <div class="span6 ">
+                                          <div class="control-group">
+                                             <label class="control-label">Estatus</label>
+                                             <div class="controls">
+                                                <select name="requepadre" class="span12 chosen" data-placeholder="Elije un requerimiento" tabindex="1">
+                                                   <option value=""></option>
+                                                   {ESTATUS}
+                                                </select>
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <!--span-->
+                                       <div class="span6 ">
+                                          <div class="control-group">
+                                          <label class="control-label">Descripción</label>
+                                          <div class="controls">
+                                             <textarea name="descripcion" class="span12 m-wrap" rows="3">{DESCRIPCION}</textarea>
+                                          </div>
+                                       </div>
+                                       </div>
+                                       <!--/span-->                                       
+                                    </div>
+                                    <!--/row-->       
+                                    <div class="form-actions">
+                                       <button type="submit" class="btn blue"><i class="icon-ok"></i> Enviar</button>
+                                       <button type="button" class="btn">Cancel</button>
+                                    </div>
+                                 </form>
+                                 <!-- END FORM-->                
+                              </div>
+                           </div>
+                  </div>
+					</div>
+				</div>
+				<!-- END PAGE CONTENT-->

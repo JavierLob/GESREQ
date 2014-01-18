@@ -6,11 +6,15 @@
 					$CODIGO= $laRequerimiento[1];
 					$TITULO= $laRequerimiento[2];
 					$DESCRIPCION = $laRequerimiento[6];
-					$ESTATUS= $laRequerimiento[8];
+					
 
 					$PRIORIDAD.='<option value="Baja"';if($laRequerimiento[4]=="Baja"){$PRIORIDAD.='selected';}$PRIORIDAD.='>Baja</option>';
 					$PRIORIDAD.='<option value="Media"';if($laRequerimiento[4]=="Media"){$PRIORIDAD.='selected';}$PRIORIDAD.='>Media</option>';
 					$PRIORIDAD.='<option value="Alta"';if($laRequerimiento[4]=="Alta"){$PRIORIDAD.='selected';}$PRIORIDAD.='>Alta</option>';
+                    
+                    $ESTATUS.='<option value="ABIERTO"';if($laRequerimiento[8]=="ABIERTO"){$ESTATUS.='selected';}$ESTATUS.='>ABIERTO</option>';
+					$ESTATUS.='<option value="ATENDIDO"';if($laRequerimiento[8]=="ATENDIDO"){$ESTATUS.='selected';}$ESTATUS.='>ATENDIDO</option>';
+					$ESTATUS.='<option value="CERRADO"';if($laRequerimiento[8]=="CERRADO"){$ESTATUS.='selected';}$ESTATUS.='>CERRADO</option>';
                     
 
                     $TIPO.='<label class="radio">';

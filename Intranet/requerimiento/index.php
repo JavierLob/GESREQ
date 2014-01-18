@@ -104,7 +104,7 @@
 						$LISTADO_REQUERIMIENTOS.='<td>'.$ESTATUS.'</td>';
 						$LISTADO_REQUERIMIENTOS.='<td>'.$laRequerimientos[$i][7].'</td>';
 						$LISTADO_REQUERIMIENTOS.='<td ><img alt="'.$laRequerimientos[$i][9].'" title="'.$laRequerimientos[$i][9].'" width="29px" height="29px" src="../media/img/foto/'.$laRequerimientos[$i][9].'.jpg" /></td>';
-						$LISTADO_REQUERIMIENTOS.='<td ><a href="#" class="btn mini yellow"> <i class="icon-refresh" title="Actualizar requerimiento"></i> </a> <a href="?q=modificar_requerimiento&id='.$laRequerimientos[$i][0].'" class="btn mini blue"> <i class="icon-edit" title="Editar requerimiento"></i> </a> <a href="#" class="btn mini red" title="Eliminar requerimiento"> <i class="icon-trash"></i> </a> <a href="#" class="btn mini green" title="Subir artefacto"> <i class="icon-upload-alt"></i> </a></td>';
+						$LISTADO_REQUERIMIENTOS.='<td ><a href="?q=actualizar_requerimiento&id='.$laRequerimientos[$i][0].'" class="btn mini yellow"> <i class="icon-refresh" title="Actualizar requerimiento"></i> </a> <a href="?q=modificar_requerimiento&id='.$laRequerimientos[$i][0].'" class="btn mini blue"> <i class="icon-edit" title="Editar requerimiento"></i> </a> <a href="#" class="btn mini red" title="Eliminar requerimiento"> <i class="icon-trash"></i> </a> <a href="#" class="btn mini green" title="Subir artefacto"> <i class="icon-upload-alt"></i> </a></td>';
 						$LISTADO_REQUERIMIENTOS.='<td ><a href="?q=consultar_requerimiento&id='.$laRequerimientos[$i][0].'" class="btn mini green-stripe">Ver</a></td>';
 					$LISTADO_REQUERIMIENTOS.='</tr>';
 				}
@@ -164,13 +164,45 @@
 								'PRIORIDAD'			=>$laRequerimiento[4],
 								'TIPO'			=>$laRequerimiento[3],
 								'DIFICULTAD'			=>$laRequerimiento[5],
-								'ESTATUS'			=>$ESTATUS,
+								'ESTATUS'			=>$laRequerimiento[8],
 								'REQUERIMIENTOS'			=>$requePadre,
 								'DESCRIPCION'			=>$DESCRIPCION
 								);
 
 					$CONTENIDO		= 	file_get_contents(VISTA.'/requerimiento/consultar_requerimiento.html');
 					$CONTENIDO = $lobjUtil->ActualizarDatosHtml($CONTENIDO, $Datos_requerimiento);
+					$HTML		=	str_replace('{CONTENIDO}', $CONTENIDO, $Vista_Template);
+				print($HTML);
+			break;
+			case 'actualizar_requerimiento':
+				if($msj)
+				{
+					if($msj=='exito')
+					{
+						$CONTENIDO		= 	file_get_contents(VISTA.'/mensaje_exito.html');
+
+					}
+					elseif ($msj=='error') 
+					{
+						$CONTENIDO		= 	file_get_contents(VISTA.'/mensaje_error.html');
+					}
+					$CONTENIDO		=	str_replace('{TITULO}', $titulo, $CONTENIDO);
+					$CONTENIDO		=	str_replace('{OPERACION}', $operacion, $CONTENIDO);
+				}
+				else
+				{	
+					include('../lib/datos_requerimiento.php');
+
+					$Datos_requerimiento	=array(	'ID'			=>$ID,
+								'CODIGO'			=>$CODIGO,
+								'TITULO'			=>$TITULO,
+								'DESCRIPCION'			=>$DESCRIPCION,
+								'ESTATUS'			=>$ESTATUS
+								);
+
+					$CONTENIDO		= 	file_get_contents(VISTA.'/requerimiento/actualizar_requerimiento.html');
+					$CONTENIDO = $lobjUtil->ActualizarDatosHtml($CONTENIDO, $Datos_requerimiento);
+				}
 					$HTML		=	str_replace('{CONTENIDO}', $CONTENIDO, $Vista_Template);
 				print($HTML);
 			break;
