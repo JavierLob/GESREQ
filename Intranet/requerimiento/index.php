@@ -206,10 +206,43 @@
 					$HTML		=	str_replace('{CONTENIDO}', $CONTENIDO, $Vista_Template);
 				print($HTML);
 			break;
+			case 'artefacto_requerimiento':
+				if($msj)
+				{
+					if($msj=='exito')
+					{
+						$CONTENIDO		= 	file_get_contents(VISTA.'/mensaje_exito.html');
+
+					}
+					elseif ($msj=='error') 
+					{
+						$CONTENIDO		= 	file_get_contents(VISTA.'/mensaje_error.html');
+					}
+					$CONTENIDO		=	str_replace('{TITULO}', $titulo, $CONTENIDO);
+					$CONTENIDO		=	str_replace('{OPERACION}', $operacion, $CONTENIDO);
+				}
+				else
+				{	
+					include('../lib/datos_requerimiento.php');
+
+					$Datos_requerimiento	=array(	'ID'			=>$ID,
+								'CODIGO'			=>$CODIGO,
+								'TITULO'			=>$TITULO,
+								'DESCRIPCION'			=>$DESCRIPCION,
+								'ESTATUS'			=>$ESTATUS
+								);
+
+					$CONTENIDO		= 	file_get_contents(VISTA.'/requerimiento/artefacto_requerimiento.html');
+					$CONTENIDO = $lobjUtil->ActualizarDatosHtml($CONTENIDO, $Datos_requerimiento);
+				}
+					$HTML		=	str_replace('{CONTENIDO}', $CONTENIDO, $Vista_Template);
+				print($HTML);
+			break;
 			case 'grafico_requerimiento':
 
-				//include('../lib/genera_datos.php');
-				$CONTENIDO		= 	file_get_contents(VISTA.'/requerimiento/iframe.html');
+				include('../lib/genera_datos.php');
+				$CONTENIDO		= 	file_get_contents(VISTA.'/requerimiento/grafico_requerimiento.html');
+				$CONTENIDO		=	str_replace('{REQUERIMIENTOS}', $REQUERIMIENTOS, $CONTENIDO);
 				$HTML		=	str_replace('{CONTENIDO}', $CONTENIDO, $Vista_Template);
 				print($HTML);
 
