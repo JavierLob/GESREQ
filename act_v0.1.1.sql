@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 17-01-2014 a las 07:27:32
+-- Tiempo de generación: 20-01-2014 a las 18:41:55
 -- Versión del servidor: 5.5.24-log
 -- Versión de PHP: 5.4.3
 
@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS `tacceso` (
   `horaacceso` time DEFAULT NULL,
   `ip` char(20) COLLATE utf8_spanish2_ci DEFAULT NULL,
   PRIMARY KEY (`idacceso`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci AUTO_INCREMENT=2412 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci AUTO_INCREMENT=2414 ;
 
 --
 -- Volcado de datos para la tabla `tacceso`
@@ -42,7 +42,9 @@ CREATE TABLE IF NOT EXISTS `tacceso` (
 INSERT INTO `tacceso` (`idacceso`, `idusuario`, `fechaacceso`, `horaacceso`, `ip`) VALUES
 (2409, 'ljbracho47', '2014-01-16', '02:42:08', '::1'),
 (2410, 'jamartin68', '2014-01-16', '05:59:23', '127.0.0.1'),
-(2411, 'jamartin68', '2014-01-17', '03:04:00', '127.0.0.1');
+(2411, 'jamartin68', '2014-01-17', '03:04:00', '127.0.0.1'),
+(2412, 'jamartin68', '2014-01-17', '20:45:46', '127.0.0.1'),
+(2413, 'jamartin68', '2014-01-17', '23:46:40', '127.0.0.1');
 
 -- --------------------------------------------------------
 
@@ -130,7 +132,16 @@ CREATE TABLE IF NOT EXISTS `thistorial` (
   PRIMARY KEY (`idhistorial`),
   KEY `fk_idpersona_thistorial_idx` (`idpersona`),
   KEY `fk_idrequerimiento_thistorial_idx` (`idrequerimiento`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci AUTO_INCREMENT=6 ;
+
+--
+-- Volcado de datos para la tabla `thistorial`
+--
+
+INSERT INTO `thistorial` (`idhistorial`, `idrequerimiento`, `idpersona`, `descripcion`) VALUES
+(3, 1, '21561768', 'Ya está siendo atendido.'),
+(4, 3, '21561768', 'Ya está siendo atendido el requerimiento.'),
+(5, 3, '21561768', 'No lo puedo atender por los momentos');
 
 -- --------------------------------------------------------
 
@@ -293,9 +304,9 @@ CREATE TABLE IF NOT EXISTS `trequerimiento` (
 --
 
 INSERT INTO `trequerimiento` (`idrequerimiento`, `titulo`, `descripcion`, `codigo`, `tipo`, `requepadre`, `idresponsable`, `fechareg`, `fechaact`, `fechafin`, `prioridad`, `dificultad`, `estatus`) VALUES
-(1, 'Registro de usuarios', 'Se deben poder registrar los usuarios del sistema', 'RE-01', 'Funcional', NULL, 'jamartin68', '2014-01-16', NULL, NULL, 'Alta', 'Alta', 'ABIERTO'),
+(1, 'Registro de usuarios', 'Se deben poder registrar los usuarios del sistema.', 'RE-01', 'Funcional', NULL, 'jamartin68', '2014-01-16', '2014-01-17', NULL, 'Alta', 'Alta', 'ATENDIDO'),
 (2, 'Consultar Usuario', 'Se debe poder consultar los datos del usuario', 'RE-02', 'Funcional', NULL, 'ajmorales41', '2014-01-17', NULL, NULL, 'Media', 'Media', 'ABIERTO'),
-(3, 'Modificar Usuarios', 'El Usuario debe poder cambiar sus datos personales, como teléfono, dirección y correo alternativo', 'RE-03', 'Funcional', 1, 'jamartin68', '2014-01-17', NULL, NULL, 'Alta', 'Alta', 'ABIERTO');
+(3, 'Modificar Usuarios', 'El Usuario debe poder cambiar sus datos personales, como teléfono, dirección y correo alternativo.', 'RE-03', 'Funcional', 1, 'jamartin68', '2014-01-17', '2014-01-17', NULL, 'Alta', 'Alta', 'ABIERTO');
 
 -- --------------------------------------------------------
 
@@ -472,8 +483,8 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`amilcar`@`localhost` SQL SECURITY DEFINER VI
 -- Filtros para la tabla `tartefacto`
 --
 ALTER TABLE `tartefacto`
-  ADD CONSTRAINT `tartefacto_ibfk_2` FOREIGN KEY (`idrequerimiento`) REFERENCES `trequerimiento` (`idrequerimiento`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `tartefacto_ibfk_1` FOREIGN KEY (`idusuario`) REFERENCES `tusuario` (`idusuario`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `tartefacto_ibfk_1` FOREIGN KEY (`idusuario`) REFERENCES `tusuario` (`idusuario`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `tartefacto_ibfk_2` FOREIGN KEY (`idrequerimiento`) REFERENCES `trequerimiento` (`idrequerimiento`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `thistorial`
@@ -492,8 +503,8 @@ ALTER TABLE `tpersona`
 -- Filtros para la tabla `trequerimiento`
 --
 ALTER TABLE `trequerimiento`
-  ADD CONSTRAINT `trequerimiento_ibfk_2` FOREIGN KEY (`requepadre`) REFERENCES `trequerimiento` (`idrequerimiento`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `trequerimiento_ibfk_1` FOREIGN KEY (`idresponsable`) REFERENCES `tusuario` (`idusuario`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `trequerimiento_ibfk_1` FOREIGN KEY (`idresponsable`) REFERENCES `tusuario` (`idusuario`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `trequerimiento_ibfk_2` FOREIGN KEY (`requepadre`) REFERENCES `trequerimiento` (`idrequerimiento`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `tservicio`
