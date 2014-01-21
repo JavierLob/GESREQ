@@ -173,7 +173,7 @@
 							$LISTADO_ARTEFACTOS.='<td>'.$laArtefactos[$i][3].'</td>';
 							$LISTADO_ARTEFACTOS.='<td >'.$laArtefactos[$i][4].'</td>';
 							$LISTADO_ARTEFACTOS.='<td ><img alt="'.$laArtefactos[$i][5].'" title="'.$laArtefactos[$i][5].'" width="29px" height="29px" src="../media/img/foto/'.$laArtefactos[$i][5].'.jpg" /></td>';
-							$LISTADO_ARTEFACTOS.='<td ><a href="../artefactos/'.$laArtefactos[$i][6].'" download="'.$laArtefactos[$i][6].'" class="btn mini yellow"> <i class="icon-download-alt" title="Descargar artefacto"></i> </a> <a href="../requerimiento/?q=artefacto_requerimiento&id='.$laArtefactos[$i][1].'" class="btn mini green" title="Subir artefacto"> <i class="icon-upload-alt"></i> </a></td>';
+							$LISTADO_ARTEFACTOS.='<td ><a href="../artefactos/'.$laArtefactos[$i][6].'" download="'.$laArtefactos[$i][6].'" class="btn mini yellow"> <i class="icon-download-alt" title="Descargar artefacto"></i> </a> <a href="../artefacto/?q=registro_artefacto&id='.$laArtefactos[$i][1].'" class="btn mini green" title="Subir artefacto"> <i class="icon-upload-alt"></i> </a></td>';
 							$LISTADO_ARTEFACTOS.='<td ><a href="?q=consultar_artefacto&id='.$laArtefactos[$i][0].'" class="btn mini green-stripe">Ver</a></td>';
 						$LISTADO_ARTEFACTOS.='</tr>';
 					}
