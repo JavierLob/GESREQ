@@ -19,7 +19,7 @@ $(function () {
     $('#fileupload').fileupload({
         // Uncomment the following to send cross-domain cookies:
         //xhrFields: {withCredentials: true},
-        url: 'assets/jquery-file-upload/server/php/'
+        url: '../assets/jquery-file-upload/server/php/'
     });
 
     // Enable iframe cross-domain access via redirect option(only if you uplaod to another domain):
@@ -99,7 +99,7 @@ $(function () {
         // Upload server status check for browsers with CORS support:
         if ($.support.cors) {
             $.ajax({
-                url: 'assets/jquery-file-upload/server/php/',
+                url: '../assets/jquery-file-upload/server/php/',
                 type: 'HEAD'
             }).fail(function () {
                 $('<span class="alert alert-error"/>')
