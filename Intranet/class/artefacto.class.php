@@ -6,6 +6,7 @@ class clsArtefacto extends clsModel
 	private $lnIdArtefacto;
 	private $lnIdRequerimiento;
 	private $lcNombre;
+	private $lcArchivo;
 	private $lcTipo;
 	private $lcExtension;
 	private $ldFecha;
@@ -24,6 +25,11 @@ class clsArtefacto extends clsModel
 	public function set_Nombre($pcNombre)
 	{
 		$this->lcNombre=$pcNombre;
+	}
+
+	public function set_Archivo($pcArchivo)
+	{
+		$this->lcArchivo=$pcArchivo;
 	}
 
 	public function set_Tipo($pcTipo)
@@ -50,7 +56,7 @@ class clsArtefacto extends clsModel
 	public function registrar()
 	{
 		$this->conectar();
-		$lcSql="INSERT INTO tartefacto (nombre,extension,fecha,idusuario,idrequerimiento)VALUES('$this->lcNombre','$this->lcExtension',CURRENT_DATE(),'$this->lcResponsable','$this->lnIdRequerimiento')";
+		$lcSql="INSERT INTO tartefacto (nombre,archivo,extension,fecha,idusuario,idrequerimiento)VALUES('$this->lcNombre','$this->lcArchivo','$this->lcExtension',CURRENT_DATE(),'$this->lcResponsable','$this->lnIdRequerimiento')";
 		$llHecho=$this->ejecutar($lcSql);
 		$this->desconectar();
 		return $llHecho;
@@ -70,6 +76,30 @@ class clsArtefacto extends clsModel
 				$lafilas[$cont][3] = $laRow["extension"];
 				$lafilas[$cont][4] = $laRow["fecha"];
 				$lafilas[$cont][5] = $laRow["idusuario"];
+				$lafilas[$cont][6] = $laRow["archivo"];
+				$cont++;
+		}
+		$this->cierrafiltro($lrTb);
+		$this->desconectar();
+		return $lafilas;
+	}
+
+	public function listar_artefactos_requerimiento()
+	{
+
+		$this->conectar();
+		$lcSql="SELECT *,date_format(fecha,'%d-%m-%Y')as fecha FROM tartefacto WHERE idrequerimiento='$this->lnIdRequerimiento'";
+		$lrTb=$this->filtro($lcSql);
+		$cont=0;
+		while($laRow=$this->proximo($lrTb))
+		{
+				$lafilas[$cont][0] = $laRow["idartefacto"];
+				$lafilas[$cont][1] = $laRow["idrequerimiento"];
+				$lafilas[$cont][2] = $laRow["nombre"];
+				$lafilas[$cont][3] = $laRow["extension"];
+				$lafilas[$cont][4] = $laRow["fecha"];
+				$lafilas[$cont][5] = $laRow["idusuario"];
+				$lafilas[$cont][6] = $laRow["archivo"];
 				$cont++;
 		}
 		$this->cierrafiltro($lrTb);

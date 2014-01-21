@@ -54,6 +54,7 @@
 					if(copy($tempFile, $targetFile))
 					{
 						$lobjArtefacto->set_Nombre($arreglo['nombre'][$j]);
+						$lobjArtefacto->set_Archivo($nombre);
 						$lobjArtefacto->set_Extension($lcExtension);
 						$lobjArtefacto->set_Responsable($_SESSION['idusuario']);
 
@@ -74,7 +75,7 @@
 				}
 
 
-				header('location: ../artefacto/?q=artefacto_requerimiento');
+				header('location: ../artefacto/?q=registro_artefacto');
 		break;
 		case 'modificar':
 			$llHecho=$lobjArtefacto->modificar();

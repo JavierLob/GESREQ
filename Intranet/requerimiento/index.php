@@ -4,9 +4,11 @@
 	session_start();
 
 	require_once('../class/requerimiento.class.php');
+	require_once('../class/artefacto.class.php');
 	require_once('../class/usuario.class.php');
 	require_once("../lib/utilidades.php");
 	$lobjRequerimiento = new clsRequerimiento;
+	$lobjArtefacto = new clsArtefacto;
 	$lobjUsuario = new clsUsuario;
 	$lobjUtil = new clsUtilidades;
 
@@ -34,7 +36,7 @@
 	unset($_SESSION['operacion']);
 
 	function Inicio(){
-		global $lobjRequerimiento,$lobjUsuario,$lobjUtil;
+		global $lobjRequerimiento,$lobjArtefacto,$lobjUsuario,$lobjUtil;
 		global $Vista_Template,$titulo,$msj,$operacion,$id;
 		$lcVista = CapturarVista();
 		switch($lcVista){
@@ -104,7 +106,7 @@
 						$LISTADO_REQUERIMIENTOS.='<td>'.$ESTATUS.'</td>';
 						$LISTADO_REQUERIMIENTOS.='<td>'.$laRequerimientos[$i][7].'</td>';
 						$LISTADO_REQUERIMIENTOS.='<td ><img alt="'.$laRequerimientos[$i][9].'" title="'.$laRequerimientos[$i][9].'" width="29px" height="29px" src="../media/img/foto/'.$laRequerimientos[$i][9].'.jpg" /></td>';
-						$LISTADO_REQUERIMIENTOS.='<td ><a href="?q=actualizar_requerimiento&id='.$laRequerimientos[$i][0].'" class="btn mini yellow"> <i class="icon-refresh" title="Actualizar requerimiento"></i> </a> <a href="?q=modificar_requerimiento&id='.$laRequerimientos[$i][0].'" class="btn mini blue"> <i class="icon-edit" title="Editar requerimiento"></i> </a> <a href="#" class="btn mini red" title="Eliminar requerimiento"> <i class="icon-trash"></i> </a> <a href="?q=artefacto_requerimiento&id='.$laRequerimientos[$i][0].'" class="btn mini green" title="Subir artefacto"> <i class="icon-upload-alt"></i> </a></td>';
+						$LISTADO_REQUERIMIENTOS.='<td ><a href="?q=actualizar_requerimiento&id='.$laRequerimientos[$i][0].'" class="btn mini yellow"> <i class="icon-refresh" title="Actualizar requerimiento"></i> </a> <a href="?q=modificar_requerimiento&id='.$laRequerimientos[$i][0].'" class="btn mini blue"> <i class="icon-edit" title="Editar requerimiento"></i> </a> <a href="#" class="btn mini red" title="Eliminar requerimiento"> <i class="icon-trash"></i> </a> <a href="../artefacto/?q=registro_artefacto&id='.$laRequerimientos[$i][0].'" class="btn mini green" title="Subir artefacto"> <i class="icon-upload-alt"></i> </a></td>';
 						$LISTADO_REQUERIMIENTOS.='<td ><a href="?q=consultar_requerimiento&id='.$laRequerimientos[$i][0].'" class="btn mini green-stripe">Ver</a></td>';
 					$LISTADO_REQUERIMIENTOS.='</tr>';
 				}
@@ -157,6 +159,30 @@
 					$requePadre=$lobjRequerimiento->consultar_requerimiento();
 					if($requePadre==''){$requePadre='No aplica';}else{$requePadre=$requePadre[2].' | '.$requePadre[1];}
 					
+					$lobjArtefacto->set_IdRequerimiento($ID);
+					$laArtefactos=$lobjArtefacto->listar_artefactos_requerimiento();
+					for($i=0;$i<count($laArtefactos);$i++)
+					{
+						$lobjRequerimiento->set_IdRequerimiento($laArtefactos[$i][1]);
+						$laRequerimiento=$lobjRequerimiento->consultar_requerimiento();
+						
+						$LISTADO_ARTEFACTOS.='<tr>';
+							$LISTADO_ARTEFACTOS.='<td>'.$laArtefactos[$i][0].'</td>';
+							$LISTADO_ARTEFACTOS.='<td>'.$laRequerimiento[1].' | '.$laRequerimiento[2].'</td>';
+							$LISTADO_ARTEFACTOS.='<td>'.$laArtefactos[$i][2].'</td>';
+							$LISTADO_ARTEFACTOS.='<td>'.$laArtefactos[$i][3].'</td>';
+							$LISTADO_ARTEFACTOS.='<td >'.$laArtefactos[$i][4].'</td>';
+							$LISTADO_ARTEFACTOS.='<td ><img alt="'.$laArtefactos[$i][5].'" title="'.$laArtefactos[$i][5].'" width="29px" height="29px" src="../media/img/foto/'.$laArtefactos[$i][5].'.jpg" /></td>';
+							$LISTADO_ARTEFACTOS.='<td ><a href="../artefactos/'.$laArtefactos[$i][6].'" download="'.$laArtefactos[$i][6].'" class="btn mini yellow"> <i class="icon-download-alt" title="Descargar artefacto"></i> </a> <a href="../requerimiento/?q=artefacto_requerimiento&id='.$laArtefactos[$i][1].'" class="btn mini green" title="Subir artefacto"> <i class="icon-upload-alt"></i> </a></td>';
+							$LISTADO_ARTEFACTOS.='<td ><a href="?q=consultar_artefacto&id='.$laArtefactos[$i][0].'" class="btn mini green-stripe">Ver</a></td>';
+						$LISTADO_ARTEFACTOS.='</tr>';
+					}
+
+					if($i==0)
+					{
+						$LISTADO_ARTEFACTOS.='<tr><td colspan="8">Este requerimiento no tiene artefactos disponibles.</td></tr>';
+					}
+
 					$Datos_requerimiento	=array(	'ID'			=>$ID,
 								'CODIGO'			=>$CODIGO,
 								'TITULO'			=>$TITULO,
@@ -165,7 +191,8 @@
 								'TIPO'			=>$laRequerimiento[3],
 								'DIFICULTAD'			=>$laRequerimiento[5],
 								'ESTATUS'			=>$laRequerimiento[8],
-								'REQUERIMIENTOS'			=>$requePadre,
+								'REQUERIMIENTOS'			=>$requePadre,								
+								'LISTADO_ARTEFACTOS'			=>$LISTADO_ARTEFACTOS,
 								'DESCRIPCION'			=>$DESCRIPCION
 								);
 
@@ -205,39 +232,7 @@
 				}
 					$HTML		=	str_replace('{CONTENIDO}', $CONTENIDO, $Vista_Template);
 				print($HTML);
-			break;
-			case 'artefacto_requerimiento':
-				if($msj)
-				{
-					if($msj=='exito')
-					{
-						$CONTENIDO		= 	file_get_contents(VISTA.'/mensaje_exito.html');
-
-					}
-					elseif ($msj=='error') 
-					{
-						$CONTENIDO		= 	file_get_contents(VISTA.'/mensaje_error.html');
-					}
-					$CONTENIDO		=	str_replace('{TITULO}', $titulo, $CONTENIDO);
-					$CONTENIDO		=	str_replace('{OPERACION}', $operacion, $CONTENIDO);
-				}
-				else
-				{	
-					include('../lib/datos_requerimiento.php');
-
-					$Datos_requerimiento	=array(	'ID'			=>$ID,
-								'CODIGO'			=>$CODIGO,
-								'TITULO'			=>$TITULO,
-								'DESCRIPCION'			=>$DESCRIPCION,
-								'ESTATUS'			=>$laRequerimiento[8]
-								);
-
-					$CONTENIDO		= 	file_get_contents(VISTA.'/requerimiento/artefacto_requerimiento.html');
-					$CONTENIDO = $lobjUtil->ActualizarDatosHtml($CONTENIDO, $Datos_requerimiento);
-				}
-					$HTML		=	str_replace('{CONTENIDO}', $CONTENIDO, $Vista_Template);
-				print($HTML);
-			break;
+			break;			
 			case 'grafico_requerimiento':
 
 				include('../lib/genera_datos.php');

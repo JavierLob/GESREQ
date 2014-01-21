@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 20-01-2014 a las 18:41:55
+-- Tiempo de generación: 21-01-2014 a las 03:34:31
 -- Versión del servidor: 5.5.24-log
 -- Versión de PHP: 5.4.3
 
@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS `tacceso` (
   `horaacceso` time DEFAULT NULL,
   `ip` char(20) COLLATE utf8_spanish2_ci DEFAULT NULL,
   PRIMARY KEY (`idacceso`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci AUTO_INCREMENT=2414 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci AUTO_INCREMENT=2417 ;
 
 --
 -- Volcado de datos para la tabla `tacceso`
@@ -44,7 +44,10 @@ INSERT INTO `tacceso` (`idacceso`, `idusuario`, `fechaacceso`, `horaacceso`, `ip
 (2410, 'jamartin68', '2014-01-16', '05:59:23', '127.0.0.1'),
 (2411, 'jamartin68', '2014-01-17', '03:04:00', '127.0.0.1'),
 (2412, 'jamartin68', '2014-01-17', '20:45:46', '127.0.0.1'),
-(2413, 'jamartin68', '2014-01-17', '23:46:40', '127.0.0.1');
+(2413, 'jamartin68', '2014-01-17', '23:46:40', '127.0.0.1'),
+(2414, 'jamartin68', '2014-01-20', '18:44:05', '127.0.0.1'),
+(2415, 'jamartin68', '2014-01-20', '18:47:52', '127.0.0.1'),
+(2416, 'jamartin68', '2014-01-20', '19:20:38', '127.0.0.1');
 
 -- --------------------------------------------------------
 
@@ -55,14 +58,30 @@ INSERT INTO `tacceso` (`idacceso`, `idusuario`, `fechaacceso`, `horaacceso`, `ip
 CREATE TABLE IF NOT EXISTS `tartefacto` (
   `idartefacto` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(300) COLLATE utf8_spanish2_ci NOT NULL,
+  `archivo` varchar(300) COLLATE utf8_spanish2_ci NOT NULL,
   `tipo` varchar(50) COLLATE utf8_spanish2_ci DEFAULT NULL,
   `extension` varchar(4) COLLATE utf8_spanish2_ci NOT NULL,
+  `fecha` date NOT NULL,
   `idusuario` char(45) COLLATE utf8_spanish2_ci NOT NULL,
   `idrequerimiento` int(11) NOT NULL,
   PRIMARY KEY (`idartefacto`),
   KEY `idusuario` (`idusuario`,`idrequerimiento`),
   KEY `idrequerimiento` (`idrequerimiento`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci AUTO_INCREMENT=9 ;
+
+--
+-- Volcado de datos para la tabla `tartefacto`
+--
+
+INSERT INTO `tartefacto` (`idartefacto`, `nombre`, `archivo`, `tipo`, `extension`, `fecha`, `idusuario`, `idrequerimiento`) VALUES
+(1, 'Base de datos', '1390267300-act_v0.1.1.sql', NULL, 'sql', '2014-01-20', 'jamartin68', 1),
+(2, 'Base de datos2', '1390267300-base_datosv0.1.sql', NULL, 'sql', '2014-01-20', 'jamartin68', 1),
+(3, ' Diagrama caso de uso detallado', '1390270818-DCU_nativa.png', NULL, 'png', '2014-01-20', 'jamartin68', 2),
+(4, 'Diagrama Caso de uso versión nativa', '1390270818-diagrama de casos de uso detallado.jpg', NULL, 'jpg', '2014-01-20', 'jamartin68', 2),
+(5, 'Modelo de datos', '1390272692-modelo_datos.png', NULL, 'png', '2014-01-20', 'jamartin68', 1),
+(6, ' diagrama cu frontino', '1390273203-DIAGRAMA DE CU de FRONTINO.~ml', NULL, '~ml', '2014-01-20', 'jamartin68', 1),
+(7, 'untitle', '1390273203-Untitled.png', NULL, 'png', '2014-01-20', 'jamartin68', 1),
+(8, 'modelo bdfrontino', '1390273204-MODELO_bdfrontino.mwb', NULL, 'mwb', '2014-01-20', 'jamartin68', 1);
 
 -- --------------------------------------------------------
 

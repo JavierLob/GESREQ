@@ -56,24 +56,42 @@
 					$CONTENIDO		=	str_replace('{OPERACION}', $operacion, $CONTENIDO);
 				}
 				else
-				{
-					$lobjUsuario->Lista_Usuario();
-					$laUsuario=$lobjUsuario->get_Arreglo();
-					for($i=0;$i<count($laUsuario);$i++)
+				{	
+					include('../lib/datos_requerimiento.php');
+
+					$lobjArtefacto->set_IdRequerimiento($ID);
+					$laArtefactos=$lobjArtefacto->listar_artefactos_requerimiento();
+					for($i=0;$i<count($laArtefactos);$i++)
 					{
-						$USUARIOS.='<option value="'.$laUsuario[$i][0].'">'.$laUsuario[$i][2].' '.$laUsuario[$i][1].'</option>';
+						$lobjRequerimiento->set_IdRequerimiento($laArtefactos[$i][1]);
+						$laRequerimiento=$lobjRequerimiento->consultar_requerimiento();
+						
+						$LISTADO_ARTEFACTOS.='<tr>';
+							$LISTADO_ARTEFACTOS.='<td>'.$laArtefactos[$i][0].'</td>';
+							$LISTADO_ARTEFACTOS.='<td>'.$laRequerimiento[1].' | '.$laRequerimiento[2].'</td>';
+							$LISTADO_ARTEFACTOS.='<td>'.$laArtefactos[$i][2].'</td>';
+							$LISTADO_ARTEFACTOS.='<td>'.$laArtefactos[$i][3].'</td>';
+							$LISTADO_ARTEFACTOS.='<td >'.$laArtefactos[$i][4].'</td>';
+							$LISTADO_ARTEFACTOS.='<td ><img alt="'.$laArtefactos[$i][5].'" title="'.$laArtefactos[$i][5].'" width="29px" height="29px" src="../media/img/foto/'.$laArtefactos[$i][5].'.jpg" /></td>';
+							$LISTADO_ARTEFACTOS.='<td ><a href="../artefactos/'.$laArtefactos[$i][6].'" download="'.$laArtefactos[$i][6].'" class="btn mini yellow"> <i class="icon-download-alt" title="Descargar artefacto"></i> </a> <a href="../requerimiento/?q=artefacto_requerimiento&id='.$laArtefactos[$i][1].'" class="btn mini green" title="Subir artefacto"> <i class="icon-upload-alt"></i> </a></td>';
+							$LISTADO_ARTEFACTOS.='<td ><a href="?q=consultar_artefacto&id='.$laArtefactos[$i][0].'" class="btn mini green-stripe">Ver</a></td>';
+						$LISTADO_ARTEFACTOS.='</tr>';
 					}
 
-					$laRequerimientos=$lobjRequerimiento->listar_requerimientos();
-					for($i=0;$i<count($laRequerimientos);$i++)
+					if($i==0)
 					{
-						$REQUERIMIENTOS.='<option value="'.$laRequerimientos[$i][0].'"'; if($laRequerimiento[10]==$laRequerimientos[$i][0]){;$REQUERIMIENTOS.='selected';} $REQUERIMIENTOS.='>'.$laRequerimientos[$i][2].' | '.$laRequerimientos[$i][1].'</option>';
+						$LISTADO_ARTEFACTOS.='<tr><td colspan="8">Este requerimiento no tiene artefactos disponibles.</td></tr>';
 					}
 
-					$Datos_requerimiento	=array(	'USUARIOS'			=>$USUARIOS,						
-								'REQUERIMIENTOS'			=>$REQUERIMIENTOS
+					$Datos_requerimiento	=array(	'ID'			=>$ID,
+								'CODIGO'			=>$CODIGO,
+								'TITULO'			=>$TITULO,
+								'DESCRIPCION'			=>$DESCRIPCION,
+								'LISTADO_ARTEFACTOS' =>$LISTADO_ARTEFACTOS,
+								'ESTATUS'			=>$laRequerimiento[8]
 								);
-					$CONTENIDO		= 	file_get_contents(VISTA.'/requerimiento/registro_requerimiento.html');
+
+					$CONTENIDO		= 	file_get_contents(VISTA.'/requerimiento/artefacto_requerimiento.html');
 					$CONTENIDO = $lobjUtil->ActualizarDatosHtml($CONTENIDO, $Datos_requerimiento);
 				}
 					$HTML		=	str_replace('{CONTENIDO}', $CONTENIDO, $Vista_Template);
@@ -94,10 +112,16 @@
 						$LISTADO_ARTEFACTOS.='<td>'.$laArtefactos[$i][3].'</td>';
 						$LISTADO_ARTEFACTOS.='<td >'.$laArtefactos[$i][4].'</td>';
 						$LISTADO_ARTEFACTOS.='<td ><img alt="'.$laArtefactos[$i][5].'" title="'.$laArtefactos[$i][5].'" width="29px" height="29px" src="../media/img/foto/'.$laArtefactos[$i][5].'.jpg" /></td>';
-						$LISTADO_ARTEFACTOS.='<td ><a href="?q=modificar_artefacto&id='.$laArtefactos[$i][0].'" class="btn mini blue"> <i class="icon-edit" title="Editar artefacto"></i> </a> <a href="#" class="btn mini red" title="Eliminar artefacto"> <i class="icon-trash"></i> </a> <a href="../requerimiento/?q=artefacto_requerimiento&id='.$laArtefactos[$i][1].'" class="btn mini green" title="Subir artefacto"> <i class="icon-upload-alt"></i> </a></td>';
+						$LISTADO_ARTEFACTOS.='<td ><a href="../artefactos/'.$laArtefactos[$i][6].'" download="'.$laArtefactos[$i][6].'" class="btn mini yellow"> <i class="icon-download-alt" title="Descargar artefacto"></i> </a> <a href="?q=modificar_artefacto&id='.$laArtefactos[$i][0].'" class="btn mini blue"> <i class="icon-edit" title="Editar artefacto"></i> </a> <a href="#" class="btn mini red" title="Eliminar artefacto"> <i class="icon-trash"></i> </a> <a href="../artefacto/?q=registro_artefacto&id='.$laArtefactos[$i][1].'" class="btn mini green" title="Subir artefacto"> <i class="icon-upload-alt"></i> </a></td>';
 						$LISTADO_ARTEFACTOS.='<td ><a href="?q=consultar_artefacto&id='.$laArtefactos[$i][0].'" class="btn mini green-stripe">Ver</a></td>';
 					$LISTADO_ARTEFACTOS.='</tr>';
 				}
+
+				if($i==0)
+				{
+					$LISTADO_ARTEFACTOS.='<tr><td colspan="8">No existen artefactos disponibles.</td></tr>';
+				}
+
 				$CONTENIDO		= 	file_get_contents(VISTA.'/artefacto/listado_artefacto.html');
 				$CONTENIDO		=	str_replace('{LISTADO_ARTEFACTOS}', $LISTADO_ARTEFACTOS, $CONTENIDO);
 				$HTML		=	str_replace('{CONTENIDO}', $CONTENIDO, $Vista_Template);
