@@ -20,6 +20,11 @@ SET time_zone = "+00:00";
 -- Base de datos: `db_ges_req`
 --
 
+
+DROP SCHEMA IF EXISTS `db_ges_req` ;
+CREATE SCHEMA IF NOT EXISTS `db_ges_req` DEFAULT CHARACTER SET utf8 COLLATE utf8_spanish2_ci ;
+USE `db_ges_req` ;
+
 -- --------------------------------------------------------
 
 --
@@ -38,16 +43,6 @@ CREATE TABLE IF NOT EXISTS `tacceso` (
 --
 -- Volcado de datos para la tabla `tacceso`
 --
-
-INSERT INTO `tacceso` (`idacceso`, `idusuario`, `fechaacceso`, `horaacceso`, `ip`) VALUES
-(2409, 'ljbracho47', '2014-01-16', '02:42:08', '::1'),
-(2410, 'jamartin68', '2014-01-16', '05:59:23', '127.0.0.1'),
-(2411, 'jamartin68', '2014-01-17', '03:04:00', '127.0.0.1'),
-(2412, 'jamartin68', '2014-01-17', '20:45:46', '127.0.0.1'),
-(2413, 'jamartin68', '2014-01-17', '23:46:40', '127.0.0.1'),
-(2414, 'jamartin68', '2014-01-20', '18:44:05', '127.0.0.1'),
-(2415, 'jamartin68', '2014-01-20', '18:47:52', '127.0.0.1'),
-(2416, 'jamartin68', '2014-01-20', '19:20:38', '127.0.0.1');
 
 -- --------------------------------------------------------
 
