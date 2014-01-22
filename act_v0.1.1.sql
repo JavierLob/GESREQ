@@ -320,8 +320,7 @@ CREATE TABLE IF NOT EXISTS `trequerimiento` (
   `dificultad` varchar(50) COLLATE utf8_spanish2_ci DEFAULT NULL,
   `estatus` varchar(20) COLLATE utf8_spanish2_ci DEFAULT 'ABIERTO',
   PRIMARY KEY (`idrequerimiento`),
-  KEY `idresponsable` (`idresponsable`),
-  KEY `requepadre` (`requepadre`)
+  KEY `idresponsable` (`idresponsable`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci AUTO_INCREMENT=4 ;
 
 --
@@ -528,8 +527,7 @@ ALTER TABLE `tpersona`
 -- Filtros para la tabla `trequerimiento`
 --
 ALTER TABLE `trequerimiento`
-  ADD CONSTRAINT `trequerimiento_ibfk_1` FOREIGN KEY (`idresponsable`) REFERENCES `tusuario` (`idusuario`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `trequerimiento_ibfk_2` FOREIGN KEY (`requepadre`) REFERENCES `trequerimiento` (`idrequerimiento`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `trequerimiento_ibfk_1` FOREIGN KEY (`idresponsable`) REFERENCES `tusuario` (`idusuario`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `tservicio`
