@@ -1,15 +1,7 @@
-    <link rel="stylesheet" href="../lib/grafico/js/jquery/ui-lightness/jquery-ui-1.10.2.custom.css" />
-    <script type="text/javascript" src="../lib/grafico/js/jquery/jquery-1.9.1.js"></script>
-    <script type="text/javascript" src="../lib/grafico/js/jquery/jquery-ui-1.10.2.custom.js"></script>
-
     <!-- jQuery UI Layout -->
     <script type="text/javascript" src="../lib/grafico/jquerylayout/jquery.layout-latest.min.js"></script>
     <link rel="stylesheet" type="text/css" href="../lib/grafico/jquerylayout/layout-default-latest.css" />
 
-
-
-
-    <!-- header -->
 
     <link rel="stylesheet" type="text/css" href="../lib/grafico/bootstrap/css/bootstrap.min.css" />
     <script type="text/javascript" src="../lib/grafico/bootstrap/js/bootstrap.js"></script>
@@ -79,8 +71,8 @@
             var result = new primitives.orgdiagram.TemplateConfig();
             result.name = "CursorTemplate";
 
-            result.itemSize = new primitives.common.Size(120, 100);
-            result.minimizedItemSize = new primitives.common.Size(3, 3);
+            result.itemSize = new primitives.common.Size(220, 100);
+            result.minimizedItemSize = new primitives.common.Size(10, 10);
             result.highlightPadding = new primitives.common.Thickness(2, 2, 2, 2);
             result.cursorPadding = new primitives.common.Thickness(3, 3, 50, 8);
 
@@ -109,7 +101,7 @@
                 height: (result.itemSize.height + 1) + "px"
             }).addClass("btn-group btn-group-vertical");
 
-            bootStrapVerticalButtonsGroup.append('<a class="btn btn-small" href="#" ><i class="icon-view"></i></a>');
+            bootStrapVerticalButtonsGroup.append('<a class="btn btn-small" href="#" ><i class="icon-eye-open"></i></a>');
             bootStrapVerticalButtonsGroup.append('<a class="btn btn-small" href="#" ><i class="icon-edit"></i></a>');
             bootStrapVerticalButtonsGroup.append('<a class="btn btn-small" href="#"><i class="icon-remove"></i></a>');
 
