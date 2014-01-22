@@ -1,23 +1,201 @@
-    <!-- LIB graficos -->
-  <script type="text/javascript" src="../lib/grafico/js/primitives.min.js"></script>
-    <link href="../lib/grafico/css/primitives.latest.css" media="screen" rel="stylesheet" type="text/css" />
-    <script type='text/javascript'>//<![CDATA[ 
-        $(window).load(function () {
-            var options = new primitives.orgdiagram.Config();
+    <link rel="stylesheet" href="../lib/grafico/js/jquery/ui-lightness/jquery-ui-1.10.2.custom.css" />
+    <script type="text/javascript" src="../lib/grafico/js/jquery/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="../lib/grafico/js/jquery/jquery-ui-1.10.2.custom.js"></script>
 
-            var items = [
-            {REQUERIMIENTOS}
-            ];
+    <!-- jQuery UI Layout -->
+    <script type="text/javascript" src="../lib/grafico/jquerylayout/jquery.layout-latest.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../lib/grafico/jquerylayout/layout-default-latest.css" />
 
 
-            options.items = items;
-            options.cursorItem = 0;
 
-            jQuery("#basicdiagram").orgDiagram(options);
-        });//]]>  
 
+    <!-- header -->
+
+    <link rel="stylesheet" type="text/css" href="../lib/grafico/bootstrap/css/bootstrap.min.css" />
+    <script type="text/javascript" src="../lib/grafico/bootstrap/js/bootstrap.js"></script>
+    <link rel="stylesheet" type="text/css" href="../lib/grafico/bootstrap/css/bootstrap-responsive.min.css" />
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+    <!-- # include file="src/src.primitives.html"-->
+
+    <link href="../lib/grafico/css/primitives.latest.css?201" media="screen" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="../lib/grafico/js/primitives.min.js?201"></script>
+
+    <script type="text/javascript">
+        var orgDiagram = null;
+        var treeItems = {};
+
+        jQuery(document).ready(function () {
+            jQuery.ajaxSetup({
+                cache: false
+            });
+            orgDiagram = Setup(jQuery("#centerpanel"));
+
+            LoadItems(jQuery("#centerpanel"));
+        });
+
+        function Setup(selector) {
+            var config = GetOrgDiagramConfig();
+            config.templates = [getCursorTemplate()];
+            return selector.orgDiagram(config);
+        }
+
+        function Update(selector, updateMode) {
+            selector.orgDiagram("option", GetOrgDiagramConfig());
+            selector.orgDiagram("update", updateMode);
+        }
+
+        function GetOrgDiagramConfig() {
+
+            return {
+                normalLevelShift: 20,
+                dotLevelShift: 10,
+                lineLevelShift: 10,
+                normalItemsInterval: 20,
+                dotItemsInterval: 15,
+                lineItemsInterval: 5,
+                hasSelectorCheckbox: primitives.common.Enabled.True,
+                leavesPlacementType: primitives.common.ChildrenPlacementType.Matrix,
+                hasButtons: primitives.common.Enabled.False,
+                onMouseClick: onMouseClick,
+                onCursorChanging: onCursorChanging,
+                onCursorChanged: onCursorChanged,
+                onHighlightChanging: onHighlightChanging,
+                onHighlightChanged: onHighlightChanged,
+                onSelectionChanged: onSelectionChanged,
+                itemTitleFirstFontColor: primitives.common.Colors.White,
+                itemTitleSecondFontColor: primitives.common.Colors.White,
+                labelSize: new primitives.common.Size(10, 20),
+                labelPlacement: primitives.common.PlacementType.Top,
+                labelOffset: 3
+            };
+        }
+
+        function getCursorTemplate() {
+            var result = new primitives.orgdiagram.TemplateConfig();
+            result.name = "CursorTemplate";
+
+            result.itemSize = new primitives.common.Size(120, 100);
+            result.minimizedItemSize = new primitives.common.Size(3, 3);
+            result.highlightPadding = new primitives.common.Thickness(2, 2, 2, 2);
+            result.cursorPadding = new primitives.common.Thickness(3, 3, 50, 8);
+
+            var cursorTemplate = jQuery("<div></div>")
+            .css({
+                position: "absolute",
+                overflow: "hidden",
+                width: (result.itemSize.width + result.cursorPadding.left + result.cursorPadding.right) + "px",
+                height: (result.itemSize.height + result.cursorPadding.top + result.cursorPadding.bottom) + "px"
+            });
+
+            var cursorBorder = jQuery("<div></div>")
+            .css({
+                width: (result.itemSize.width + result.cursorPadding.left + 1) + "px",
+                height: (result.itemSize.height + result.cursorPadding.top + 1) + "px"
+            }).addClass("bp-item bp-corner-all bp-cursor-frame");
+            cursorTemplate.append(cursorBorder);
+
+            var bootStrapVerticalButtonsGroup = jQuery("<div></div>")
+            .css({
+                position: "absolute",
+                overflow: "hidden",
+                top: result.cursorPadding.top + "px",
+                left: (result.itemSize.width + result.cursorPadding.left + 10) + "px",
+                width: "35px",
+                height: (result.itemSize.height + 1) + "px"
+            }).addClass("btn-group btn-group-vertical");
+
+            bootStrapVerticalButtonsGroup.append('<a class="btn btn-small" href="#" ><i class="icon-view"></i></a>');
+            bootStrapVerticalButtonsGroup.append('<a class="btn btn-small" href="#" ><i class="icon-edit"></i></a>');
+            bootStrapVerticalButtonsGroup.append('<a class="btn btn-small" href="#"><i class="icon-remove"></i></a>');
+
+            cursorTemplate.append(bootStrapVerticalButtonsGroup);
+
+            result.cursorTemplate = cursorTemplate.wrap('<div>').parent().html();
+
+            return result;
+        }
+
+        function onSelectionChanged(e, data) {
+            var selectedItems = jQuery("#centerpanel").orgDiagram("option", "selectedItems");
+            var message = "";
+            for (var index = 0; index < selectedItems.length; index += 1) {
+                var itemConfig = treeItems[selectedItems[index]];
+                if (message != "") {
+                    message += ", ";
+                }
+                message += "<b>'" + itemConfig.title + "'</b>";
+            }
+            message += (data.parentItem != null ? " Parent item <b>'" + data.parentItem.title + "'</b>" : "");
+            jQuery("#southpanel").empty().append("User selected next items: " + message);
+        }
+
+        function onHighlightChanging(e, data) {
+            var message = (data.context != null) ? "User is hovering mouse over item <b>'" + data.context.title + "'</b>." : "";
+            message += (data.parentItem != null ? " Parent item <b>'" + data.parentItem.title + "'</b>" : "");
+
+            jQuery("#southpanel").empty().append(message);
+        }
+
+        function onHighlightChanged(e, data) {
+            var message = (data.context != null) ? "User hovers mouse over item <b>'" + data.context.title + "'</b>." : "";
+            message += (data.parentItem != null ? " Parent item <b>'" + data.parentItem.title + "'</b>" : "");
+
+            jQuery("#southpanel").empty().append(message);
+        }
+
+        function onCursorChanging(e, data) {
+            var message = "User is clicking on item '" + data.context.title + "'." +
+                (data.parentItem != null ? (" Parent item <b>'" + data.parentItem.title + "'</b>") : "");
+
+            jQuery("#southpanel").empty().append(message);
+        }
+
+        function onCursorChanged(e, data) {
+            var message = "User clicked on item '" + data.context.title + "'." +
+                (data.parentItem != null ? (" Parent item <b>'" + data.parentItem.title + "'</b>") : "");
+            jQuery("#southpanel").empty().append(message);
+        }
+
+        function onMouseClick(event, data) {
+            var target = jQuery(event.originalEvent.target);
+            if (target.hasClass("btn") || target.parent(".btn").length > 0) {
+                var button = target.hasClass("btn") ? target : target.parent(".btn");
+                var buttonname = button.data("buttonname");
+
+                var message = "User clicked <b>'" + buttonname + "'</b> button for item <b>'" + data.context.title + "'</b>." +
+                    (data.parentItem != null ? (" Parent item <b>'" + data.parentItem.title + "'</b>") : "");
+                jQuery("#southpanel").empty().append(message);
+
+                data.cancel = true;
+            }
+        }
+
+        function LoadItems(selector) {
+            var items = [{REQUERIMIENTOS}];
+
+           
+
+            /* hash items for selections */
+            for (var index = 0; index < items.length; index++) {
+                var item = items[index];
+                treeItems[item.id] = item;
+            }
+
+            selector.orgDiagram("option", {
+                items: items,
+                cursorItem: 0
+            });
+            selector.orgDiagram("update");
+        }
     </script>
-    <div class="row-fluid">
+    <!-- /header -->
+
+        <div class="row-fluid">
                <div class="span12">
                   <!-- BEGIN PAGE TITLE & BREADCRUMB-->
                   <!-- BEGIN PAGE TITLE & BREADCRUMB-->        
@@ -46,12 +224,11 @@
                                  <h4><i class="icon-reorder"></i>Grafico de requerimientos</h4>
                               </div>
                               <div class="portlet-body form">
-                                <div id="basicdiagram" class="span12" style="height: 480px;" />
+                                <div id="centerpanel" class="span12" style="height: 480px;" />
                             </div>
                            </div>
                       </div>
                     </div>
                 </div>
-                </div>
-                </div>
-                <!-- END PAGE CONTENT-->
+
+
