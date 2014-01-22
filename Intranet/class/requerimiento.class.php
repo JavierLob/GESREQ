@@ -180,5 +180,42 @@ class clsRequerimiento extends clsModel
 		return $llHecho;
 	}
 
+	public function estadisticas()
+	{
+		$this->conectar();
+		$lcSql="SELECT count(*) AS `cantidad` , (SELECT count(*) FROM trequerimiento WHERE estatus='ATENDIDO') AS `req_atendidos`, (SELECT count(*) FROM trequerimiento WHERE estatus='CERRADO') as `req_cerrados`, (SELECT count(*) FROM tartefacto) AS `cant_art` FROM trequerimiento";
+		$lrTb=$this->filtro($lcSql);
+		$cont=0;
+		while($laRow=$this->proximo($lrTb))
+		{
+				$lafila[0] = $laRow["cantidad"];
+				$lafila[1] = $laRow["req_atendidos"];
+				$lafila[2] = $laRow["req_cerrados"];
+				$lafila[3] = $laRow["cant_art"];
+		}
+		$this->cierrafiltro($lrTb);
+		$this->desconectar();
+		return $lafila;
+	}
+
+	public function historial()
+	{
+		$this->conectar();
+		$lcSql="SELECT *, thistorial.fechaact AS fecha_actualizacion, thistorial.descripcion AS historial_descripcion FROM thistorial LEFT JOIN trequerimiento on (thistorial.idrequerimiento = trequerimiento.idrequerimiento)";
+		$lrTb=$this->filtro($lcSql);
+		$cont=0;
+		while($laRow=$this->proximo($lrTb))
+		{
+				$lafila[$cont][0] = $laRow["historial_descripcion"];
+				$lafila[$cont][1] = $laRow["titulo"];
+				$lafila[$cont][2] = $laRow["idresponsable"];
+				$lafila[$cont][3] = $laRow["fechaact"];
+				$lafila[$cont][4] = $laRow["fecha_actualizacion"];
+				$cont++;
+		}
+		$this->cierrafiltro($lrTb);
+		$this->desconectar();
+		return $lafila;
+	}
 }
 ?>
