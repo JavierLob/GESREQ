@@ -31,6 +31,12 @@ USE `db_ges_req` ;
 -- Estructura de tabla para la tabla `tacceso`
 --
 
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tacceso`
+--
+
 CREATE TABLE IF NOT EXISTS `tacceso` (
   `idacceso` int(11) NOT NULL AUTO_INCREMENT,
   `idusuario` char(45) COLLATE utf8_spanish2_ci DEFAULT NULL,
@@ -38,11 +44,15 @@ CREATE TABLE IF NOT EXISTS `tacceso` (
   `horaacceso` time DEFAULT NULL,
   `ip` char(20) COLLATE utf8_spanish2_ci DEFAULT NULL,
   PRIMARY KEY (`idacceso`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci AUTO_INCREMENT=2417 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci AUTO_INCREMENT=2419 ;
 
 --
 -- Volcado de datos para la tabla `tacceso`
 --
+
+INSERT INTO `tacceso` (`idacceso`, `idusuario`, `fechaacceso`, `horaacceso`, `ip`) VALUES
+(2417, 'ljbracho47', '2014-01-21', '04:00:45', '::1'),
+(2418, 'ljbracho47', '2014-01-22', '00:34:31', '::1');
 
 -- --------------------------------------------------------
 
@@ -143,6 +153,7 @@ CREATE TABLE IF NOT EXISTS `thistorial` (
   `idrequerimiento` int(11) NOT NULL,
   `idpersona` char(9) COLLATE utf8_spanish2_ci NOT NULL,
   `descripcion` text COLLATE utf8_spanish2_ci,
+  `fechaact` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`idhistorial`),
   KEY `fk_idpersona_thistorial_idx` (`idpersona`),
   KEY `fk_idrequerimiento_thistorial_idx` (`idrequerimiento`)
@@ -152,10 +163,10 @@ CREATE TABLE IF NOT EXISTS `thistorial` (
 -- Volcado de datos para la tabla `thistorial`
 --
 
-INSERT INTO `thistorial` (`idhistorial`, `idrequerimiento`, `idpersona`, `descripcion`) VALUES
-(3, 1, '21561768', 'Ya está siendo atendido.'),
-(4, 3, '21561768', 'Ya está siendo atendido el requerimiento.'),
-(5, 3, '21561768', 'No lo puedo atender por los momentos');
+INSERT INTO `thistorial` (`idhistorial`, `idrequerimiento`, `idpersona`, `descripcion`, `fechaact`) VALUES
+(3, 1, '21561768', 'Ya está siendo atendido.', '0000-00-00 00:00:00'),
+(4, 3, '21561768', 'Ya está siendo atendido el requerimiento.', '0000-00-00 00:00:00'),
+(5, 3, '21561768', 'No lo puedo atender por los momentos', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
