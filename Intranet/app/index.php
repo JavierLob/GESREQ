@@ -52,6 +52,14 @@
 				$historiales = $lobjRequerimiento->historial();
 				for($i=0;$i<count($historiales);$i++)
 				{
+					if($historiales[$i][4]==0)
+					{
+						$time = 'El día de hoy.';
+					}
+					else
+					{
+						$time = 'Hace '.$historiales[$i][4].' días.';
+					}
 					$ACTUALIZACIONES.= '<li>
 															<div class="col1">
 																<div class="cont">
@@ -67,7 +75,7 @@
 															</div>
 															<div class="col2">
 																<div class="date">
-																	Justo ahora
+																	'.$time.'
 																</div>
 															</div>
 														</li>';

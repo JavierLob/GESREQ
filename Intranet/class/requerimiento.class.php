@@ -201,7 +201,7 @@ class clsRequerimiento extends clsModel
 	public function historial()
 	{
 		$this->conectar();
-		$lcSql="SELECT *, thistorial.fechaact AS fecha_actualizacion, thistorial.descripcion AS historial_descripcion FROM thistorial LEFT JOIN trequerimiento on (thistorial.idrequerimiento = trequerimiento.idrequerimiento)";
+		$lcSql="SELECT *, DATEDIFF(NOW() , thistorial.fechaact)  AS fecha_actualizacion, thistorial.descripcion AS historial_descripcion FROM thistorial LEFT JOIN trequerimiento on (thistorial.idrequerimiento = trequerimiento.idrequerimiento)";
 		$lrTb=$this->filtro($lcSql);
 		$cont=0;
 		while($laRow=$this->proximo($lrTb))
